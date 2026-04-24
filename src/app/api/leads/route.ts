@@ -1,6 +1,21 @@
 import { NextRequest } from "next/server";
-import { intakeSchema } from "@/lib/intake-schema";
+import { z } from "zod";
 import { createServerSupabase } from "@/lib/supabase";
+
+/**
+ * Mini intake endpoint — accepts the short 4-field onboarding from /start.
+ * All heavy intake fields (product description, competitors, audience, etc.)
+ * are collected post-onboarding via the dashboard's creative request flow.
+ */
+
+const miniSchema = z.object({
+  name: z.string().min(2),
+  email: z.string().email(),
+  company: z.string().min(2),
+  website: z.string().url().or(z.literal("")).optional(),
+  goal: z.enum(["just_creative", "creative_media", "not_sure"]),
+  message: z.string().max(500).optional(),
+});
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -10,7 +25,7 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const parsed = intakeSchema.safeParse(body);
+  const parsed = miniSchema.safeParse(body);
   if (!parsed.success) {
     return Response.json(
       {
@@ -26,34 +41,16 @@ export async function POST(req: NextRequest) {
   try {
     const supabase = createServerSupabase();
     const { error } = await supabase.from("leads").insert({
-      company: data.company,
       name: data.name,
       email: data.email,
-      website: data.website,
-      business_type: data.business_type,
-      product_description: data.product_description,
-      target_audience: data.target_audience || null,
-      monthly_budget: data.monthly_budget || null,
-      platforms: data.platforms,
-      creative_package: data.creative_package,
-      media_buying: data.media_buying,
-      media_buying_tier: data.media_buying_tier || null,
-      sub_niche: data.sub_niche || null,
-      usp: data.usp || null,
-      brand_voice: data.brand_voice || null,
-      brand_colors: data.brand_colors || null,
-      brand_fonts: data.brand_fonts || null,
-      productfeed_url: data.productfeed_url || null,
-      productfeed_type: data.productfeed_type || null,
-      competitors: data.competitors || null,
-      baseline_roas: data.baseline_roas || null,
-      baseline_cpa: data.baseline_cpa || null,
-      baseline_notes: data.baseline_notes || null,
-      restrictions: data.restrictions || null,
-      client_hypotheses: data.client_hypotheses || null,
-      notes: data.notes || null,
+      company: data.company,
+      website: data.website || null,
+      // Map goal to existing columns for backward compat with the leads table
+      creative_package: data.goal === "just_creative" ? "not_sure_yet" : null,
+      media_buying: data.goal === "creative_media" ? "yes" : data.goal === "just_creative" ? "no" : null,
+      notes: data.message || null,
       status: "new",
-      source: "website",
+      source: "website_mini_intake",
     });
 
     if (error) {
