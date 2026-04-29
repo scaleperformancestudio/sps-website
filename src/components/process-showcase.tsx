@@ -57,7 +57,7 @@ export function ProcessShowcase() {
           <ProcessCard
             number="03"
             title="Production"
-            description="AI-powered creative engine produces statics, video, and UGC at scale. Higgsfield, Nano Banana Pro, and our in-house workflows turn briefs into batches in days."
+            description="A purpose-built AI production stack turns briefs into finished statics, video and UGC at studio quality — the kind of output a 10-person team would take weeks to ship, delivered in hours."
             scene={<ProductionScene />}
           />
         </FadeIn>

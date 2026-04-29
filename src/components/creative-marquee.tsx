@@ -4,32 +4,25 @@ import Image from "next/image";
 
 /**
  * Horizontal scrolling marquee of ad creatives with performance metrics.
- * Ecomflows-style "Where design meets performance" section, reskinned in SPS brand.
- * Uses the existing creative PNGs (product shot, lifestyle, before/after, UGC, infographic, v1 variants)
- * cycled with varied metrics so each card reads as a distinct winner.
+ * Ecomflows-style "Where creative meets performance" section, reskinned in SPS brand.
+ * Each card shows the niche/category and the performance metric — brand names are
+ * intentionally omitted. Supports both image (.png) and video (.mp4) creatives.
  */
 
 interface CreativeCard {
-  image: string;
-  brand: string;
+  src: string;
   category: string;
   metric: string;
   metricLabel: string;
 }
 
 const cards: CreativeCard[] = [
-  { image: "/creatives/product-shot.png", brand: "VELORA", category: "Wellness", metric: "+32%", metricLabel: "Click Rate" },
-  { image: "/creatives/before-after.png", brand: "NORTHMADE", category: "Skincare", metric: "+4.2x", metricLabel: "ROAS" },
-  { image: "/creatives/lifestyle.png", brand: "Prima", category: "Apparel", metric: "+21%", metricLabel: "Revenue Growth" },
-  { image: "/creatives/infographic.png", brand: "VELORA", category: "Supplements", metric: "+45%", metricLabel: "Click Rate" },
-  { image: "/creatives/ugc-selfie.png", brand: "HELIX", category: "Beauty", metric: "+28%", metricLabel: "Email-driven Rev." },
-  { image: "/creatives/product-shot-v1.png", brand: "TERRA", category: "Home & Living", metric: "+19%", metricLabel: "Revenue Growth" },
-  { image: "/creatives/infographic-v1.png", brand: "HALO", category: "Wellness", metric: "+37%", metricLabel: "Click Rate" },
-  { image: "/creatives/before-after.png", brand: "MAVEN", category: "Grooming", metric: "+3.8x", metricLabel: "ROAS" },
-  { image: "/creatives/lifestyle.png", brand: "axis.", category: "Fashion", metric: "+26%", metricLabel: "Revenue Growth" },
-  { image: "/creatives/ugc-selfie.png", brand: "STRATA", category: "Fitness", metric: "+41%", metricLabel: "Click Rate" },
-  { image: "/creatives/product-shot.png", brand: "orbit.", category: "Tech", metric: "+23%", metricLabel: "Revenue Growth" },
-  { image: "/creatives/infographic.png", brand: "FORM+CO", category: "Supplements", metric: "+5.1x", metricLabel: "ROAS" },
+  { src: "/creatives/infographic.png", category: "Supplements", metric: "+45%", metricLabel: "Click Rate" },
+  { src: "/creatives/before-after.png", category: "Beauty", metric: "+3.8x", metricLabel: "ROAS" },
+  { src: "/creatives/liquid-vs-pills.png", category: "Health", metric: "+34%", metricLabel: "Click Rate" },
+  { src: "/creatives/closing-sale.png", category: "Jewelry", metric: "+2.7x", metricLabel: "ROAS" },
+  { src: "/creatives/save-today.png", category: "Supplements", metric: "+29%", metricLabel: "Conversion" },
+  { src: "/creatives/cortisol-ugc.mp4", category: "Supplements", metric: "+4.1x", metricLabel: "ROAS" },
 ];
 
 export function CreativeMarquee() {
@@ -77,19 +70,33 @@ export function CreativeMarquee() {
 }
 
 function CreativeCardItem({ card }: { card: CreativeCard }) {
+  const isVideo = card.src.toLowerCase().endsWith(".mp4");
+
   return (
     <div className="group relative w-[240px] shrink-0 md:w-[280px]">
       {/* Card */}
       <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0d0d0d] transition-all duration-500 hover:border-brand-bright/30 hover:shadow-[0_0_40px_rgba(46,127,6,0.12)]">
-        {/* Image */}
+        {/* Media */}
         <div className="relative aspect-square overflow-hidden">
-          <Image
-            src={card.image}
-            alt={`${card.brand} — ${card.category}`}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-            sizes="(max-width: 768px) 240px, 280px"
-          />
+          {isVideo ? (
+            <video
+              src={card.src}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            />
+          ) : (
+            <Image
+              src={card.src}
+              alt={card.category}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              sizes="(max-width: 768px) 240px, 280px"
+            />
+          )}
           {/* Subtle vignette */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         </div>
@@ -97,8 +104,7 @@ function CreativeCardItem({ card }: { card: CreativeCard }) {
         {/* Info row */}
         <div className="flex items-center justify-between gap-3 px-4 py-4">
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-ink">{card.brand}</p>
-            <p className="truncate text-xs text-ink-dim/60">{card.category}</p>
+            <p className="truncate text-sm font-semibold text-ink">{card.category}</p>
           </div>
           <div className="shrink-0 text-right">
             <p className="text-sm font-bold text-brand-bright">{card.metric}</p>

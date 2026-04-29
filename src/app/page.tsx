@@ -8,73 +8,12 @@ import { CountUp } from "@/components/count-up";
 import { FadeIn } from "@/components/fade-in";
 import { PhoneCarousel } from "@/components/phone-carousel";
 import { HeroWaves } from "@/components/hero-waves";
-import { LogoMarquee } from "@/components/logo-marquee";
+import { ResultsMarquee } from "@/components/results-marquee";
 import { CreativeMarquee } from "@/components/creative-marquee";
 import { TestimonialsMarquee } from "@/components/testimonials-marquee";
 import { ProcessShowcase } from "@/components/process-showcase";
 import { FaqAccordion } from "@/components/faq-accordion";
-
-/* ── Team roster (front-facing on the homepage) ── */
-type TeamMember = {
-  name: string;
-  role: string;
-  initial: string;
-  gradient: string;
-  /** Path in /public once a photo exists, e.g. "/team/emre.jpg" */
-  image?: string;
-};
-
-const team: TeamMember[] = [
-  {
-    name: "Emre Balıkoç",
-    role: "Founder & Strategy Lead",
-    initial: "E",
-    gradient: "from-[#1c5102] to-[#2e7f06]",
-    image: "/team/emre.jpg",
-  },
-  {
-    name: "Fenna Reitsma",
-    role: "Head of Research",
-    initial: "F",
-    gradient: "from-[#3a2a1c] to-[#5a4a3c]",
-    image: "/team/fenna.jpg",
-  },
-  {
-    name: "Sahar Moradi",
-    role: "Creative Strategist",
-    initial: "S",
-    gradient: "from-[#3a1a2c] to-[#5a2a4c]",
-    image: "/team/sahar.jpg",
-  },
-  {
-    name: "Joren Vandeven",
-    role: "Scripts & Copy",
-    initial: "J",
-    gradient: "from-[#12243a] to-[#1a3450]",
-    image: "/team/joren.jpg",
-  },
-  {
-    name: "Milo Janssens",
-    role: "AI Production Lead",
-    initial: "M",
-    gradient: "from-[#1a2a1c] to-[#2a4a2c]",
-    image: "/team/milo.jpg",
-  },
-  {
-    name: "Indira Choudhury",
-    role: "Media Buying",
-    initial: "I",
-    gradient: "from-[#3a1a1c] to-[#5a2a2c]",
-    image: "/team/indira.jpg",
-  },
-  {
-    name: "Klaas-Jan Bruinsma",
-    role: "Performance Analyst",
-    initial: "K",
-    gradient: "from-[#1c2a2c] to-[#2c4a4c]",
-    image: "/team/klaas-jan.jpg",
-  },
-];
+import { EngineNetwork } from "@/components/engine-network";
 
 export default function HomePage() {
   return (
@@ -99,7 +38,7 @@ export default function HomePage() {
           <FadeIn delay={100}>
             <p className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-brand-bright/30 bg-brand-bright/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-bright">
               <Zap className="h-3 w-3" />
-              AI-Powered Performance Creative
+              An AI army for performance creative
             </p>
           </FadeIn>
 
@@ -115,9 +54,11 @@ export default function HomePage() {
 
           <FadeIn delay={400}>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-dim md:text-xl">
-              Performance creative production and media buying for ecommerce
-              brands. AI-accelerated workflows, human-led strategy. No fluff,
-              only output that moves numbers.
+              Six specialist AI agents producing, optimizing and
+              iterating ad creative around the clock. No 30-person
+              agency overhead. No account managers. Just output — at
+              the quality of a top studio, at the speed of code, at a
+              fraction of the cost.
             </p>
           </FadeIn>
 
@@ -144,13 +85,13 @@ export default function HomePage() {
         <div className="wave-divider" />
       </section>
 
-      {/* ─── SOCIAL PROOF MARQUEE ─── */}
+      {/* ─── RESULTS MARQUEE ─── */}
       <section className="py-12">
         <FadeIn>
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-ink-dim/40">
-            Trusted by ecommerce brands who need results
+            Results the engine is tuned to hit
           </p>
-          <LogoMarquee />
+          <ResultsMarquee />
         </FadeIn>
       </section>
 
@@ -174,9 +115,11 @@ export default function HomePage() {
               .
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-ink-dim">
-              Creative production and media buying working as one engine. Each
-              feed powers the other — winning creative informs media strategy,
-              performance data shapes the next creative batch.
+              Creative production and media buying as a single AI-driven
+              engine. Winning ads teach the buying, the buying teaches
+              the next batch. The stack runs the volume — research,
+              production, optimization — 24/7, so nothing slips through
+              the cracks.
             </p>
           </div>
         </FadeIn>
@@ -186,11 +129,11 @@ export default function HomePage() {
             <FeatureCard
               icon={<Layers className="h-6 w-6" />}
               title="Performance Creative"
-              description="Statics, video, and UGC engineered to stop scroll and convert. Research-driven angles, AI-accelerated production, mobile-first for Meta and TikTok."
+              description="Statics, video, and UGC engineered to stop scroll and convert. Research-driven angles, studio-grade production, mobile-first for Meta and TikTok."
               points={[
                 "Ad research + competitor intelligence",
                 "Creative strategy and angle frameworks",
-                "Higgsfield + Nano Banana Pro production",
+                "Premium, scroll-stopping production across statics, video, UGC",
                 "Winning ad iteration and scaling",
               ]}
             />
@@ -250,7 +193,7 @@ export default function HomePage() {
           <FadeIn delay={300}>
             <StatCard
               icon={<Zap className="h-5 w-5" />}
-              value={<CountUp end={5} suffix=" days" duration={1800} />}
+              value={<CountUp end={24} suffix="h" duration={1800} />}
               label="From kickoff to first creative batch"
               context="vs. 14–21 days industry standard"
             />
@@ -260,7 +203,7 @@ export default function HomePage() {
 
       <div className="wave-divider" />
 
-      {/* ─── MEET THE TEAM ─── */}
+      {/* ─── THE ENGINE (AI agents) ─── */}
       <section
         id="team"
         className="container-content scroll-mt-20 py-24 lg:py-32"
@@ -268,39 +211,36 @@ export default function HomePage() {
         <FadeIn>
           <div className="mb-14 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
-              Who runs it
+              The engine
             </p>
             <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight text-ink md:text-5xl">
-              Meet the{" "}
+              An AI army built to{" "}
               <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
-                team
+                outperform teams
               </span>
               .
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-ink-dim">
-              A specialist per stage of the engine — research, strategy,
-              scripts, AI production, media buying, analytics — and every
-              operator is paired with a dedicated AI agent. Human judgment on
-              top, AI speed and volume underneath. You talk directly to the
-              operator doing the work, not a layer of account managers.
+              Six specialist agents working as a single engine. Always
+              on. Always optimizing. Always learning. The internals stay
+              ours — the output is yours.
             </p>
           </div>
         </FadeIn>
 
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {team.map((member, i) => {
-            const isLast = i === team.length - 1;
-            return (
-              <FadeIn
-                key={member.name}
-                delay={i * 80}
-                className={isLast ? "lg:col-start-2" : ""}
-              >
-                <TeamCard {...member} />
-              </FadeIn>
-            );
-          })}
-        </div>
+        <FadeIn delay={150}>
+          <EngineNetwork />
+        </FadeIn>
+
+        {/* Engine throughput strip — anonymized, machine-style */}
+        <FadeIn delay={300}>
+          <div className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-4 md:grid-cols-4">
+            <ThroughputStat value="50K+" label="Ads scanned / week" />
+            <ThroughputStat value="60+" label="Creatives / batch" />
+            <ThroughputStat value="30 min" label="Optimization cycle" />
+            <ThroughputStat value="24/7" label="Uptime" />
+          </div>
+        </FadeIn>
       </section>
 
       <div className="wave-divider" />
@@ -525,34 +465,16 @@ function TrustAvatar({
   );
 }
 
-/* ── Team Card (Meet the team section) ── */
-function TeamCard({ name, role, initial, gradient, image }: TeamMember) {
-  const [imageOk, setImageOk] = useState(Boolean(image));
-
+/* ── Throughput Stat (anonymized engine output, sits below the network) ── */
+function ThroughputStat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="group flex h-full items-center gap-4 rounded-2xl border border-white/[0.07] bg-[#0a0a0a] p-5 transition-all duration-500 hover:border-brand-bright/30 hover:shadow-[0_0_40px_rgba(46,127,6,0.1)]">
-      {imageOk && image ? (
-        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-black shadow-[0_0_12px_rgba(46,127,6,0.15)]">
-          <Image
-            src={image}
-            alt={name}
-            fill
-            sizes="56px"
-            className="object-cover grayscale"
-            onError={() => setImageOk(false)}
-          />
-        </div>
-      ) : (
-        <div
-          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-black bg-gradient-to-br ${gradient} text-lg font-semibold text-ink shadow-[0_0_12px_rgba(46,127,6,0.15)]`}
-        >
-          {initial}
-        </div>
-      )}
-      <div className="min-w-0">
-        <p className="truncate text-base font-semibold text-ink">{name}</p>
-        <p className="truncate text-sm text-ink-dim">{role}</p>
-      </div>
+    <div className="flex flex-col items-center rounded-xl border border-white/[0.06] bg-[#0a0a0a]/60 px-4 py-5 text-center transition-colors duration-300 hover:border-brand-bright/25">
+      <p className="font-mono text-2xl font-bold tracking-tight text-brand-bright md:text-3xl">
+        {value}
+      </p>
+      <p className="mt-1.5 text-[11px] uppercase tracking-[0.18em] text-ink-dim/60">
+        {label}
+      </p>
     </div>
   );
 }

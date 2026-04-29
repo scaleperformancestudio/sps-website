@@ -32,7 +32,7 @@ const faqs: FaqItem[] = [
   {
     question: "How fast can you launch?",
     answer:
-      "From kickoff to first creative batch is typically 5 days. First campaign launch follows shortly after. Within 2 weeks we're already iterating on early performance data.",
+      "Your first creative batch can be ready within 24 hours, and we can have your campaigns launched within 72 hours of kickoff. From there we're iterating on live performance data from day one.",
   },
   {
     question: "What platforms do you run ads on?",

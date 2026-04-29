@@ -45,6 +45,7 @@ const config: Config = {
       },
       animation: {
         "pulse-slow": "pulse-slow 8s ease-in-out infinite",
+        "ping-slow": "ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite",
         scan: "scan 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite",
         "scan-glow": "scan-glow 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite",
         sparkle: "sparkle 1.2s ease-out forwards",
@@ -58,6 +59,10 @@ const config: Config = {
         "pulse-slow": {
           "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
           "50%": { opacity: "0.7", transform: "scale(1.1)" },
+        },
+        "ping-slow": {
+          "0%": { opacity: "0.6", transform: "scale(1)" },
+          "75%, 100%": { opacity: "0", transform: "scale(1.6)" },
         },
         scan: {
           "0%": { top: "-4%", opacity: "0" },

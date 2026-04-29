@@ -12,14 +12,15 @@ export function SiteFooter() {
         {/* Brand */}
         <div>
           <Image
-            src="/logo-mark.svg"
+            src="/logo-greenwhite.svg"
             alt="Scale Performance Studio"
-            width={56}
+            width={180}
             height={56}
             className="h-14 w-auto"
           />
           <p className="mt-6 max-w-sm text-sm text-ink-dim/70">
-            Performance creative engine + media buying for ecommerce brands.
+            An AI-driven creative engine. Performance creative and media
+            buying for ecommerce brands that need results.
           </p>
         </div>
 
