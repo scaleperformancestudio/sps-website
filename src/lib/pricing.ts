@@ -30,7 +30,7 @@ import {
   type CreativeFormat,
   type Addon,
   type CopyDeliverable,
-} from "../../../shared/pricing";
+} from "./shared-pricing";
 
 /* Re-export the tier accent palette so the page can use it directly. */
 export const TIER_ACCENTS = SHARED_TIER_ACCENTS;
@@ -256,4 +256,4 @@ export {
   type Addon,
   type CopyDeliverable,
   type CopyKey,
-} from "../../../shared/pricing";
+} from "./shared-pricing";
