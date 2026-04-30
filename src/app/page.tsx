@@ -13,7 +13,7 @@ import { CreativeMarquee } from "@/components/creative-marquee";
 import { TestimonialsMarquee } from "@/components/testimonials-marquee";
 import { ProcessShowcase } from "@/components/process-showcase";
 import { FaqAccordion } from "@/components/faq-accordion";
-import { EngineNetwork } from "@/components/engine-network";
+import { EnginePipeline } from "@/components/engine-pipeline";
 
 export default function HomePage() {
   return (
@@ -214,22 +214,25 @@ export default function HomePage() {
               The engine
             </p>
             <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight text-ink md:text-5xl">
-              An AI army built to{" "}
+              Six units. Twenty-four agents.{" "}
               <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
-                outperform teams
+                One engine.
               </span>
-              .
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-ink-dim">
-              Six specialist agents working as a single engine. Always
-              on. Always optimizing. Always learning. The internals stay
-              ours — the output is yours.
+              Each unit is a coordinated team — a lead agent and three
+              specialists working in parallel, then handing structured
+              output to the next unit. Research feeds strategy, strategy
+              feeds copy, copy feeds production, production feeds media
+              buying, performance feeds back what wins. Every cycle the
+              whole engine gets smarter — without hiring, without
+              onboarding, without delay.
             </p>
           </div>
         </FadeIn>
 
         <FadeIn delay={150}>
-          <EngineNetwork />
+          <EnginePipeline />
         </FadeIn>
 
         {/* Engine throughput strip — anonymized, machine-style */}

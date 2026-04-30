@@ -24,21 +24,21 @@ export const CREATIVE_PACKAGES = [
   {
     key: "trial",
     name: "Trial",
-    price: "€29",
+    price: "€30",
     priceLabel: "one-time",
     credits: "10 credits",
   },
   {
     key: "launch",
     name: "Launch",
-    price: "€149",
+    price: "€150",
     priceLabel: "/mo",
     credits: "30 credits / mo",
   },
   {
     key: "growth",
     name: "Growth",
-    price: "€349",
+    price: "€350",
     priceLabel: "/mo",
     credits: "80 credits / mo",
     popular: true,
@@ -46,7 +46,7 @@ export const CREATIVE_PACKAGES = [
   {
     key: "scale",
     name: "Scale",
-    price: "€749",
+    price: "€750",
     priceLabel: "/mo",
     credits: "200 credits / mo",
   },

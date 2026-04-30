@@ -27,7 +27,7 @@ const faqs: FaqItem[] = [
   {
     question: "What does pricing look like?",
     answer:
-      "Credit-based packages from a €29 one-time trial up to €1,500/month for our Elite tier, with top-up credits and add-ons available any time. Every package includes research and one revision per creative. No long-term lock-ins — upgrade, downgrade, or cancel at any point. Media buying is priced separately. See the pricing page for the full breakdown.",
+      "Credit-based packages from a €30 one-time trial up to €1,500/month for our Elite tier, with top-up credits and add-ons available any time. Every package includes research and one revision per creative. No long-term lock-ins — upgrade, downgrade, or cancel at any point. Media buying is priced separately. See the pricing page for the full breakdown.",
   },
   {
     question: "How fast can you launch?",
