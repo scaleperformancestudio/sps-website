@@ -46,12 +46,14 @@ const config: Config = {
       animation: {
         "pulse-slow": "pulse-slow 8s ease-in-out infinite",
         "ping-slow": "ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite",
+        "engine-active": "engine-active 6s ease-in-out infinite",
+        "engine-active-ring": "engine-active-ring 6s ease-in-out infinite",
         scan: "scan 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite",
         "scan-glow": "scan-glow 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite",
         sparkle: "sparkle 1.2s ease-out forwards",
         "magic-pulse": "magic-pulse 1.4s ease-out forwards",
         marquee: "marquee 30s linear infinite",
-        "marquee-fast": "marquee 15s linear infinite",
+        "marquee-fast": "marquee 10s linear infinite",
         "wave-flow-slow": "wave-flow 28s linear infinite",
         "wave-flow-fast": "wave-flow 18s linear infinite",
         "wave-drift": "wave-drift 12s ease-in-out infinite",
@@ -64,6 +66,29 @@ const config: Config = {
         "ping-slow": {
           "0%": { opacity: "0.6", transform: "scale(1)" },
           "75%, 100%": { opacity: "0", transform: "scale(1.6)" },
+        },
+        "engine-active": {
+          "0%, 100%": {
+            boxShadow: "0 0 24px rgba(46,127,6,0.18)",
+            borderColor: "rgba(255,255,255,0.10)",
+          },
+          "5%": {
+            boxShadow: "0 0 36px rgba(46,127,6,0.55), 0 0 60px rgba(46,127,6,0.25)",
+            borderColor: "rgba(76,165,10,0.85)",
+          },
+          "13%": {
+            boxShadow: "0 0 44px rgba(76,165,10,0.85), 0 0 80px rgba(46,127,6,0.4)",
+            borderColor: "rgba(126,211,33,1)",
+          },
+          "20%": {
+            boxShadow: "0 0 24px rgba(46,127,6,0.18)",
+            borderColor: "rgba(255,255,255,0.10)",
+          },
+        },
+        "engine-active-ring": {
+          "0%, 100%": { opacity: "0", transform: "scale(0.95)" },
+          "5%, 13%": { opacity: "0.6", transform: "scale(1.08)" },
+          "20%": { opacity: "0", transform: "scale(1.4)" },
         },
         scan: {
           "0%": { top: "-4%", opacity: "0" },

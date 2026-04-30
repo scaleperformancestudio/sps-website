@@ -150,21 +150,18 @@ export function PhoneCarousel() {
               );
             })}
 
-            {/* Analytics panel — grows in from right, synchronized with loser collapse */}
+            {/* Analytics panel — desktop only, grows in from right, synchronized with loser collapse.
+                On mobile we render it as a stacked block below the cards so labels/chart get full width. */}
             <div
-              className="relative min-w-0 ease-out"
+              className="relative hidden min-w-0 ease-out md:block"
               style={{
                 flexGrow: phase >= 3 ? 1.8 : 0,
                 flexShrink: 1,
                 flexBasis: 0,
-                // When collapsed, pull into left gap so the cards-only layout has no trailing space
                 marginLeft: phase >= 3 ? "0" : "-1rem",
                 opacity: phase >= 3 ? 1 : 0,
                 pointerEvents: phase >= 3 ? "auto" : "none",
                 overflow: "hidden",
-                // Same flex-grow timing as losers → no "extra space" gap that winners
-                // would grab briefly. Opacity is slightly delayed so the panel appears
-                // only once some loser ink has cleared.
                 transition: [
                   "flex-grow 750ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
                   "margin-left 750ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
@@ -174,6 +171,24 @@ export function PhoneCarousel() {
             >
               <AnalyticsPanel phase={phase} />
             </div>
+          </div>
+
+          {/* Mobile-only: analytics panel stacked below the cards, full width.
+              Fades in when phase >= 3 so the cards stay readable in earlier phases. */}
+          <div
+            className="mt-3 md:hidden"
+            style={{
+              opacity: phase >= 3 ? 1 : 0,
+              maxHeight: phase >= 3 ? "1000px" : "0px",
+              pointerEvents: phase >= 3 ? "auto" : "none",
+              overflow: "hidden",
+              transition: [
+                "opacity 500ms ease-out 150ms",
+                "max-height 700ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+              ].join(", "),
+            }}
+          >
+            <AnalyticsPanel phase={phase} />
           </div>
         </div>
       </div>
@@ -441,12 +456,12 @@ function AnalyticsPanel({ phase }: { phase: Phase }) {
   const isIterating = phase === 4;
 
   return (
-    <div className="flex h-full flex-col rounded-xl border border-white/[0.06] bg-[#0a0a0a] p-4">
+    <div className="flex h-full flex-col rounded-xl border border-white/[0.06] bg-[#0a0a0a] p-3 sm:p-4">
       {/* Header */}
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-3 flex items-center justify-between sm:mb-4">
         <div className="flex items-center gap-2">
           <ChartIcon />
-          <span className="text-[13px] font-semibold text-ink-muted">
+          <span className="text-[12px] font-semibold text-ink-muted sm:text-[13px]">
             Campaign Performance
           </span>
         </div>
@@ -456,14 +471,14 @@ function AnalyticsPanel({ phase }: { phase: Phase }) {
       </div>
 
       {/* KPI row */}
-      <div className="mb-4 grid grid-cols-3 gap-2">
+      <div className="mb-3 grid grid-cols-3 gap-2 sm:mb-4">
         <KpiBox label="Total ROAS" value={isIterating ? "5.1x" : "4.2x"} change={isIterating ? "+21%" : "+12%"} />
         <KpiBox label="CTR avg" value={isIterating ? "5.8%" : "4.6%"} change={isIterating ? "+26%" : "+18%"} />
         <KpiBox label="CPA" value={isIterating ? "€8.40" : "€11.20"} change={isIterating ? "-25%" : "-14%"} good />
       </div>
 
-      {/* ROAS chart */}
-      <div className="flex-1 min-h-[140px] md:min-h-[180px]">
+      {/* ROAS chart — taller on mobile so it's clearly readable as a stacked block */}
+      <div className="min-h-[160px] flex-1 sm:min-h-[180px]">
         <RoasChart phase={phase} />
       </div>
 

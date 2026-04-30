@@ -44,7 +44,7 @@ export default function HomePage() {
           </FadeIn>
 
           <FadeIn delay={250}>
-            <h1 className="mx-auto max-w-4xl text-2xl font-bold leading-[1.15] tracking-tight text-ink sm:text-3xl md:text-5xl md:leading-[1.08] lg:text-6xl">
+            <h1 className="mx-auto max-w-4xl text-3xl font-bold leading-[1.15] tracking-tight text-ink sm:text-4xl md:text-5xl md:leading-[1.08] lg:text-6xl">
               AI-powered{" "}
               <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
                 creative engines
@@ -126,7 +126,7 @@ export default function HomePage() {
         </FadeIn>
 
         <SwipeCarousel gridClass="md:grid-cols-2" gapClass="gap-4 md:gap-6">
-          <FadeIn delay={0}>
+          <FadeIn delay={0} className="h-full">
             <FeatureCard
               icon={<Layers className="h-6 w-6" />}
               title="Performance Creative"
@@ -139,7 +139,7 @@ export default function HomePage() {
               ]}
             />
           </FadeIn>
-          <FadeIn delay={150}>
+          <FadeIn delay={150} className="h-full">
             <FeatureCard
               icon={<Target className="h-6 w-6" />}
               title="Media Buying"

@@ -59,7 +59,7 @@ export function CreativeMarquee() {
         <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-black to-transparent md:w-48" />
         <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-black to-transparent md:w-48" />
 
-        <div className="animate-marquee flex gap-5" style={{ animationDuration: "18s" }}>
+        <div className="animate-marquee flex gap-5" style={{ animationDuration: "12s" }}>
           {doubled.map((card, i) => (
             <CreativeCardItem key={i} card={card} />
           ))}

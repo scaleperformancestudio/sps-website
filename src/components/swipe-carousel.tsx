@@ -75,9 +75,13 @@ export function SwipeCarousel({
             ref={(el) => {
               itemRefs.current[i] = el;
             }}
-            className="w-[85%] shrink-0 snap-start sm:w-[70%] md:w-auto md:shrink"
+            className={`flex h-auto w-[85%] shrink-0 snap-start transition-all duration-500 ease-out sm:w-[70%] md:w-auto md:shrink ${
+              active === i
+                ? "scale-100 opacity-100"
+                : "scale-[0.97] opacity-70 md:scale-100 md:opacity-100"
+            }`}
           >
-            {child}
+            <div className="flex w-full">{child}</div>
           </div>
         ))}
       </div>

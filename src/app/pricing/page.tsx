@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, Check, ChevronDown, Mail, Minus } from "lucide-react";
 import { FadeIn } from "@/components/fade-in";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 import {
   PackageTier,
   packages,
@@ -43,13 +44,16 @@ export default function PricingPage() {
 
       {/* ─── Package grid ─── */}
       <section className="container-content pb-20">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+        <SwipeCarousel
+          gridClass="md:grid-cols-2 lg:grid-cols-5"
+          gapClass="gap-4 md:gap-5"
+        >
           {packages.map((pkg, i) => (
-            <FadeIn key={pkg.name} delay={i * 60}>
+            <FadeIn key={pkg.name} delay={i * 60} className="h-full">
               <PackageCard pkg={pkg} />
             </FadeIn>
           ))}
-        </div>
+        </SwipeCarousel>
       </section>
 
       {/* ─── Credit system ─── */}
@@ -108,19 +112,27 @@ export default function PricingPage() {
         </FadeIn>
 
         <FadeIn delay={150}>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <ExampleCard
-              headline="80 statics"
-              detail="Test a wide range of product images, headlines and value propositions."
-            />
-            <ExampleCard
-              headline="16 mini commercials"
-              detail="Scripted 2–4 scene ads with product, reaction and call-to-action."
-            />
-            <ExampleCard
-              headline="A smart mix"
-              detail="Example: 30 statics + 10 UGC videos + 4 mini commercials = 80 credits."
-            />
+          <div className="mt-10">
+            <SwipeCarousel gridClass="md:grid-cols-3" gapClass="gap-4 md:gap-4">
+              <div className="h-full">
+                <ExampleCard
+                  headline="80 statics"
+                  detail="Test a wide range of product images, headlines and value propositions."
+                />
+              </div>
+              <div className="h-full">
+                <ExampleCard
+                  headline="16 mini commercials"
+                  detail="Scripted 2–4 scene ads with product, reaction and call-to-action."
+                />
+              </div>
+              <div className="h-full">
+                <ExampleCard
+                  headline="A smart mix"
+                  detail="Example: 30 statics + 10 UGC videos + 4 mini commercials = 80 credits."
+                />
+              </div>
+            </SwipeCarousel>
           </div>
           <p className="mt-6 text-sm text-ink-dim/70">
             Example shown is based on the 80-credit <span className="text-ink-dim">Growth</span> package. Mix and match as you need.
@@ -212,30 +224,35 @@ export default function PricingPage() {
         </FadeIn>
 
         <FadeIn delay={100}>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-            {topUps.map((t) => (
-              <div
-                key={t.credits}
-                className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-[#0d0d0d] p-6 text-center transition-all duration-300 hover:bg-[#111]"
-                style={{ borderColor: `${t.accent}33` }}
-              >
-                {/* Colored top accent stroke */}
+          <div className="mt-12">
+            <SwipeCarousel
+              gridClass="md:grid-cols-3 lg:grid-cols-5"
+              gapClass="gap-4 md:gap-4"
+            >
+              {topUps.map((t) => (
                 <div
-                  className="pointer-events-none absolute inset-x-0 top-0 h-[3px]"
-                  style={{ background: t.accent, opacity: 0.85 }}
-                />
-                <p className="text-3xl font-bold text-ink">{t.credits}</p>
-                <p className="mt-1 text-xs uppercase tracking-wider text-ink-dim/60">
-                  Credits
-                </p>
-                <p
-                  className="mt-4 text-xl font-semibold"
-                  style={{ color: t.accent }}
+                  key={t.credits}
+                  className="relative h-full overflow-hidden rounded-xl border border-white/[0.06] bg-[#0d0d0d] p-6 text-center transition-all duration-300 hover:bg-[#111]"
+                  style={{ borderColor: `${t.accent}33` }}
                 >
-                  {t.price}
-                </p>
-              </div>
-            ))}
+                  {/* Colored top accent stroke */}
+                  <div
+                    className="pointer-events-none absolute inset-x-0 top-0 h-[3px]"
+                    style={{ background: t.accent, opacity: 0.85 }}
+                  />
+                  <p className="text-3xl font-bold text-ink">{t.credits}</p>
+                  <p className="mt-1 text-xs uppercase tracking-wider text-ink-dim/60">
+                    Credits
+                  </p>
+                  <p
+                    className="mt-4 text-xl font-semibold"
+                    style={{ color: t.accent }}
+                  >
+                    {t.price}
+                  </p>
+                </div>
+              ))}
+            </SwipeCarousel>
           </div>
         </FadeIn>
       </section>

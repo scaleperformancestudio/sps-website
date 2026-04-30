@@ -160,7 +160,7 @@ export function TestimonialsMarquee() {
 
         <div
           className="animate-marquee flex gap-5 will-change-transform group-hover/marquee:[animation-play-state:paused]"
-          style={{ animationDuration: "28s" }}
+          style={{ animationDuration: "16s" }}
         >
           {doubled.map((t, i) => (
             <TestimonialCard key={i} t={t} />

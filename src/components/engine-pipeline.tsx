@@ -332,6 +332,7 @@ export function EnginePipeline() {
             <TeamCluster
               key={team.stage}
               team={team}
+              index={i}
               left={`${(CENTERS[i].x / VB_W) * 100}%`}
               top={`${(CENTERS[i].y / VB_H) * 100}%`}
               labelAbove={i < 3}
@@ -344,7 +345,7 @@ export function EnginePipeline() {
       <div className="space-y-1 md:hidden">
         {teams.map((team, i) => (
           <div key={team.stage}>
-            <MobileCluster team={team} />
+            <MobileCluster team={team} index={i} />
             {i < teams.length - 1 && (
               <div className="flex flex-col items-center py-2">
                 <div className="h-6 w-px bg-gradient-to-b from-brand-bright/50 to-transparent" />
@@ -372,15 +373,20 @@ export function EnginePipeline() {
 /* ── Desktop team cluster (positioned absolutely on the SVG) ─────────────── */
 function TeamCluster({
   team,
+  index,
   left,
   top,
   labelAbove,
 }: {
   team: Team;
+  index: number;
   left: string;
   top: string;
   labelAbove: boolean;
 }) {
+  // Sequential active state — each team activates 1s apart along the 6s loop.
+  const activeDelay = `${index * 1}s`;
+
   return (
     <div
       className="pointer-events-auto absolute flex flex-col items-center"
@@ -390,15 +396,24 @@ function TeamCluster({
 
       {/* Cluster body — lead + connectors + sub agents */}
       <div className="relative flex flex-col items-center">
-        {/* Lead tile */}
-        <div
-          className={`relative flex h-[68px] w-[68px] items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${team.gradient} shadow-[0_0_24px_rgba(46,127,6,0.18)] transition-transform duration-500 hover:scale-110`}
-        >
-          <span className="text-2xl font-bold text-white/95">{team.lead.glyph}</span>
-          <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-bright opacity-75" />
-            <span className="relative inline-flex h-3 w-3 rounded-full border border-black bg-brand-bright" />
-          </span>
+        {/* Lead tile + active-state pulse ring */}
+        <div className="relative">
+          {/* Outer ring that swells when this team is the active one */}
+          <span
+            className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-brand-bright animate-engine-active-ring"
+            style={{ animationDelay: activeDelay }}
+            aria-hidden="true"
+          />
+          <div
+            className={`relative flex h-[68px] w-[68px] items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${team.gradient} animate-engine-active transition-transform duration-500 hover:scale-110`}
+            style={{ animationDelay: activeDelay }}
+          >
+            <span className="text-2xl font-bold text-white/95">{team.lead.glyph}</span>
+            <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-bright opacity-75" />
+              <span className="relative inline-flex h-3 w-3 rounded-full border border-black bg-brand-bright" />
+            </span>
+          </div>
         </div>
 
         {/* Lead codename below tile */}
@@ -484,7 +499,8 @@ function SubTile({
 }
 
 /* ── Mobile cluster card (compact) ────────────────────────────────────────── */
-function MobileCluster({ team }: { team: Team }) {
+function MobileCluster({ team, index }: { team: Team; index: number }) {
+  const activeDelay = `${index * 1}s`;
   return (
     <div className="rounded-2xl border border-white/[0.07] bg-[#0a0a0a] p-4">
       <div className="flex items-center gap-2">
@@ -497,15 +513,23 @@ function MobileCluster({ team }: { team: Team }) {
       </div>
 
       <div className="mt-3 flex items-center gap-3">
-        {/* Lead */}
-        <div
-          className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br ${team.gradient}`}
-        >
-          <span className="text-lg font-bold text-white/90">{team.lead.glyph}</span>
-          <span className="absolute -bottom-1 -right-1 flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-bright opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full border border-black bg-brand-bright" />
-          </span>
+        {/* Lead with sequential active pulse */}
+        <div className="relative shrink-0">
+          <span
+            className="pointer-events-none absolute inset-0 rounded-xl border-2 border-brand-bright animate-engine-active-ring"
+            style={{ animationDelay: activeDelay }}
+            aria-hidden="true"
+          />
+          <div
+            className={`relative flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br ${team.gradient} animate-engine-active`}
+            style={{ animationDelay: activeDelay }}
+          >
+            <span className="text-lg font-bold text-white/90">{team.lead.glyph}</span>
+            <span className="absolute -bottom-1 -right-1 flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-bright opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full border border-black bg-brand-bright" />
+            </span>
+          </div>
         </div>
         <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ink">
           {team.lead.codename}
