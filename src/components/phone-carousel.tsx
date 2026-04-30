@@ -104,11 +104,10 @@ export function PhoneCarousel() {
           </span>
         </div>
 
-        {/* Main content area — unified flex layout for all phases.
-            Winners persist as the same DOM elements across phase 2→3, while losers collapse
-            and the analytics panel grows in from the right. This gives a seamless morph. */}
-        <div className="relative min-h-[340px] p-3 sm:min-h-[420px] sm:p-4 md:min-h-[480px] md:p-6">
-          <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+        {/* Main content area — fixed total height across all phases so the rest of
+            the page never shifts when cards collapse / analytics fades in. */}
+        <div className="relative h-[700px] p-3 sm:h-[820px] sm:p-4 md:h-[480px] md:p-6">
+          <div className="flex items-start gap-2 sm:gap-3 md:gap-4 md:h-full">
             {creatives.map((c, i) => {
               const isCollapsed = phase >= 3 && !c.isWinner;
               // Hide cards 2 and 3 (middle losers) on small screens so the
@@ -173,19 +172,15 @@ export function PhoneCarousel() {
             </div>
           </div>
 
-          {/* Mobile-only: analytics panel stacked below the cards, full width.
-              Fades in when phase >= 3 so the cards stay readable in earlier phases. */}
+          {/* Mobile-only: analytics panel stacked below the cards. Always rendered
+              and reserves its height across all phases — only opacity changes — so the
+              total carousel height is stable and the page never jumps. */}
           <div
             className="mt-3 md:hidden"
             style={{
               opacity: phase >= 3 ? 1 : 0,
-              maxHeight: phase >= 3 ? "1000px" : "0px",
               pointerEvents: phase >= 3 ? "auto" : "none",
-              overflow: "hidden",
-              transition: [
-                "opacity 500ms ease-out 150ms",
-                "max-height 700ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-              ].join(", "),
+              transition: "opacity 500ms ease-out 150ms",
             }}
           >
             <AnalyticsPanel phase={phase} />

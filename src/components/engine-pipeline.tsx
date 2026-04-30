@@ -143,6 +143,17 @@ const FLOW_PATH = `
   L ${CENTERS[5].x + CLUSTER_R} ${CENTERS[5].y}
 `.trim();
 
+// Individual segments between clusters — used for the sequential rail-glow effect.
+// Each segment is a separate path so we can light it up at the moment its source
+// team activates (matching the engine-active animation).
+const SEGMENT_PATHS: string[] = [
+  `M ${CENTERS[0].x + CLUSTER_R} ${CENTERS[0].y} L ${CENTERS[1].x - CLUSTER_R} ${CENTERS[1].y}`,
+  `M ${CENTERS[1].x + CLUSTER_R} ${CENTERS[1].y} L ${CENTERS[2].x - CLUSTER_R} ${CENTERS[2].y}`,
+  `M ${CENTERS[2].x} ${CENTERS[2].y + CLUSTER_R} L ${CENTERS[3].x} ${CENTERS[3].y - CLUSTER_R}`,
+  `M ${CENTERS[3].x - CLUSTER_R} ${CENTERS[3].y} L ${CENTERS[4].x + CLUSTER_R} ${CENTERS[4].y}`,
+  `M ${CENTERS[4].x - CLUSTER_R} ${CENTERS[4].y} L ${CENTERS[5].x + CLUSTER_R} ${CENTERS[5].y}`,
+];
+
 // Continuous full path the pulses ride along
 const PULSE_PATH = `
   M ${CENTERS[0].x} ${CENTERS[0].y}
@@ -193,6 +204,41 @@ export function EnginePipeline() {
             strokeWidth={1.5}
             strokeLinecap="round"
           />
+
+          {/* Sequential segment glow — each segment lights up bright green as the
+              upstream team activates, then fades. Matches the 6s engine cycle so
+              the rails appear to "carry" the data forward team by team. */}
+          {SEGMENT_PATHS.map((d, i) => (
+            <g key={`segment-${i}`}>
+              {/* Soft outer glow */}
+              <path
+                d={d}
+                fill="none"
+                stroke="#4ca50a"
+                strokeWidth={6}
+                strokeLinecap="round"
+                opacity={0}
+                style={{
+                  animation: `engine-rail-glow 6s ease-in-out infinite`,
+                  animationDelay: `${i * 1}s`,
+                  filter: "blur(2px)",
+                }}
+              />
+              {/* Bright core line */}
+              <path
+                d={d}
+                fill="none"
+                stroke="#7ed321"
+                strokeWidth={2}
+                strokeLinecap="round"
+                opacity={0}
+                style={{
+                  animation: `engine-rail-core 6s ease-in-out infinite`,
+                  animationDelay: `${i * 1}s`,
+                }}
+              />
+            </g>
+          ))}
 
           {/* Loop-back rail */}
           <path

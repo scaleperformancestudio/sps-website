@@ -48,6 +48,8 @@ const config: Config = {
         "ping-slow": "ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite",
         "engine-active": "engine-active 6s ease-in-out infinite",
         "engine-active-ring": "engine-active-ring 6s ease-in-out infinite",
+        "engine-rail-glow": "engine-rail-glow 6s ease-in-out infinite",
+        "engine-rail-core": "engine-rail-core 6s ease-in-out infinite",
         scan: "scan 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite",
         "scan-glow": "scan-glow 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite",
         sparkle: "sparkle 1.2s ease-out forwards",
@@ -89,6 +91,18 @@ const config: Config = {
           "0%, 100%": { opacity: "0", transform: "scale(0.95)" },
           "5%, 13%": { opacity: "0.6", transform: "scale(1.08)" },
           "20%": { opacity: "0", transform: "scale(1.4)" },
+        },
+        "engine-rail-glow": {
+          "0%, 100%": { opacity: "0" },
+          "5%": { opacity: "0.6" },
+          "13%": { opacity: "0.85" },
+          "20%": { opacity: "0" },
+        },
+        "engine-rail-core": {
+          "0%, 100%": { opacity: "0" },
+          "5%": { opacity: "0.7" },
+          "13%": { opacity: "1" },
+          "20%": { opacity: "0" },
         },
         scan: {
           "0%": { top: "-4%", opacity: "0" },

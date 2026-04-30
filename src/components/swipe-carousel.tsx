@@ -73,7 +73,7 @@ export function SwipeCarousel({
           enough vertical room — overflow-x:auto unfortunately clips overflow-y too. */}
       <div
         ref={scrollRef}
-        className={`-mx-4 flex snap-x snap-proximity touch-pan-x overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pt-4 ${gapClass} pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid ${gridClass} md:overflow-visible md:px-0 md:pt-0 md:pb-0`}
+        className={`-mx-4 flex snap-x snap-proximity touch-pan-x items-stretch overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pt-4 ${gapClass} pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid ${gridClass} md:overflow-visible md:px-0 md:pt-0 md:pb-0`}
       >
         {items.map((child, i) => (
           <div
@@ -81,13 +81,11 @@ export function SwipeCarousel({
             ref={(el) => {
               itemRefs.current[i] = el;
             }}
-            className={`flex h-auto w-[85%] shrink-0 snap-start transition-opacity duration-500 ease-out sm:w-[70%] md:w-auto md:shrink ${
-              active === i
-                ? "opacity-100"
-                : "opacity-65 md:opacity-100"
+            className={`flex w-[85%] shrink-0 snap-start transition-opacity duration-500 ease-out sm:w-[70%] md:w-auto md:shrink ${
+              active === i ? "opacity-100" : "opacity-65 md:opacity-100"
             }`}
           >
-            <div className="flex w-full">{child}</div>
+            <div className="flex w-full [&>*]:w-full [&>*]:h-full">{child}</div>
           </div>
         ))}
       </div>

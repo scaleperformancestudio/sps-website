@@ -232,7 +232,7 @@ export default function PricingPage() {
               {topUps.map((t) => (
                 <div
                   key={t.credits}
-                  className="relative flex h-full min-h-[220px] flex-col items-center justify-center overflow-hidden rounded-xl border bg-[#0d0d0d] p-6 pt-8 text-center transition-all duration-300 hover:bg-[#111] sm:p-8"
+                  className="relative flex h-full w-full min-h-[300px] flex-col items-center justify-center overflow-hidden rounded-xl border bg-[#0d0d0d] p-8 pt-10 text-center transition-all duration-300 hover:bg-[#111]"
                   style={{ borderColor: `${t.accent}55` }}
                 >
                   {/* Colored top accent stroke — same treatment as package cards */}
@@ -242,7 +242,7 @@ export default function PricingPage() {
                   />
 
                   {/* Big number */}
-                  <p className="text-5xl font-bold tracking-tight text-ink md:text-6xl">
+                  <p className="text-6xl font-bold tracking-tight text-ink">
                     {t.credits}
                   </p>
                   <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink-dim/60">
@@ -251,13 +251,13 @@ export default function PricingPage() {
 
                   {/* Divider */}
                   <span
-                    className="mt-5 block h-px w-10"
+                    className="mt-6 block h-px w-12"
                     style={{ background: t.accent, opacity: 0.4 }}
                   />
 
                   {/* Price */}
                   <p
-                    className="mt-4 text-2xl font-bold tracking-tight"
+                    className="mt-5 text-3xl font-bold tracking-tight"
                     style={{ color: t.accent }}
                   >
                     {t.price}
