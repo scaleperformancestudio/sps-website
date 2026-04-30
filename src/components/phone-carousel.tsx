@@ -107,14 +107,17 @@ export function PhoneCarousel() {
         {/* Main content area — unified flex layout for all phases.
             Winners persist as the same DOM elements across phase 2→3, while losers collapse
             and the analytics panel grows in from the right. This gives a seamless morph. */}
-        <div className="relative min-h-[420px] p-4 md:min-h-[480px] md:p-6">
-          <div className="flex items-start gap-3 md:gap-4">
+        <div className="relative min-h-[340px] p-3 sm:min-h-[420px] sm:p-4 md:min-h-[480px] md:p-6">
+          <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
             {creatives.map((c, i) => {
               const isCollapsed = phase >= 3 && !c.isWinner;
+              // Hide cards 2 and 3 (middle losers) on small screens so the
+              // remaining 3 cards (2 winners + 1 loser) get more breathing room.
+              const hideOnMobile = i === 1 || i === 2;
               return (
                 <div
                   key={c.id}
-                  className="relative min-w-0 ease-out"
+                  className={`relative min-w-0 ease-out ${hideOnMobile ? "hidden md:block" : ""}`}
                   style={{
                     flexGrow: isCollapsed ? 0 : 1,
                     flexShrink: 1,

@@ -46,7 +46,7 @@ export function ResultsMarquee() {
       {/* Right fade */}
       <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-black to-transparent" />
 
-      <div className="animate-marquee flex items-center gap-5">
+      <div className="animate-marquee-fast flex items-center gap-5">
         {doubled.map((cell, i) => (
           <div
             key={i}

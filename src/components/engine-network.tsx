@@ -32,7 +32,8 @@ const nodes: Node[] = [
   { codename: "AXIOM",  glyph: "Ω", gradient: "from-[#2a1c3a] to-[#4a2c5a]", angle: 240 },
 ];
 
-// SVG geometry
+// SVG geometry — uses viewBox so the SVG scales down on mobile naturally,
+// while node tiles use responsive sizes via Tailwind classes.
 const SIZE = 560;
 const CENTER = SIZE / 2;
 const RADIUS = 215;
@@ -47,7 +48,7 @@ function pos(angle: number) {
 
 export function EngineNetwork() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[560px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[340px] sm:max-w-[440px] md:max-w-[560px]">
       {/* SVG layer for spokes, perimeter, and animated pulses */}
       <svg
         viewBox={`0 0 ${SIZE} ${SIZE}`}
@@ -165,16 +166,16 @@ export function EngineNetwork() {
 
       {/* Central core — the engine */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-brand-bright/40 bg-gradient-to-br from-[#1c5102] via-[#2e7f06] to-[#266604] shadow-[0_0_50px_rgba(46,127,6,0.45)]">
+        <div className="relative flex h-12 w-12 items-center justify-center rounded-xl border border-brand-bright/40 bg-gradient-to-br from-[#1c5102] via-[#2e7f06] to-[#266604] shadow-[0_0_50px_rgba(46,127,6,0.45)] sm:h-16 sm:w-16 sm:rounded-2xl md:h-20 md:w-20">
           {/* Pulsing ring around the core */}
-          <span className="absolute inset-0 rounded-2xl border border-brand-bright/40 animate-ping-slow" />
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-white">
+          <span className="absolute inset-0 rounded-xl border border-brand-bright/40 animate-ping-slow sm:rounded-2xl" />
+          <span className="font-mono text-[8px] font-bold uppercase tracking-[0.22em] text-white sm:text-[10px] md:text-[11px]">
             SPS
           </span>
           {/* Live dot */}
-          <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
+          <span className="absolute -bottom-1 -right-1 flex h-2.5 w-2.5 sm:h-3 sm:w-3">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-bright opacity-75" />
-            <span className="relative inline-flex h-3 w-3 rounded-full border border-black bg-brand-bright" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full border border-black bg-brand-bright sm:h-3 sm:w-3" />
           </span>
         </div>
       </div>
@@ -195,22 +196,22 @@ export function EngineNetwork() {
             }}
           >
             {isUpper && (
-              <p className="mb-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink-dim/80">
+              <p className="mb-1 font-mono text-[7px] font-bold uppercase tracking-[0.18em] text-ink-dim/80 sm:mb-2 sm:text-[9px] md:text-[10px] md:tracking-[0.2em]">
                 {n.codename}
               </p>
             )}
             <div
-              className={`group relative flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br ${n.gradient} shadow-[0_0_18px_rgba(46,127,6,0.18)] transition-transform duration-500 hover:scale-110`}
+              className={`group relative flex h-7 w-7 items-center justify-center rounded-md border border-white/10 bg-gradient-to-br ${n.gradient} shadow-[0_0_18px_rgba(46,127,6,0.18)] transition-transform duration-500 hover:scale-110 sm:h-10 sm:w-10 sm:rounded-lg md:h-12 md:w-12 md:rounded-xl`}
             >
-              <span className="text-lg font-bold text-white/90">{n.glyph}</span>
+              <span className="text-[11px] font-bold text-white/90 sm:text-base md:text-lg">{n.glyph}</span>
               {/* Live dot */}
-              <span className="absolute -bottom-1 -right-1 flex h-2.5 w-2.5">
+              <span className="absolute -bottom-0.5 -right-0.5 flex h-1.5 w-1.5 sm:h-2 sm:w-2 md:-bottom-1 md:-right-1 md:h-2.5 md:w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-bright opacity-75" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full border border-black bg-brand-bright" />
+                <span className="relative inline-flex h-full w-full rounded-full border border-black bg-brand-bright" />
               </span>
             </div>
             {!isUpper && (
-              <p className="mt-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink-dim/80">
+              <p className="mt-1 font-mono text-[7px] font-bold uppercase tracking-[0.18em] text-ink-dim/80 sm:mt-2 sm:text-[9px] md:text-[10px] md:tracking-[0.2em]">
                 {n.codename}
               </p>
             )}

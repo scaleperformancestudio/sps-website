@@ -203,8 +203,8 @@ export function EnginePipeline() {
             strokeDasharray="3 6"
           />
 
-          {/* Travelling pulses along main flow */}
-          {[0, 1.5, 3, 4.5].map((delay, i) => (
+          {/* Primary travelling pulses along main flow — more frequent for life */}
+          {[0, 0.75, 1.5, 2.25, 3, 3.75, 4.5, 5.25].map((delay, i) => (
             <circle key={`pulse-${i}`} r={5} fill="#4ca50a" opacity={0}>
               <animateMotion
                 dur="6s"
@@ -223,18 +223,76 @@ export function EnginePipeline() {
             </circle>
           ))}
 
-          {/* Loop-back pulse */}
-          <circle r={3} fill="#2e7f06" opacity={0}>
-            <animateMotion dur="3.6s" repeatCount="indefinite" begin="1s" path={LOOP_PATH} />
-            <animate
-              attributeName="opacity"
-              values="0;0.7;0.7;0"
-              keyTimes="0;0.1;0.9;1"
-              dur="3.6s"
-              repeatCount="indefinite"
-              begin="1s"
-            />
-          </circle>
+          {/* Trailing secondary particles — smaller, slightly faster, follow each main pulse */}
+          {[0.15, 0.9, 1.65, 2.4, 3.15, 3.9, 4.65, 5.4].map((delay, i) => (
+            <circle key={`trail-${i}`} r={2.5} fill="#7ed321" opacity={0}>
+              <animateMotion
+                dur="6s"
+                repeatCount="indefinite"
+                begin={`${delay}s`}
+                path={PULSE_PATH}
+              />
+              <animate
+                attributeName="opacity"
+                values="0;0.55;0.55;0"
+                keyTimes="0;0.05;0.95;1"
+                dur="6s"
+                repeatCount="indefinite"
+                begin={`${delay}s`}
+              />
+            </circle>
+          ))}
+
+          {/* Loop-back pulses (two staggered) */}
+          {[1, 2.4].map((delay, i) => (
+            <circle key={`loop-${i}`} r={3} fill="#2e7f06" opacity={0}>
+              <animateMotion
+                dur="3.6s"
+                repeatCount="indefinite"
+                begin={`${delay}s`}
+                path={LOOP_PATH}
+              />
+              <animate
+                attributeName="opacity"
+                values="0;0.7;0.7;0"
+                keyTimes="0;0.1;0.9;1"
+                dur="3.6s"
+                repeatCount="indefinite"
+                begin={`${delay}s`}
+              />
+            </circle>
+          ))}
+
+          {/* Cluster arrival flash — a bright halo blooms at each cluster center as the
+              pulse passes. Times are spaced roughly 1s apart along the 6s flow path. */}
+          {CENTERS.map((c, i) => (
+            <circle
+              key={`arrival-${i}`}
+              cx={c.x}
+              cy={c.y}
+              r={CLUSTER_R * 0.45}
+              fill="rgba(76, 165, 10, 0)"
+              stroke="rgba(76, 165, 10, 0.8)"
+              strokeWidth={1.2}
+              opacity={0}
+            >
+              <animate
+                attributeName="r"
+                values={`${CLUSTER_R * 0.45};${CLUSTER_R * 0.95}`}
+                dur="1.2s"
+                repeatCount="indefinite"
+                begin={`${i * 1.0}s`}
+              />
+              <animate
+                attributeName="opacity"
+                values="0;0.55;0"
+                keyTimes="0;0.4;1"
+                dur="1.2s"
+                repeatCount="indefinite"
+                begin={`${i * 1.0}s`}
+              />
+            </circle>
+          ))}
 
           {/* Output labels */}
           {LABELS.map((l) => (

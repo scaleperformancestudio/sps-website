@@ -14,6 +14,7 @@ import { TestimonialsMarquee } from "@/components/testimonials-marquee";
 import { ProcessShowcase } from "@/components/process-showcase";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { EnginePipeline } from "@/components/engine-pipeline";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 
 export default function HomePage() {
   return (
@@ -34,7 +35,7 @@ export default function HomePage() {
 
         <div className="grain pointer-events-none absolute inset-0" />
 
-        <div className="container-content relative pt-28 pb-12 text-center lg:pt-36">
+        <div className="container-content relative pt-20 pb-10 text-center sm:pt-24 sm:pb-12 lg:pt-36">
           <FadeIn delay={100}>
             <p className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-brand-bright/30 bg-brand-bright/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-bright">
               <Zap className="h-3 w-3" />
@@ -43,7 +44,7 @@ export default function HomePage() {
           </FadeIn>
 
           <FadeIn delay={250}>
-            <h1 className="mx-auto max-w-5xl text-5xl font-bold leading-[1.05] tracking-tight text-ink md:text-6xl lg:text-7xl">
+            <h1 className="mx-auto max-w-4xl text-2xl font-bold leading-[1.15] tracking-tight text-ink sm:text-3xl md:text-5xl md:leading-[1.08] lg:text-6xl">
               AI-powered{" "}
               <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
                 creative engines
@@ -53,7 +54,7 @@ export default function HomePage() {
           </FadeIn>
 
           <FadeIn delay={400}>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-dim md:text-xl">
+            <p className="mx-auto mt-5 max-w-2xl text-base text-ink-dim sm:mt-6 sm:text-lg md:text-xl">
               Six specialist AI agents producing, optimizing and
               iterating ad creative around the clock. No 30-person
               agency overhead. No account managers. Just output — at
@@ -100,21 +101,21 @@ export default function HomePage() {
       {/* ─── SERVICES / FEATURES ─── */}
       <section
         id="services"
-        className="container-content scroll-mt-20 py-24 lg:py-32"
+        className="container-content scroll-mt-20 py-16 sm:py-24 lg:py-32"
       >
         <FadeIn>
-          <div className="mb-16 text-center">
+          <div className="mb-12 text-center sm:mb-16">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
               What we do
             </p>
-            <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight text-ink md:text-5xl">
+            <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-5xl">
               Two services. Built to{" "}
               <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
                 compound
               </span>
               .
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-ink-dim">
+            <p className="mx-auto mt-4 max-w-2xl text-sm text-ink-dim sm:text-base">
               Creative production and media buying as a single AI-driven
               engine. Winning ads teach the buying, the buying teaches
               the next batch. The stack runs the volume — research,
@@ -124,7 +125,7 @@ export default function HomePage() {
           </div>
         </FadeIn>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <SwipeCarousel gridClass="md:grid-cols-2" gapClass="gap-4 md:gap-6">
           <FadeIn delay={0}>
             <FeatureCard
               icon={<Layers className="h-6 w-6" />}
@@ -151,19 +152,19 @@ export default function HomePage() {
               ]}
             />
           </FadeIn>
-        </div>
+        </SwipeCarousel>
       </section>
 
       <div className="wave-divider" />
 
       {/* ─── STATS / PROOF ─── */}
-      <section className="container-content py-24 lg:py-32">
+      <section className="container-content py-16 sm:py-24 lg:py-32">
         <FadeIn>
-          <div className="mb-14 text-center">
+          <div className="mb-10 text-center sm:mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
               By the numbers
             </p>
-            <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight text-ink md:text-5xl">
+            <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-5xl">
               Numbers that{" "}
               <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
                 actually mean
@@ -173,7 +174,7 @@ export default function HomePage() {
           </div>
         </FadeIn>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <SwipeCarousel gridClass="md:grid-cols-3" gapClass="gap-4 md:gap-5">
           <FadeIn delay={0}>
             <StatCard
               icon={<BarChart3 className="h-5 w-5" />}
@@ -198,7 +199,7 @@ export default function HomePage() {
               context="vs. 14–21 days industry standard"
             />
           </FadeIn>
-        </div>
+        </SwipeCarousel>
       </section>
 
       <div className="wave-divider" />
@@ -289,20 +290,20 @@ export default function HomePage() {
       <div className="wave-divider" />
 
       {/* ─── BOTTOM CTA ─── */}
-      <section className="relative overflow-hidden py-24 lg:py-32">
+      <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
         <div className="absolute inset-0">
           <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full bg-brand/20 blur-[100px]" />
         </div>
         <FadeIn>
           <div className="container-content relative mx-auto max-w-3xl text-center">
-            <h2 className="text-4xl font-bold tracking-tight text-ink md:text-6xl">
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-6xl">
               Ready to{" "}
               <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
                 scale
               </span>
               ?
             </h2>
-            <p className="mt-6 text-lg text-ink-dim">
+            <p className="mt-5 text-base text-ink-dim sm:mt-6 sm:text-lg">
               Tell us about your brand. We&apos;ll come back with a creative and
               media plan within 48 hours. No commitment, no generic decks.
             </p>

@@ -222,11 +222,11 @@ function IntelligenceScene() {
   const doubled = [...ads, ...ads];
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative flex h-full w-full gap-3 p-4">
       {/* Left: scrolling ad thumbnails */}
-      <div className="absolute left-5 top-0 h-full w-[44%] overflow-hidden">
+      <div className="relative w-2/5 shrink-0 overflow-hidden">
         <div
-          className="flex flex-col gap-3 py-6"
+          className="flex flex-col gap-3 py-4"
           style={{
             animation: "sps-ad-scroll 18s linear infinite",
           }}
@@ -237,7 +237,6 @@ function IntelligenceScene() {
               className="relative flex h-20 shrink-0 items-end overflow-hidden rounded-lg border border-white/5"
               style={{ background: `linear-gradient(135deg, ${ad.hue}, #050505)` }}
             >
-              {/* Fake ad content silhouette */}
               <div className="absolute right-3 top-3 h-2.5 w-10 rounded-full bg-white/15" />
               <div className="absolute right-3 top-7 h-1.5 w-8 rounded-full bg-white/10" />
               <div className="absolute bottom-3 left-3 right-3">
@@ -265,10 +264,10 @@ function IntelligenceScene() {
       </div>
 
       {/* Right: insights panel */}
-      <div className="absolute right-5 top-6 flex w-[48%] flex-col gap-2.5">
+      <div className="flex min-w-0 flex-1 flex-col gap-2 py-2">
         <div className="flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-brand-bright shadow-[0_0_8px_rgba(46,127,6,0.8)]" />
-          <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-ink-dim/60">
+          <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-bright shadow-[0_0_8px_rgba(46,127,6,0.8)]" />
+          <p className="truncate text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-dim/60">
             Insights extracted
           </p>
         </div>
@@ -282,13 +281,13 @@ function IntelligenceScene() {
         ].map((item, i) => (
           <div
             key={i}
-            className="flex items-center gap-2 rounded-md border border-brand-bright/20 bg-brand-bright/[0.06] px-2.5 py-1.5"
+            className="flex min-w-0 items-center gap-2 rounded-md border border-brand-bright/20 bg-brand-bright/[0.06] px-2.5 py-1.5"
             style={{
               animation: `sps-tag-pop 4s ease-in-out infinite`,
               animationDelay: item.delay,
             }}
           >
-            <span className="text-[9px] font-bold tracking-[0.2em] text-brand-bright">
+            <span className="shrink-0 text-[9px] font-bold tracking-[0.2em] text-brand-bright">
               {item.tag}
             </span>
             <span className="truncate text-[11px] text-ink-dim/85">
@@ -483,7 +482,7 @@ function ProductionScene() {
 
 function ScaleScene() {
   return (
-    <div className="relative h-full w-full p-5">
+    <div className="relative flex h-full w-full flex-col p-5">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
@@ -491,15 +490,10 @@ function ScaleScene() {
             Blended ROAS — last 30 days
           </p>
           <div className="mt-1.5 flex items-baseline gap-2">
-            <span
-              className="text-2xl font-bold tracking-tight text-ink"
-              style={{
-                animation: "sps-stat-rise 5s ease-in-out infinite",
-              }}
-            >
+            <span className="text-2xl font-bold tracking-tight text-ink md:text-3xl">
               4.8x
             </span>
-            <span className="text-[11px] font-semibold text-brand-bright">
+            <span className="rounded-full bg-brand-bright/10 px-2 py-0.5 text-[10px] font-semibold text-brand-bright">
               +32% MoM
             </span>
           </div>
@@ -510,14 +504,14 @@ function ScaleScene() {
             <span className="text-[10px] text-ink-dim/70">ROAS</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className="h-[2px] w-4 rounded bg-[#266604]/60 opacity-50" />
+            <div className="h-[2px] w-4 rounded bg-white/20" />
             <span className="text-[10px] text-ink-dim/50">Spend</span>
           </div>
         </div>
       </div>
 
-      {/* Chart */}
-      <div className="relative mt-4 h-[160px] w-full">
+      {/* Chart — flexes to fill available height */}
+      <div className="relative mt-3 min-h-0 flex-1">
         <svg
           viewBox="0 0 400 160"
           preserveAspectRatio="none"
@@ -530,12 +524,12 @@ function ScaleScene() {
             </linearGradient>
             <linearGradient id="sps-chart-line" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#266604" />
-              <stop offset="100%" stopColor="#2e7f06" />
+              <stop offset="100%" stopColor="#4ca50a" />
             </linearGradient>
           </defs>
 
           {/* Grid lines */}
-          {[40, 80, 120].map((y) => (
+          {[30, 70, 110].map((y) => (
             <line
               key={y}
               x1="0"
@@ -547,28 +541,27 @@ function ScaleScene() {
             />
           ))}
 
-          {/* Area fill under ROAS line */}
+          {/* Spend reference line (subtle, behind) */}
           <path
-            d="M0,130 L20,120 L50,115 L80,105 L110,100 L140,90 L170,85 L200,70 L230,65 L260,55 L290,45 L320,38 L350,30 L380,22 L400,18 L400,160 L0,160 Z"
-            fill="url(#sps-chart-fill)"
-            style={{
-              animation: "sps-chart-fill 5s ease-in-out infinite",
-            }}
+            d="M0,140 L40,135 L80,130 L120,122 L160,116 L200,108 L240,102 L280,94 L320,86 L360,78 L400,70"
+            stroke="rgba(255,255,255,0.18)"
+            strokeWidth="1.2"
+            strokeDasharray="3 4"
+            fill="none"
           />
 
-          {/* Spend line (background reference, subtle dashed) */}
+          {/* Area fill under ROAS line — fades in after the line draws */}
           <path
-            d="M0,140 L40,135 L80,130 L120,120 L160,115 L200,105 L240,100 L280,90 L320,82 L360,75 L400,68"
-            stroke="#266604"
-            strokeWidth="1.5"
-            strokeDasharray="3 4"
-            strokeOpacity="0.4"
-            fill="none"
+            d="M0,130 L25,120 L55,112 L90,100 L125,90 L160,80 L195,68 L230,58 L265,48 L300,38 L335,28 L370,20 L400,14 L400,160 L0,160 Z"
+            fill="url(#sps-chart-fill)"
+            style={{
+              animation: "sps-chart-fill 6s ease-in-out infinite",
+            }}
           />
 
           {/* ROAS line (foreground, solid green) */}
           <path
-            d="M0,130 L20,120 L50,115 L80,105 L110,100 L140,90 L170,85 L200,70 L230,65 L260,55 L290,45 L320,38 L350,30 L380,22 L400,18"
+            d="M0,130 L25,120 L55,112 L90,100 L125,90 L160,80 L195,68 L230,58 L265,48 L300,38 L335,28 L370,20 L400,14"
             stroke="url(#sps-chart-line)"
             strokeWidth="2.5"
             fill="none"
@@ -577,25 +570,25 @@ function ScaleScene() {
             strokeDasharray="1000"
             strokeDashoffset="1000"
             style={{
-              animation: "sps-chart-draw 5s ease-in-out infinite",
-              filter: "drop-shadow(0 0 4px rgba(46,127,6,0.5))",
+              animation: "sps-chart-draw 6s ease-in-out infinite",
+              filter: "drop-shadow(0 0 6px rgba(46,127,6,0.45))",
             }}
           />
 
-          {/* Winner dots at peaks */}
+          {/* Winner dots at peaks — staggered */}
           {[
-            { x: 200, y: 70, delay: "1.8s" },
-            { x: 290, y: 45, delay: "2.8s" },
-            { x: 380, y: 22, delay: "3.8s" },
+            { x: 195, y: 68, delay: "2.0s" },
+            { x: 300, y: 38, delay: "3.0s" },
+            { x: 400, y: 14, delay: "4.0s" },
           ].map((pt, i) => (
             <g key={i}>
               <circle
                 cx={pt.x}
                 cy={pt.y}
-                r="8"
+                r="7"
                 fill="#2e7f06"
                 style={{
-                  animation: "sps-winner-ping 5s ease-in-out infinite",
+                  animation: "sps-winner-ping 6s ease-in-out infinite",
                   animationDelay: pt.delay,
                   transformOrigin: `${pt.x}px ${pt.y}px`,
                 }}
@@ -604,11 +597,11 @@ function ScaleScene() {
                 cx={pt.x}
                 cy={pt.y}
                 r="3.5"
-                fill="#2e7f06"
+                fill="#4ca50a"
                 stroke="#070707"
                 strokeWidth="1.5"
                 style={{
-                  animation: "sps-winner-dot 5s ease-in-out infinite",
+                  animation: "sps-winner-dot 6s ease-in-out infinite",
                   animationDelay: pt.delay,
                 }}
               />
@@ -623,12 +616,12 @@ function ScaleScene() {
           { label: "Winners", value: "12", delay: "0.4s" },
           { label: "Spend", value: "€84K", delay: "0.6s" },
           { label: "New CAC", value: "€19", delay: "0.8s" },
-        ].map((stat, i) => (
+        ].map((stat) => (
           <div
-            key={i}
-            className="rounded-lg border border-white/5 bg-white/[0.02] px-2.5 py-1.5"
+            key={stat.label}
+            className="rounded-lg border border-white/5 bg-white/[0.02] px-2.5 py-1.5 transition-colors duration-300 hover:border-brand-bright/20"
             style={{
-              animation: "sps-stat-rise 5s ease-in-out infinite",
+              animation: "sps-stat-rise 6s ease-in-out infinite",
               animationDelay: stat.delay,
             }}
           >

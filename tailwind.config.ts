@@ -51,6 +51,7 @@ const config: Config = {
         sparkle: "sparkle 1.2s ease-out forwards",
         "magic-pulse": "magic-pulse 1.4s ease-out forwards",
         marquee: "marquee 30s linear infinite",
+        "marquee-fast": "marquee 15s linear infinite",
         "wave-flow-slow": "wave-flow 28s linear infinite",
         "wave-flow-fast": "wave-flow 18s linear infinite",
         "wave-drift": "wave-drift 12s ease-in-out infinite",
