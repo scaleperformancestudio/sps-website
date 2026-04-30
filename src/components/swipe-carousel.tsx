@@ -64,10 +64,16 @@ export function SwipeCarousel({
 
   return (
     <div>
-      {/* Carousel / grid container */}
+      {/* Carousel / grid container.
+          touch-action: pan-x tells the browser the user's intent is horizontal so
+          a sideways swipe doesn't fight with vertical page scroll.
+          snap-proximity (not mandatory) makes the snap feel softer — the browser
+          only snaps when the user is clearly close to a slide boundary.
+          pt-4 on mobile gives badges (e.g. "Most popular") that sit above the card
+          enough vertical room — overflow-x:auto unfortunately clips overflow-y too. */}
       <div
         ref={scrollRef}
-        className={`-mx-4 flex snap-x snap-mandatory overflow-x-auto scroll-px-4 px-4 ${gapClass} pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid ${gridClass} md:overflow-visible md:px-0 md:pb-0`}
+        className={`-mx-4 flex snap-x snap-proximity touch-pan-x overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pt-4 ${gapClass} pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid ${gridClass} md:overflow-visible md:px-0 md:pt-0 md:pb-0`}
       >
         {items.map((child, i) => (
           <div
@@ -75,10 +81,10 @@ export function SwipeCarousel({
             ref={(el) => {
               itemRefs.current[i] = el;
             }}
-            className={`flex h-auto w-[85%] shrink-0 snap-start transition-all duration-500 ease-out sm:w-[70%] md:w-auto md:shrink ${
+            className={`flex h-auto w-[85%] shrink-0 snap-start transition-opacity duration-500 ease-out sm:w-[70%] md:w-auto md:shrink ${
               active === i
-                ? "scale-100 opacity-100"
-                : "scale-[0.97] opacity-70 md:scale-100 md:opacity-100"
+                ? "opacity-100"
+                : "opacity-65 md:opacity-100"
             }`}
           >
             <div className="flex w-full">{child}</div>

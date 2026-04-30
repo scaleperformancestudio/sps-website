@@ -226,26 +226,38 @@ export default function PricingPage() {
         <FadeIn delay={100}>
           <div className="mt-12">
             <SwipeCarousel
-              gridClass="md:grid-cols-3 lg:grid-cols-5"
-              gapClass="gap-4 md:gap-4"
+              gridClass="md:grid-cols-2 lg:grid-cols-5"
+              gapClass="gap-4 md:gap-5"
             >
               {topUps.map((t) => (
                 <div
                   key={t.credits}
-                  className="relative h-full overflow-hidden rounded-xl border border-white/[0.06] bg-[#0d0d0d] p-6 text-center transition-all duration-300 hover:bg-[#111]"
-                  style={{ borderColor: `${t.accent}33` }}
+                  className="relative flex h-full min-h-[220px] flex-col items-center justify-center overflow-hidden rounded-xl border bg-[#0d0d0d] p-6 pt-8 text-center transition-all duration-300 hover:bg-[#111] sm:p-8"
+                  style={{ borderColor: `${t.accent}55` }}
                 >
-                  {/* Colored top accent stroke */}
+                  {/* Colored top accent stroke — same treatment as package cards */}
                   <div
-                    className="pointer-events-none absolute inset-x-0 top-0 h-[3px]"
-                    style={{ background: t.accent, opacity: 0.85 }}
+                    className="pointer-events-none absolute inset-x-4 top-0 h-[3px] rounded-b-full"
+                    style={{ background: t.accent, opacity: 0.9 }}
                   />
-                  <p className="text-3xl font-bold text-ink">{t.credits}</p>
-                  <p className="mt-1 text-xs uppercase tracking-wider text-ink-dim/60">
+
+                  {/* Big number */}
+                  <p className="text-5xl font-bold tracking-tight text-ink md:text-6xl">
+                    {t.credits}
+                  </p>
+                  <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink-dim/60">
                     Credits
                   </p>
+
+                  {/* Divider */}
+                  <span
+                    className="mt-5 block h-px w-10"
+                    style={{ background: t.accent, opacity: 0.4 }}
+                  />
+
+                  {/* Price */}
                   <p
-                    className="mt-4 text-xl font-semibold"
+                    className="mt-4 text-2xl font-bold tracking-tight"
                     style={{ color: t.accent }}
                   >
                     {t.price}

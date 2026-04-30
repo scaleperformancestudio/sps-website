@@ -175,7 +175,7 @@ export default function HomePage() {
         </FadeIn>
 
         <SwipeCarousel gridClass="md:grid-cols-3" gapClass="gap-4 md:gap-5">
-          <FadeIn delay={0}>
+          <FadeIn delay={0} className="h-full">
             <StatCard
               icon={<BarChart3 className="h-5 w-5" />}
               value={<CountUp end={2.4} decimals={1} suffix="M+" duration={2200} prefix="€" />}
@@ -183,7 +183,7 @@ export default function HomePage() {
               context="Across 40+ active ecommerce brands"
             />
           </FadeIn>
-          <FadeIn delay={150}>
+          <FadeIn delay={150} className="h-full">
             <StatCard
               icon={<Target className="h-5 w-5" />}
               value={<CountUp end={4.8} decimals={1} suffix="x" duration={2000} />}
@@ -191,7 +191,7 @@ export default function HomePage() {
               context="Industry average sits at ~2.1x"
             />
           </FadeIn>
-          <FadeIn delay={300}>
+          <FadeIn delay={300} className="h-full">
             <StatCard
               icon={<Zap className="h-5 w-5" />}
               value={<CountUp end={24} suffix="h" duration={1800} />}
@@ -398,7 +398,7 @@ function StatCard({
   context: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0a0a0a] p-7 transition-all duration-500 hover:border-brand-bright/30 hover:shadow-[0_0_50px_rgba(46,127,6,0.1)] md:p-9">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0a0a0a] p-7 transition-all duration-500 hover:border-brand-bright/30 hover:shadow-[0_0_50px_rgba(46,127,6,0.1)] md:p-9">
       {/* Ambient corner glow */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-brand-bright/[0.05] blur-3xl transition-opacity duration-700 group-hover:opacity-[1.8]" />
 
