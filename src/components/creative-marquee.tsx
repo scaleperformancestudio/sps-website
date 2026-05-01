@@ -19,9 +19,13 @@ interface CreativeCard {
 const cards: CreativeCard[] = [
   { src: "/creatives/infographic.png", category: "Supplements", metric: "+45%", metricLabel: "Click Rate" },
   { src: "/creatives/before-after.png", category: "Beauty", metric: "+3.8x", metricLabel: "ROAS" },
+  { src: "/creatives/lucia-sundress.png", category: "Fashion", metric: "+3.2x", metricLabel: "ROAS" },
+  { src: "/creatives/sleep-testimonial.mp4", category: "Supplements", metric: "+38%", metricLabel: "Hold Rate" },
   { src: "/creatives/liquid-vs-pills.png", category: "Health", metric: "+34%", metricLabel: "Click Rate" },
-  { src: "/creatives/closing-sale.png", category: "Jewelry", metric: "+2.7x", metricLabel: "ROAS" },
+  { src: "/creatives/linde-bedding.png", category: "Home Goods", metric: "+52%", metricLabel: "AOV" },
+  { src: "/creatives/gut-cleanse.png", category: "Gut Health", metric: "+3.4x", metricLabel: "ROAS" },
   { src: "/creatives/save-today.png", category: "Supplements", metric: "+29%", metricLabel: "Conversion" },
+  { src: "/creatives/vela-jewelry.png", category: "Jewelry", metric: "+47%", metricLabel: "Conversion" },
   { src: "/creatives/cortisol-ugc.mp4", category: "Supplements", metric: "+4.1x", metricLabel: "ROAS" },
 ];
 
@@ -86,7 +90,7 @@ function CreativeCardItem({ card }: { card: CreativeCard }) {
               muted
               playsInline
               preload="metadata"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              className="absolute inset-0 h-full w-full object-cover scale-[1.08] transition-transform duration-700 group-hover:scale-[1.11]"
             />
           ) : (
             <Image
