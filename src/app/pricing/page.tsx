@@ -8,6 +8,8 @@ import { SwipeCarousel } from "@/components/swipe-carousel";
 import {
   PackageTier,
   packages,
+  websitePackages,
+  socialPackages,
   creditCostSections,
   comparisonRows,
   topUps,
@@ -54,6 +56,64 @@ export default function PricingPage() {
             </FadeIn>
           ))}
         </SwipeCarousel>
+      </section>
+
+      {/* ─── Website packages ─── */}
+      <section className="container-content border-t border-white/5 py-20">
+        <FadeIn>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
+            Websites
+          </p>
+          <h2 className="mt-6 max-w-3xl text-3xl font-bold tracking-tight text-ink md:text-4xl">
+            Een nieuwe site die{" "}
+            <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
+              converteert
+            </span>
+            .
+          </h2>
+          <p className="mt-4 max-w-2xl text-ink-dim">
+            Voor bedrijven met een verouderde of trage website. Vast bedrag,
+            klaar in een week — online boeken inbegrepen.
+          </p>
+        </FadeIn>
+        <div className="mt-12">
+          <SwipeCarousel gridClass="md:grid-cols-3" gapClass="gap-4 md:gap-5">
+            {websitePackages.map((pkg, i) => (
+              <FadeIn key={pkg.name} delay={i * 60} className="h-full">
+                <PackageCard pkg={pkg} />
+              </FadeIn>
+            ))}
+          </SwipeCarousel>
+        </div>
+      </section>
+
+      {/* ─── Social media packages ─── */}
+      <section className="container-content border-t border-white/5 py-20">
+        <FadeIn>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
+            Social media
+          </p>
+          <h2 className="mt-6 max-w-3xl text-3xl font-bold tracking-tight text-ink md:text-4xl">
+            Content &amp; beheer, op{" "}
+            <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
+              autopilot
+            </span>
+            .
+          </h2>
+          <p className="mt-4 max-w-2xl text-ink-dim">
+            Wij maken het contentplan, produceren de posts en reels, en beheren
+            je kanalen — zodat jij je op je zaak kunt richten.
+          </p>
+        </FadeIn>
+        <div className="mt-12">
+          <SwipeCarousel gridClass="md:grid-cols-3" gapClass="gap-4 md:gap-5">
+            {socialPackages.map((pkg, i) => (
+              <FadeIn key={pkg.name} delay={i * 60} className="h-full">
+                <PackageCard pkg={pkg} />
+              </FadeIn>
+            ))}
+          </SwipeCarousel>
+        </div>
       </section>
 
       {/* ─── Credit system ─── */}
@@ -489,6 +549,13 @@ export default function PricingPage() {
 /* ─── Package card ─── */
 function PackageCard({ pkg }: { pkg: PackageTier }) {
   const { popular, accent } = pkg;
+  const ctaHref = pkg.ctaHref ?? "/start";
+  const ctaExternal = ctaHref.startsWith("http");
+  const ctaClass = `mt-8 inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
+    popular
+      ? "bg-brand-bright text-white hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.35)]"
+      : "border border-white/10 text-ink hover:border-brand-bright/40 hover:bg-brand-bright/5"
+  }`;
 
   return (
     <div
@@ -547,16 +614,20 @@ function PackageCard({ pkg }: { pkg: PackageTier }) {
         ))}
       </ul>
 
-      <Link
-        href="/start"
-        className={`mt-8 inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
-          popular
-            ? "bg-brand-bright text-white hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.35)]"
-            : "border border-white/10 text-ink hover:border-brand-bright/40 hover:bg-brand-bright/5"
-        }`}
-      >
-        {pkg.cta}
-      </Link>
+      {ctaExternal ? (
+        <a
+          href={ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={ctaClass}
+        >
+          {pkg.cta}
+        </a>
+      ) : (
+        <Link href={ctaHref} className={ctaClass}>
+          {pkg.cta}
+        </Link>
+      )}
     </div>
   );
 }

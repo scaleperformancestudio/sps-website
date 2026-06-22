@@ -45,6 +45,8 @@ export interface PackageTier {
   priceLabel: string;
   features: string[];
   cta: string;
+  /** Optional CTA target. Defaults to "/start" in PackageCard; external http(s) URLs open in a new tab. */
+  ctaHref?: string;
   popular?: boolean;
   accent: string;
 }
@@ -104,6 +106,127 @@ export const packages: PackageTier[] = rawPackages.map((p: Package) => ({
   popular: p.popular,
   accent: p.accent,
 }));
+
+// ── Website redesign packages (fixed-price) ──
+export const websitePackages: PackageTier[] = [
+  {
+    name: "Launch",
+    tagline: "Een snelle, conversiegerichte site — klaar in een week.",
+    credits: "Eenmalig project",
+    price: "€1.500",
+    priceLabel: "vast bedrag",
+    features: [
+      "Nieuwe, mobiel-first website",
+      "Online boeken / contact geïntegreerd",
+      "Conversiegericht ontwerp + heldere CTA's",
+      "Jouw content, professioneel vormgegeven",
+      "Klaar in ~7 dagen",
+    ],
+    cta: "Vraag een gratis audit aan",
+    ctaHref:
+      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20wil%20graag%20een%20gratis%20website-audit%20voor%20mijn%20zaak.",
+    popular: false,
+    accent: "#2e7f06",
+  },
+  {
+    name: "Studio",
+    tagline: "Site én merkopfris — een complete digitale etalage.",
+    credits: "Eenmalig project",
+    price: "€2.950",
+    priceLabel: "vast bedrag",
+    features: [
+      "Alles uit Launch",
+      "Logo-opfris + kleuren + typografie",
+      "Meerdere pagina's",
+      "Wervende copywriting",
+      "Consistente merkuitstraling",
+    ],
+    cta: "Plan een kennismaking",
+    ctaHref:
+      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20heb%20interesse%20in%20het%20Studio-pakket.%20Kunnen%20we%20kennismaken%3F",
+    popular: true,
+    accent: "#2e7f06",
+  },
+  {
+    name: "Care",
+    tagline: "Onderhoud zodat je site snel en up-to-date blijft.",
+    credits: "Doorlopend",
+    price: "€75",
+    priceLabel: "per maand",
+    features: [
+      "Hosting & beveiliging",
+      "Updates & back-ups",
+      "Kleine wijzigingen",
+      "Prioriteit-support",
+    ],
+    cta: "Voeg toe aan je site",
+    ctaHref:
+      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20heb%20interesse%20in%20het%20Care-onderhoudspakket.",
+    popular: false,
+    accent: "#266604",
+  },
+];
+
+// ── Social media management packages (monthly) ──
+export const socialPackages: PackageTier[] = [
+  {
+    name: "Starter",
+    tagline: "Consistente content die je merk laat groeien.",
+    credits: "Content & beheer",
+    price: "€495",
+    priceLabel: "per maand",
+    features: [
+      "12 posts per maand",
+      "2 kanalen naar keuze",
+      "Maandelijks contentplan",
+      "Captions & hashtags",
+      "Maandrapport",
+    ],
+    cta: "Plan een kennismaking",
+    ctaHref:
+      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20heb%20interesse%20in%20het%20Starter%20social-pakket.%20Kunnen%20we%20kennismaken%3F",
+    popular: false,
+    accent: "#266604",
+  },
+  {
+    name: "Growth",
+    tagline: "Meer volume, reels en strategie — voor échte groei.",
+    credits: "Content & beheer",
+    price: "€995",
+    priceLabel: "per maand",
+    features: [
+      "20 posts per maand, incl. reels",
+      "3 kanalen",
+      "Contentplan + community-management",
+      "Maandelijkse strategiecall",
+      "Maandrapport",
+    ],
+    cta: "Plan een kennismaking",
+    ctaHref:
+      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20heb%20interesse%20in%20het%20Growth%20social-pakket.%20Kunnen%20we%20kennismaken%3F",
+    popular: true,
+    accent: "#2e7f06",
+  },
+  {
+    name: "Performance",
+    tagline: "Premium content + UGC-video + ad-creatives.",
+    credits: "Content & beheer",
+    price: "€1.950",
+    priceLabel: "per maand · vanaf",
+    features: [
+      "30+ assets per maand, incl. UGC-video",
+      "Alle relevante kanalen",
+      "Volledig contentplan + community",
+      "Ad-creatives voor je campagnes",
+      "Dedicated strateeg",
+    ],
+    cta: "Plan een kennismaking",
+    ctaHref:
+      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20heb%20interesse%20in%20het%20Performance%20social-pakket.%20Kunnen%20we%20kennismaken%3F",
+    popular: false,
+    accent: "#2e7f06",
+  },
+];
 
 export const creditCostSections: CreditSection[] = [
   {
