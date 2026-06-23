@@ -5,11 +5,9 @@ import { useState } from "react";
 import { ArrowRight, Check, ChevronDown, Mail, Minus } from "lucide-react";
 import { FadeIn } from "@/components/fade-in";
 import { SwipeCarousel } from "@/components/swipe-carousel";
+import { PackageCard } from "@/components/package-card";
 import {
-  PackageTier,
   packages,
-  websitePackages,
-  socialPackages,
   creditCostSections,
   comparisonRows,
   topUps,
@@ -56,64 +54,6 @@ export default function PricingPage() {
             </FadeIn>
           ))}
         </SwipeCarousel>
-      </section>
-
-      {/* ─── Website packages ─── */}
-      <section className="container-content border-t border-white/5 py-20">
-        <FadeIn>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
-            Websites
-          </p>
-          <h2 className="mt-6 max-w-3xl text-3xl font-bold tracking-tight text-ink md:text-4xl">
-            Een nieuwe site die{" "}
-            <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
-              converteert
-            </span>
-            .
-          </h2>
-          <p className="mt-4 max-w-2xl text-ink-dim">
-            Voor bedrijven met een verouderde of trage website. Vast bedrag,
-            klaar in een week — online boeken inbegrepen.
-          </p>
-        </FadeIn>
-        <div className="mt-12">
-          <SwipeCarousel gridClass="md:grid-cols-3" gapClass="gap-4 md:gap-5">
-            {websitePackages.map((pkg, i) => (
-              <FadeIn key={pkg.name} delay={i * 60} className="h-full">
-                <PackageCard pkg={pkg} />
-              </FadeIn>
-            ))}
-          </SwipeCarousel>
-        </div>
-      </section>
-
-      {/* ─── Social media packages ─── */}
-      <section className="container-content border-t border-white/5 py-20">
-        <FadeIn>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
-            Social media
-          </p>
-          <h2 className="mt-6 max-w-3xl text-3xl font-bold tracking-tight text-ink md:text-4xl">
-            Content &amp; beheer, op{" "}
-            <span className="bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent">
-              autopilot
-            </span>
-            .
-          </h2>
-          <p className="mt-4 max-w-2xl text-ink-dim">
-            Wij maken het contentplan, produceren de posts en reels, en beheren
-            je kanalen — zodat jij je op je zaak kunt richten.
-          </p>
-        </FadeIn>
-        <div className="mt-12">
-          <SwipeCarousel gridClass="md:grid-cols-3" gapClass="gap-4 md:gap-5">
-            {socialPackages.map((pkg, i) => (
-              <FadeIn key={pkg.name} delay={i * 60} className="h-full">
-                <PackageCard pkg={pkg} />
-              </FadeIn>
-            ))}
-          </SwipeCarousel>
-        </div>
       </section>
 
       {/* ─── Credit system ─── */}
@@ -546,91 +486,7 @@ export default function PricingPage() {
   );
 }
 
-/* ─── Package card ─── */
-function PackageCard({ pkg }: { pkg: PackageTier }) {
-  const { popular, accent } = pkg;
-  const ctaHref = pkg.ctaHref ?? "/start";
-  const ctaExternal = ctaHref.startsWith("http");
-  const ctaClass = `mt-8 inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
-    popular
-      ? "bg-brand-bright text-white hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.35)]"
-      : "border border-white/10 text-ink hover:border-brand-bright/40 hover:bg-brand-bright/5"
-  }`;
-
-  return (
-    <div
-      className={`relative flex h-full flex-col rounded-xl border bg-[#0d0d0d] p-6 pt-8 transition-all duration-300 ${
-        popular
-          ? "border-brand-bright/50 shadow-[0_0_40px_rgba(46,127,6,0.15)]"
-          : "border-white/[0.06] hover:border-white/15"
-      }`}
-      style={
-        popular
-          ? {
-              backgroundImage: `linear-gradient(to bottom, rgba(46,127,6,0.10), #0d0d0d 55%)`,
-            }
-          : undefined
-      }
-    >
-      {/* Metal tier accent — top stroke inset from rounded corners */}
-      <div
-        className="pointer-events-none absolute inset-x-4 top-0 h-[3px] rounded-b-full"
-        style={{ background: accent, opacity: 0.9 }}
-      />
-
-      {popular && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="inline-flex whitespace-nowrap rounded-full border border-brand-bright/60 bg-brand-bright px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg shadow-brand-bright/40">
-            Most popular
-          </span>
-        </div>
-      )}
-
-      <div>
-        <p
-          className="text-xs font-semibold uppercase tracking-[0.2em]"
-          style={{ color: accent }}
-        >
-          {pkg.name}
-        </p>
-        <p className="mt-2 text-[13px] text-ink-dim">{pkg.credits}</p>
-      </div>
-
-      <div className="mt-5">
-        <p className="text-4xl font-bold tracking-tight text-ink">
-          {pkg.price}
-        </p>
-        <p className="mt-1 text-xs text-ink-dim/70">{pkg.priceLabel}</p>
-      </div>
-
-      <p className="mt-5 min-h-[40px] text-sm text-ink-dim">{pkg.tagline}</p>
-
-      <ul className="mt-6 flex-1 space-y-2.5">
-        {pkg.features.map((f) => (
-          <li key={f} className="flex items-start gap-2 text-[13px] text-ink">
-            <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-bright" />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
-
-      {ctaExternal ? (
-        <a
-          href={ctaHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={ctaClass}
-        >
-          {pkg.cta}
-        </a>
-      ) : (
-        <Link href={ctaHref} className={ctaClass}>
-          {pkg.cta}
-        </Link>
-      )}
-    </div>
-  );
-}
+/* PackageCard moved to @/components/package-card */
 
 /* ─── Example card (credit system) ─── */
 function ExampleCard({ headline, detail }: { headline: string; detail: string }) {
