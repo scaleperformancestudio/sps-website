@@ -13,6 +13,10 @@ export const metadata: Metadata = {
 const WHATSAPP_AUDIT =
   "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20wil%20graag%20een%20gratis%20website-audit%20voor%20mijn%20zaak.";
 
+// NB: Calendly-slug heet "30min" maar dit is wel degelijk het Kennismaking · 15 min (Phone call) event.
+const CALENDLY_KENNISMAKING =
+  "https://calendly.com/admin-scaleperformancestudio/30min";
+
 const steps = [
   {
     n: "01",
@@ -65,6 +69,14 @@ export default function WebsitesPage() {
               className="inline-flex items-center justify-center rounded-full bg-brand-bright px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.35)]"
             >
               Vraag een gratis audit aan
+            </a>
+            <a
+              href={CALENDLY_KENNISMAKING}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-brand-bright/40 px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:border-brand-bright hover:bg-brand-bright/5"
+            >
+              Plan een kennismaking
             </a>
             <a
               href="#websites"
@@ -182,7 +194,7 @@ export default function WebsitesPage() {
                 Stuur ons je huidige website — je krijgt gratis een voorbeeld van
                 de nieuwe versie. Geen verplichting.
               </p>
-              <div className="mt-8 flex justify-center">
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <a
                   href={WHATSAPP_AUDIT}
                   target="_blank"
@@ -190,6 +202,14 @@ export default function WebsitesPage() {
                   className="inline-flex items-center justify-center rounded-full bg-brand-bright px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.35)]"
                 >
                   Vraag een gratis audit aan via WhatsApp
+                </a>
+                <a
+                  href={CALENDLY_KENNISMAKING}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-brand-bright/40 px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:border-brand-bright hover:bg-brand-bright/5"
+                >
+                  Of plan een kennismaking
                 </a>
               </div>
             </div>
