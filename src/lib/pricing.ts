@@ -143,7 +143,7 @@ export const websitePackages: PackageTier[] = [
     ],
     cta: "Plan een kennismaking",
     ctaHref:
-      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20heb%20interesse%20in%20het%20Studio-pakket.%20Kunnen%20we%20kennismaken%3F",
+      "https://calendly.com/admin-scaleperformancestudio/kennismaking-15-min",
     popular: true,
     accent: "#2e7f06",
   },
@@ -184,7 +184,7 @@ export const socialPackages: PackageTier[] = [
     ],
     cta: "Plan een kennismaking",
     ctaHref:
-      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20heb%20interesse%20in%20het%20Starter%20social-pakket.%20Kunnen%20we%20kennismaken%3F",
+      "https://calendly.com/admin-scaleperformancestudio/kennismaking-15-min",
     popular: false,
     accent: "#266604",
   },
@@ -203,7 +203,7 @@ export const socialPackages: PackageTier[] = [
     ],
     cta: "Plan een kennismaking",
     ctaHref:
-      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20heb%20interesse%20in%20het%20Growth%20social-pakket.%20Kunnen%20we%20kennismaken%3F",
+      "https://calendly.com/admin-scaleperformancestudio/kennismaking-15-min",
     popular: true,
     accent: "#2e7f06",
   },
@@ -223,7 +223,7 @@ export const socialPackages: PackageTier[] = [
     ],
     cta: "Plan een kennismaking",
     ctaHref:
-      "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20heb%20interesse%20in%20het%20Performance%20social-pakket.%20Kunnen%20we%20kennismaken%3F",
+      "https://calendly.com/admin-scaleperformancestudio/kennismaking-15-min",
     popular: false,
     accent: "#2e7f06",
   },
