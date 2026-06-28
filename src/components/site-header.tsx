@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
@@ -47,8 +48,24 @@ const nav: NavItem[] = [
   },
 ];
 
+// Local (NL) world — shown on /websites so visitors stay in the local funnel
+// instead of falling into the e-com (ad production / media buying) site.
+const localNav: NavItem[] = [
+  { href: "/websites#websites", label: "Websites", caption: "Onze pakketten", icon: Layers },
+  { href: "/websites#social", label: "Social", caption: "Content & beheer", icon: Workflow },
+  { href: "/websites#hoe-het-werkt", label: "Hoe het werkt", caption: "Van audit tot live", icon: Cpu },
+];
+
+const WHATSAPP_AUDIT =
+  "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20wil%20graag%20een%20gratis%20website-audit%20voor%20mijn%20zaak.";
+
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isLocal = pathname?.startsWith("/websites") ?? false;
+  const navItems = isLocal ? localNav : nav;
+  const ctaHref = isLocal ? WHATSAPP_AUDIT : "/start";
+  const ctaLabel = isLocal ? "Gratis audit" : "Get started";
 
   // Lock body scroll when the mobile menu is open
   useEffect(() => {
@@ -65,7 +82,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
       <div className="container-content flex h-16 items-center justify-between">
         <Link
-          href="/"
+          href={isLocal ? "/websites" : "/"}
           className="flex items-center"
           onClick={() => setIsOpen(false)}
         >
@@ -81,7 +98,7 @@ export function SiteHeader() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-7 lg:flex">
-          {nav.map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -94,13 +111,25 @@ export function SiteHeader() {
 
         {/* Right side: CTA + mobile menu trigger */}
         <div className="flex items-center gap-3">
-          <Link
-            href="/start"
-            className="group rounded-full border border-brand-bright/40 bg-brand-bright/10 px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:border-brand-bright hover:bg-brand-bright/20 hover:shadow-[0_0_20px_rgba(46,127,6,0.2)] hover:scale-[1.03] active:scale-[0.98] sm:px-5 sm:text-sm"
-            onClick={() => setIsOpen(false)}
-          >
-            Get started
-          </Link>
+          {isLocal ? (
+            <a
+              href={ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-full border border-brand-bright/40 bg-brand-bright/10 px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:border-brand-bright hover:bg-brand-bright/20 hover:shadow-[0_0_20px_rgba(46,127,6,0.2)] hover:scale-[1.03] active:scale-[0.98] sm:px-5 sm:text-sm"
+              onClick={() => setIsOpen(false)}
+            >
+              {ctaLabel}
+            </a>
+          ) : (
+            <Link
+              href={ctaHref}
+              className="group rounded-full border border-brand-bright/40 bg-brand-bright/10 px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:border-brand-bright hover:bg-brand-bright/20 hover:shadow-[0_0_20px_rgba(46,127,6,0.2)] hover:scale-[1.03] active:scale-[0.98] sm:px-5 sm:text-sm"
+              onClick={() => setIsOpen(false)}
+            >
+              {ctaLabel}
+            </Link>
+          )}
 
           {/* Mobile menu button */}
           <button
@@ -142,7 +171,7 @@ export function SiteHeader() {
           </div>
 
           <nav className="container-content relative flex flex-col gap-2 py-6">
-            {nav.map((item, i) => {
+            {navItems.map((item, i) => {
               const Icon = item.icon;
               return (
                 <Link
@@ -184,20 +213,33 @@ export function SiteHeader() {
             <div className="mt-3 flex items-center justify-between rounded-2xl border border-brand-bright/30 bg-gradient-to-br from-brand-bright/[0.10] to-brand-bright/[0.02] px-4 py-3">
               <div className="flex flex-col">
                 <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-bright">
-                  Ready?
+                  {isLocal ? "Gratis" : "Ready?"}
                 </span>
                 <span className="text-sm font-semibold text-ink">
-                  Start your project
+                  {isLocal ? "Vraag een audit aan" : "Start your project"}
                 </span>
               </div>
-              <Link
-                href="/start"
-                onClick={() => setIsOpen(false)}
-                className="inline-flex items-center gap-1.5 rounded-full bg-brand-bright px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.4)] active:scale-[0.97]"
-              >
-                Get started
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
+              {isLocal ? (
+                <a
+                  href={ctaHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-bright px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.4)] active:scale-[0.97]"
+                >
+                  {ctaLabel}
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              ) : (
+                <Link
+                  href={ctaHref}
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-bright px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.4)] active:scale-[0.97]"
+                >
+                  {ctaLabel}
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              )}
             </div>
           </nav>
         </div>

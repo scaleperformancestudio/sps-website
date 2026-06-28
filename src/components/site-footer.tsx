@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Mail, Phone } from "lucide-react";
 
 export function SiteFooter() {
+  const pathname = usePathname();
+  const isLocal = pathname?.startsWith("/websites") ?? false;
   return (
     <footer className="mt-32 border-t border-white/5 bg-bg-soft">
       <div className="wave-divider" />
@@ -19,8 +24,9 @@ export function SiteFooter() {
             className="h-14 w-auto"
           />
           <p className="mt-6 max-w-sm text-sm text-ink-dim/70">
-            An AI-driven creative engine. Performance creative and media
-            buying for ecommerce brands that need results.
+            {isLocal
+              ? "Conversiegerichte websites & social media voor lokale ondernemers in Nederland."
+              : "An AI-driven creative engine. Performance creative and media buying for ecommerce brands that need results."}
           </p>
         </div>
 
@@ -54,15 +60,26 @@ export function SiteFooter() {
       {/* Bottom bar: nav + copyright */}
       <div className="container-content flex flex-col gap-4 py-6 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-dim/60">
-          <Link href="/process" className="transition-colors hover:text-brand-bright">
-            Process
-          </Link>
-          <Link href="/pricing" className="transition-colors hover:text-brand-bright">
-            Pricing
-          </Link>
-          <Link href="/start" className="transition-colors hover:text-brand-bright">
-            Start a project
-          </Link>
+          {(isLocal
+            ? [
+                { href: "/websites#websites", label: "Websites" },
+                { href: "/websites#social", label: "Social" },
+                { href: "/websites#hoe-het-werkt", label: "Hoe het werkt" },
+              ]
+            : [
+                { href: "/process", label: "Process" },
+                { href: "/pricing", label: "Pricing" },
+                { href: "/start", label: "Start a project" },
+              ]
+          ).map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="transition-colors hover:text-brand-bright"
+            >
+              {l.label}
+            </Link>
+          ))}
         </div>
         <p className="text-xs text-ink-dim/40">
           © {new Date().getFullYear()} Scale Performance Studio · KvK 73801658

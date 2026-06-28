@@ -120,7 +120,7 @@ export default function WebsitesPage() {
       </section>
 
       {/* ─── Social packages ─── */}
-      <section className="container-content border-t border-white/5 py-20">
+      <section id="social" className="container-content border-t border-white/5 py-20">
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
             Social media
@@ -149,7 +149,7 @@ export default function WebsitesPage() {
       </section>
 
       {/* ─── Hoe het werkt ─── */}
-      <section className="container-content border-t border-white/5 py-20">
+      <section id="hoe-het-werkt" className="container-content border-t border-white/5 py-20">
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
             Hoe het werkt
