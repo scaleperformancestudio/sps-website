@@ -173,7 +173,7 @@ export const socialPackages: PackageTier[] = [
     name: "Starter",
     tagline: "Consistente content die je merk laat groeien.",
     credits: "Content & beheer",
-    price: "€495",
+    price: "€250",
     priceLabel: "per maand",
     features: [
       "12 posts per maand",
@@ -192,7 +192,7 @@ export const socialPackages: PackageTier[] = [
     name: "Growth",
     tagline: "Meer volume, reels en strategie — voor échte groei.",
     credits: "Content & beheer",
-    price: "€995",
+    price: "€500",
     priceLabel: "per maand",
     features: [
       "20 posts per maand, incl. reels",
@@ -209,15 +209,16 @@ export const socialPackages: PackageTier[] = [
   },
   {
     name: "Performance",
-    tagline: "Premium content + UGC-video + ad-creatives.",
+    tagline: "Dagelijkse content, AI-video én advertenties op Meta.",
     credits: "Content & beheer",
-    price: "€1.950",
+    price: "€1.500",
     priceLabel: "per maand · vanaf",
     features: [
-      "30+ assets per maand, incl. UGC-video",
+      "Elke dag posten",
       "Alle relevante kanalen",
       "Volledig contentplan + community",
-      "Ad-creatives voor je campagnes",
+      "AI UGC-video + ad-creatives",
+      "Adverteren op Meta (Facebook & Instagram)",
       "Dedicated strateeg",
     ],
     cta: "Plan een kennismaking",
