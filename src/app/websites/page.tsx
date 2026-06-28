@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 const WHATSAPP_AUDIT =
   "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20wil%20graag%20een%20gratis%20website-audit%20voor%20mijn%20zaak.";
 
-// NB: Calendly-slug heet "30min" maar dit is wel degelijk het Kennismaking · 15 min (Phone call) event.
+// Calendly Kennismaking · 15 min (Phone call — jij belt de prospect).
 const CALENDLY_KENNISMAKING =
-  "https://calendly.com/admin-scaleperformancestudio/30min";
+  "https://calendly.com/admin-scaleperformancestudio/kennismaking-15-min";
 
 const steps = [
   {
