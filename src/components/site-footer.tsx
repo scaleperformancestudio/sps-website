@@ -65,7 +65,7 @@ export function SiteFooter() {
           </Link>
         </div>
         <p className="text-xs text-ink-dim/40">
-          © {new Date().getFullYear()} Scale Performance Studio
+          © {new Date().getFullYear()} Scale Performance Studio · KvK 73801658
         </p>
       </div>
     </footer>
