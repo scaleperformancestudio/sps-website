@@ -111,16 +111,16 @@ export const packages: PackageTier[] = rawPackages.map((p: Package) => ({
 export const websitePackages: PackageTier[] = [
   {
     name: "Launch",
-    tagline: "Een snelle, conversiegerichte site — klaar in een week.",
+    tagline: "Snel online en makkelijk bereikbaar — klaar in een week.",
     credits: "Eenmalig project",
-    price: "€1.500",
+    price: "€375",
     priceLabel: "vast bedrag",
     features: [
-      "Nieuwe, mobiel-first website",
-      "Online boeken / contact geïntegreerd",
-      "Conversiegericht ontwerp + heldere CTA's",
-      "Jouw content, professioneel vormgegeven",
-      "Klaar in ~7 dagen",
+      "Werkt vlekkeloos op mobiel — waar de meeste klanten kijken",
+      "Klanten boeken, reserveren of bellen je direct vanaf de site",
+      "Telefoon, adres en openingstijden meteen in beeld",
+      "Goed vindbaar in Google, zodat mensen jouw zaak vinden",
+      "Snel geladen en professioneel — klaar in ~7 dagen",
     ],
     cta: "Vraag een gratis audit aan",
     ctaHref:
@@ -130,16 +130,16 @@ export const websitePackages: PackageTier[] = [
   },
   {
     name: "Studio",
-    tagline: "Site én merkopfris — een complete digitale etalage.",
+    tagline: "Je complete uitstraling, fris en professioneel.",
     credits: "Eenmalig project",
-    price: "€2.950",
+    price: "€750",
     priceLabel: "vast bedrag",
     features: [
       "Alles uit Launch",
-      "Logo-opfris + kleuren + typografie",
-      "Meerdere pagina's",
-      "Wervende copywriting",
-      "Consistente merkuitstraling",
+      "Frisse uitstraling: logo, kleuren en stijl die bij je passen",
+      "Meerdere pagina's — aanbod, over jou, contact en meer",
+      "Klantreviews prominent in beeld, voor extra vertrouwen",
+      "Wervende teksten die bezoekers omzetten in klanten",
     ],
     cta: "Plan een kennismaking",
     ctaHref:
@@ -149,15 +149,15 @@ export const websitePackages: PackageTier[] = [
   },
   {
     name: "Care",
-    tagline: "Onderhoud zodat je site snel en up-to-date blijft.",
+    tagline: "Wij houden je site snel, veilig en up-to-date.",
     credits: "Doorlopend",
-    price: "€75",
+    price: "€50",
     priceLabel: "per maand",
     features: [
-      "Hosting & beveiliging",
-      "Updates & back-ups",
-      "Kleine wijzigingen",
-      "Prioriteit-support",
+      "Snelle, veilige hosting — altijd online",
+      "Updates en back-ups, automatisch geregeld",
+      "Tekst, foto's of openingstijden wijzigen? Wij doen het",
+      "Snel geholpen als er iets moet gebeuren",
     ],
     cta: "Voeg toe aan je site",
     ctaHref:
