@@ -49,20 +49,24 @@ export function WebsiteTransform({ labels }: { labels: WebsiteTransformLabels })
       <style>{`
         @keyframes wt-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         @keyframes wt-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(46,127,6,0.45); } 50% { box-shadow: 0 0 0 8px rgba(46,127,6,0); } }
+        @keyframes wt-chip-pop { 0% { transform: scale(0.85); opacity: 0.4; } 100% { transform: scale(1); opacity: 1; } }
       `}</style>
 
       {/* Ambient glow */}
       <div className="pointer-events-none absolute -inset-10 rounded-full bg-brand-bright/10 blur-3xl" />
 
       {/* Phase chip */}
-      <div className="absolute -top-3 left-1/2 z-20 -translate-x-1/2">
+      <div className="absolute -top-6 left-1/2 z-20 -translate-x-1/2">
         <span
-          className={`inline-flex whitespace-nowrap rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-wider transition-colors duration-700 ${
+          key={revealed ? "after" : "before"}
+          className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border-2 px-5 py-2 text-sm font-bold uppercase tracking-[0.15em] shadow-xl transition-colors duration-700 ${
             revealed
-              ? "border-brand-bright/60 bg-brand-bright text-white"
-              : "border-white/20 bg-[#1a1a1a] text-ink-dim"
+              ? "border-brand-bright bg-brand-bright text-white shadow-brand-bright/40"
+              : "border-[#e24b4a]/70 bg-[#1a1a1a] text-[#f0908f] shadow-black/50"
           }`}
+          style={{ animation: "wt-chip-pop 500ms cubic-bezier(0.4, 0, 0.2, 1)" }}
         >
+          <span className="text-base leading-none">{revealed ? "✓" : "✕"}</span>
           {revealed ? labels.after : labels.before}
         </span>
       </div>
