@@ -48,24 +48,55 @@ const nav: NavItem[] = [
   },
 ];
 
-// Local (NL) world — shown on /websites so visitors stay in the local funnel
+// Local world — shown on /websites/* so visitors stay in the local funnel
 // instead of falling into the e-com (ad production / media buying) site.
-const localNav: NavItem[] = [
-  { href: "/websites#websites", label: "Websites", caption: "Onze pakketten", icon: Layers },
-  { href: "/websites#social", label: "Social", caption: "Content & beheer", icon: Workflow },
-  { href: "/websites#hoe-het-werkt", label: "Hoe het werkt", caption: "Van audit tot live", icon: Cpu },
-];
+// Labels + links are localized per URL locale (/websites/en, /websites/nl, ...).
+const localLabels = {
+  en: {
+    websites: { label: "Websites", caption: "Our packages" },
+    social: { label: "Social", caption: "Content & management" },
+    how: { label: "How it works", caption: "From audit to live" },
+    ctaShort: "Free audit",
+    ready: "Free",
+    ctaLine: "Request an audit",
+    whatsapp:
+      "https://wa.me/31611727850?text=" +
+      encodeURIComponent(
+        "Hi SPS, I'd like a free website audit for my business.",
+      ),
+  },
+  nl: {
+    websites: { label: "Websites", caption: "Onze pakketten" },
+    social: { label: "Social", caption: "Content & beheer" },
+    how: { label: "Hoe het werkt", caption: "Van audit tot live" },
+    ctaShort: "Gratis audit",
+    ready: "Gratis",
+    ctaLine: "Vraag een audit aan",
+    whatsapp:
+      "https://wa.me/31611727850?text=" +
+      encodeURIComponent(
+        "Hi SPS, ik wil graag een gratis website-audit voor mijn zaak.",
+      ),
+  },
+} as const;
 
-const WHATSAPP_AUDIT =
-  "https://wa.me/31611727850?text=Hi%20SPS%2C%20ik%20wil%20graag%20een%20gratis%20website-audit%20voor%20mijn%20zaak.";
+type LocalLocale = keyof typeof localLabels;
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const isLocal = pathname?.startsWith("/websites") ?? false;
+  const seg = pathname?.split("/")[2];
+  const locale: LocalLocale = seg === "nl" ? "nl" : "en";
+  const L = localLabels[locale];
+  const localNav: NavItem[] = [
+    { href: `/websites/${locale}#websites`, label: L.websites.label, caption: L.websites.caption, icon: Layers },
+    { href: `/websites/${locale}#social`, label: L.social.label, caption: L.social.caption, icon: Workflow },
+    { href: `/websites/${locale}#how-it-works`, label: L.how.label, caption: L.how.caption, icon: Cpu },
+  ];
   const navItems = isLocal ? localNav : nav;
-  const ctaHref = isLocal ? WHATSAPP_AUDIT : "/start";
-  const ctaLabel = isLocal ? "Gratis audit" : "Get started";
+  const ctaHref = isLocal ? L.whatsapp : "/start";
+  const ctaLabel = isLocal ? L.ctaShort : "Get started";
 
   // Lock body scroll when the mobile menu is open
   useEffect(() => {
@@ -82,7 +113,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
       <div className="container-content flex h-16 items-center justify-between">
         <Link
-          href={isLocal ? "/websites" : "/"}
+          href={isLocal ? `/websites/${locale}` : "/"}
           className="flex items-center"
           onClick={() => setIsOpen(false)}
         >
@@ -213,10 +244,10 @@ export function SiteHeader() {
             <div className="mt-3 flex items-center justify-between rounded-2xl border border-brand-bright/30 bg-gradient-to-br from-brand-bright/[0.10] to-brand-bright/[0.02] px-4 py-3">
               <div className="flex flex-col">
                 <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-bright">
-                  {isLocal ? "Gratis" : "Ready?"}
+                  {isLocal ? L.ready : "Ready?"}
                 </span>
                 <span className="text-sm font-semibold text-ink">
-                  {isLocal ? "Vraag een audit aan" : "Start your project"}
+                  {isLocal ? L.ctaLine : "Start your project"}
                 </span>
               </div>
               {isLocal ? (

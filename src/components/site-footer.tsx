@@ -8,6 +8,8 @@ import { Mail, Phone } from "lucide-react";
 export function SiteFooter() {
   const pathname = usePathname();
   const isLocal = pathname?.startsWith("/websites") ?? false;
+  const seg = pathname?.split("/")[2];
+  const locale = seg === "nl" ? "nl" : "en";
   return (
     <footer className="mt-32 border-t border-white/5 bg-bg-soft">
       <div className="wave-divider" />
@@ -25,7 +27,9 @@ export function SiteFooter() {
           />
           <p className="mt-6 max-w-sm text-sm text-ink-dim/70">
             {isLocal
-              ? "Conversiegerichte websites & social media voor lokale ondernemers in Nederland."
+              ? locale === "nl"
+                ? "Conversiegerichte websites & social media voor lokale ondernemers."
+                : "Conversion-focused websites & social media for local businesses."
               : "An AI-driven creative engine. Performance creative and media buying for ecommerce brands that need results."}
           </p>
         </div>
@@ -62,9 +66,12 @@ export function SiteFooter() {
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-dim/60">
           {(isLocal
             ? [
-                { href: "/websites#websites", label: "Websites" },
-                { href: "/websites#social", label: "Social" },
-                { href: "/websites#hoe-het-werkt", label: "Hoe het werkt" },
+                { href: `/websites/${locale}#websites`, label: "Websites" },
+                { href: `/websites/${locale}#social`, label: "Social" },
+                {
+                  href: `/websites/${locale}#how-it-works`,
+                  label: locale === "nl" ? "Hoe het werkt" : "How it works",
+                },
               ]
             : [
                 { href: "/process", label: "Process" },
