@@ -131,81 +131,149 @@ export function WebsiteTransform({ labels }: { labels: WebsiteTransformLabels })
 
           {/* ─── NEW SITE (revealed by wipe) ─── */}
           <div
-            className="absolute inset-0 bg-[#faf7f2]"
+            className="absolute inset-0 flex flex-col bg-[#faf7f2] font-sans"
             style={{
               clipPath: revealed ? "inset(0 0 0% 0)" : "inset(0 0 100% 0)",
               transition: wipeTransition,
             }}
           >
-            <div className="flex items-center justify-between px-4 pt-3 pb-2">
-              <p className="font-serif text-[15px] font-semibold text-[#1f3b2a]">
+            {/* Nav */}
+            <div className="flex items-center justify-between px-3.5 py-2">
+              <p className="font-serif text-[13px] font-semibold tracking-tight text-[#1f3b2a]">
                 Salon Lina
               </p>
-              <div className="space-y-[3px]">
-                <div className="h-[2px] w-4 rounded bg-[#1f3b2a]" />
-                <div className="h-[2px] w-4 rounded bg-[#1f3b2a]" />
-                <div className="h-[2px] w-4 rounded bg-[#1f3b2a]" />
-              </div>
+              <span className="rounded-full bg-[#1f3b2a] px-2.5 py-1 text-[8px] font-semibold text-white">
+                Book now
+              </span>
             </div>
-            {/* Hero */}
-            <div className="relative mx-0 h-[220px] overflow-hidden bg-gradient-to-br from-[#cbb6a3] via-[#b89b85] to-[#8a6d5c]">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" />
-              <div className="absolute bottom-3 left-4 right-4">
-                <p className="font-serif text-xl font-semibold leading-tight text-white">
+
+            {/* Hero with real photo */}
+            <div className="relative h-[172px] shrink-0 overflow-hidden">
+              <img
+                src="/websites-demo/salon-hero.jpg"
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover object-[center_25%]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/10 to-black/75" />
+              <div className="absolute bottom-2.5 left-3.5 right-3.5">
+                <p className="font-serif text-[17px] font-semibold leading-[1.1] text-white">
                   Beautiful hair,
                   <br />
                   zero hassle.
                 </p>
-                <span
-                  className="mt-2.5 inline-block rounded-lg bg-[#1f3b2a] px-3.5 py-2 text-[11px] font-semibold text-white"
-                  style={
-                    isNew
-                      ? { animation: "wt-pulse 1.8s ease-in-out infinite" }
-                      : undefined
-                  }
-                >
-                  Book online →
-                </span>
+                <div className="mt-1.5 flex items-center gap-2">
+                  <span
+                    className="inline-block rounded-md bg-white px-2.5 py-1.5 text-[9px] font-bold text-[#1f3b2a]"
+                    style={
+                      isNew
+                        ? { animation: "wt-pulse 1.8s ease-in-out infinite" }
+                        : undefined
+                    }
+                  >
+                    Book online →
+                  </span>
+                  <span className="text-[8px] font-medium text-white/90">
+                    <span className="text-[#e9c46a]">★★★★★</span> 4.9 · 200+
+                  </span>
+                </div>
               </div>
             </div>
-            {/* Reviews */}
-            <div className="flex items-center gap-2 px-4 pt-3">
-              <span className="text-[12px] tracking-wider text-[#e0a020]">
-                ★★★★★
-              </span>
-              <span className="font-sans text-[9px] text-[#6b6b6b]">
-                4.9 · 200+ clients
-              </span>
+
+            {/* USP strip */}
+            <div className="flex shrink-0 items-center justify-center gap-2.5 bg-[#1f3b2a] px-2 py-[7px] text-[7px] font-semibold text-[#cfe6c2]">
+              <span>✓ Online booking 24/7</span>
+              <span className="opacity-40">·</span>
+              <span>✓ Top rated</span>
+              <span className="opacity-40">·</span>
+              <span>✓ City centre</span>
             </div>
-            {/* Service cards */}
-            <div className="flex gap-2 px-4 pt-2.5">
-              {["Cuts", "Colour", "Styling"].map((s) => (
+
+            {/* Services with prices */}
+            <div
+              className={`px-3.5 pt-2.5 transition-all duration-500 ${
+                isNew ? "translate-y-0 opacity-100" : "translate-y-1.5 opacity-0"
+              }`}
+              style={{ transitionDelay: isNew ? "250ms" : "0ms" }}
+            >
+              <p className="text-[7px] font-bold uppercase tracking-[0.15em] text-[#b0892f]">
+                Our services
+              </p>
+              {(
+                [
+                  ["Women's cut", "€35"],
+                  ["Colour & gloss", "from €55"],
+                  ["Highlights / balayage", "from €85"],
+                ] as const
+              ).map(([n, p]) => (
                 <div
-                  key={s}
-                  className="flex-1 rounded-lg border border-[#ece5da] bg-white py-2 text-center"
+                  key={n}
+                  className="flex items-baseline justify-between border-b border-[#ece5da] py-[5px]"
                 >
-                  <p className="font-sans text-[9px] font-semibold text-[#1f3b2a]">
-                    {s}
-                  </p>
+                  <span className="text-[9px] text-[#2a2a2a]">{n}</span>
+                  <span className="mx-1.5 flex-1 border-b border-dotted border-[#d8d0c4]" />
+                  <span className="text-[9px] font-semibold text-[#1f3b2a]">
+                    {p}
+                  </span>
                 </div>
               ))}
             </div>
+
+            {/* Gallery */}
+            <div
+              className={`flex gap-1.5 px-3.5 pt-2 transition-all duration-500 ${
+                isNew ? "translate-y-0 opacity-100" : "translate-y-1.5 opacity-0"
+              }`}
+              style={{ transitionDelay: isNew ? "450ms" : "0ms" }}
+            >
+              {["salon-hair", "salon-interior", "salon-hero"].map((img) => (
+                <img
+                  key={img}
+                  src={`/websites-demo/${img}.jpg`}
+                  alt=""
+                  className="h-[38px] w-0 flex-1 rounded-md object-cover"
+                />
+              ))}
+            </div>
+
+            {/* Review quote */}
+            <div
+              className={`mx-3.5 mt-2 rounded-lg bg-white px-2.5 py-1.5 shadow-sm ring-1 ring-[#ece5da] transition-all duration-500 ${
+                isNew ? "translate-y-0 opacity-100" : "translate-y-1.5 opacity-0"
+              }`}
+              style={{ transitionDelay: isNew ? "650ms" : "0ms" }}
+            >
+              <p className="text-[8px] leading-snug text-[#4a4a4a]">
+                <span className="mr-1 text-[7px] text-[#e0a020]">★★★★★</span>
+                &ldquo;Finally a stylist who listens — booking online is so
+                easy.&rdquo;
+              </p>
+              <p className="mt-0.5 text-[7px] font-medium text-[#8a8a8a]">
+                — Emma R. · verified client
+              </p>
+            </div>
+
             {/* Booking bar */}
-            <div className="mx-4 mt-2.5 flex items-center justify-between rounded-lg bg-[#10210a] px-3 py-2">
-              <span className="font-sans text-[8px] text-[#dff0d0]">
+            <div className="mx-3.5 mt-2 flex items-center justify-between rounded-lg bg-[#10210a] px-2.5 py-[7px]">
+              <span className="text-[8px] text-[#dff0d0]">
                 Free today: 14:30 · 16:00
               </span>
-              <span className="font-sans text-[8px] font-semibold text-white">
+              <span className="rounded bg-[#2e7f06] px-2 py-[3px] text-[8px] font-bold text-white">
                 Reserve →
               </span>
             </div>
 
+            {/* Footer */}
+            <div className="mt-auto flex items-center justify-between bg-[#143018] px-3.5 py-[6px] text-[7px] text-[#9dbd8e]">
+              <span>Salon Lina · 12 High Street</span>
+              <span>Tue–Sat · 020-1234 567</span>
+            </div>
+
             {/* Live badge */}
             <div
-              className={`absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand-bright px-3 py-1.5 font-sans text-[10px] font-bold text-white shadow-lg shadow-brand-bright/40 transition-all duration-500 ${
+              className={`absolute bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand-bright px-3 py-1.5 text-[10px] font-bold text-white shadow-lg shadow-brand-bright/40 transition-all duration-500 ${
                 isNew ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
               }`}
-              style={{ transitionDelay: isNew ? "600ms" : "0ms" }}
+              style={{ transitionDelay: isNew ? "850ms" : "0ms" }}
             >
               ✓ {labels.liveBadge}
             </div>
