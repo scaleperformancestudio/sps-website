@@ -76,7 +76,7 @@ export default function WebsitesLocalePage({
               </a>
             </div>
           </FadeIn>
-          <FadeIn delay={150} className="hidden justify-self-center md:block">
+          <FadeIn delay={150} className="justify-self-center">
             <WebsiteTransform labels={t.heroAnim} />
           </FadeIn>
         </div>
