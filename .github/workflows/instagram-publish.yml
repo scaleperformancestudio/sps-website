@@ -1,0 +1,40 @@
+name: Instagram publisher
+
+on:
+  schedule:
+    # every 30 min, 07:00-15:30 UTC (09:00-17:30 CEST) — posts are due 11:00 CEST
+    - cron: "*/30 7-15 * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: instagram-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Publish due posts
+        env:
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+        run: python3 social/publish.py
+
+      - name: Commit queue state
+        run: |
+          if ! git diff --quiet social/queue.json; then
+            git config user.name "sps-publisher-bot"
+            git config user.email "admin@scaleperformancestudio.com"
+            git add social/queue.json
+            git commit -m "chore(social): update queue state [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "queue unchanged"
+          fi
