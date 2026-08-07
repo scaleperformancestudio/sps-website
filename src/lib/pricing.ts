@@ -113,7 +113,7 @@ export const websitePackages: PackageTier[] = [
     name: "Launch",
     tagline: "Snel online en makkelijk bereikbaar — klaar in een week.",
     credits: "Eenmalig project",
-    price: "€375",
+    price: "€300",
     priceLabel: "vast bedrag",
     features: [
       "Werkt vlekkeloos op mobiel — waar de meeste klanten kijken",

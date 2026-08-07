@@ -164,7 +164,7 @@ const nl: WebsitesContent = {
       name: "Launch",
       tagline: "Snel online en makkelijk bereikbaar — klaar in een week.",
       credits: "Eenmalig project",
-      price: "€375",
+      price: "€300",
       priceLabel: "vast bedrag",
       features: [
         "Werkt vlekkeloos op mobiel — waar de meeste klanten kijken",
@@ -359,7 +359,7 @@ const en: WebsitesContent = {
       name: "Launch",
       tagline: "Online fast and easy to reach — ready in a week.",
       credits: "One-off project",
-      price: "€375",
+      price: "€300",
       priceLabel: "fixed price",
       features: [
         "Works flawlessly on mobile — where most customers look",
