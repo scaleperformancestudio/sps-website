@@ -5,11 +5,25 @@ const nextConfig = {
   // willekeurige code erachter leest als phishing, precies waar voorlichtings-
   // campagnes voor waarschuwen; een prospect die net gehackt is klikt daar niet
   // op. Zelfde pagina, adres dat bij de afzender past.
+  // De demopagina verwijst intern naar /demo-assets/... en post haar
+  // view-teller naar /api/public/demo-view. Beide zijn RELATIEF, dus zodra de
+  // pagina hier vandaan komt zoeken ze op dit domein en dat bestond niet: sinds
+  // 25 aug zag elke prospect die op een demolink klikte een pagina zónder
+  // foto's, en werd zijn bezoek niet geteld. Alles wat de demo nodig heeft moet
+  // dus mee doorgestuurd worden, niet alleen de pagina zelf.
   async rewrites() {
     return [
       {
         source: "/demo/:slug",
         destination: "https://sps-dashboard-alpha.vercel.app/api/public/demo/:slug",
+      },
+      {
+        source: "/demo-assets/:path*",
+        destination: "https://sps-dashboard-alpha.vercel.app/demo-assets/:path*",
+      },
+      {
+        source: "/api/public/:path*",
+        destination: "https://sps-dashboard-alpha.vercel.app/api/public/:path*",
       },
     ];
   },
