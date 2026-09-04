@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/fade-in";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import { PackageCard } from "@/components/package-card";
+import { BillingSwitch } from "@/components/billing-switch";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { WebsiteTransform } from "@/components/website-transform";
 import { content, locales, isLocale, type Locale } from "../content";
@@ -99,13 +100,11 @@ export default function WebsitesLocalePage({
           <p className="mt-4 max-w-2xl text-ink-dim">{t.websites.body}</p>
         </FadeIn>
         <div className="mt-12">
-          <SwipeCarousel gridClass="md:grid-cols-3" gapClass="gap-4 md:gap-5">
-            {t.websitePackages.map((pkg, i) => (
-              <FadeIn key={pkg.name} delay={i * 60} className="h-full">
-                <PackageCard pkg={pkg} popularLabel={t.websites.popularLabel} />
-              </FadeIn>
-            ))}
-          </SwipeCarousel>
+          <BillingSwitch
+            packages={t.websitePackages}
+            labels={t.billing}
+            popularLabel={t.websites.popularLabel}
+          />
         </div>
       </section>
 

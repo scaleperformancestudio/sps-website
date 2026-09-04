@@ -37,6 +37,19 @@ export const TIER_ACCENTS = SHARED_TIER_ACCENTS;
 
 /* ───────────── Display shapes (what the page consumes) ───────────── */
 
+/** Betaalvorm die de bezoeker kiest met de schakelaar boven de pakketten. */
+export type BillingMode = "once" | "monthly" | "yearly";
+
+/** Wat er op de kaart komt te staan voor één betaalvorm. */
+export interface TierPrice {
+  price: string;
+  priceLabel: string;
+  /** Regel onder de prijs, bijv. "12 maanden minimum" of "2 maanden gratis". */
+  note?: string;
+  /** Vervangt het label bovenaan de kaart ("Eenmalig project" / "Doorlopend"). */
+  credits?: string;
+}
+
 export interface PackageTier {
   name: string;
   tagline: string;
@@ -49,6 +62,8 @@ export interface PackageTier {
   ctaHref?: string;
   popular?: boolean;
   accent: string;
+  /** Prijs per betaalvorm. Ontbreekt een vorm, dan valt de kaart terug op `price`. */
+  prices?: Partial<Record<BillingMode, TierPrice>>;
 }
 
 export interface CreditRow {

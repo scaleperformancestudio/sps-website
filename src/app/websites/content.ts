@@ -88,6 +88,13 @@ export interface WebsitesContent {
   };
   ctaBand: { title: string; body: string; ctaAudit: string; ctaCall: string };
   nav: NavLabels;
+  billing: {
+    legend: string;
+    once: string;
+    monthly: string;
+    yearly: string;
+    yearlyBadge: string;
+  };
   websitePackages: PackageTier[];
   socialPackages: PackageTier[];
 }
@@ -97,14 +104,14 @@ const nl: WebsitesContent = {
   meta: {
     title: "Websites & Social voor lokale bedrijven — Scale Performance Studio",
     description:
-      "Een nieuwe, snelle website die converteert — vast bedrag, klaar in een week. Plus social media op autopilot. Voor lokale bedrijven.",
+      "Een nieuwe, snelle website die converteert, klaar in een week. Je betaalt per maand, per jaar of in één keer. Plus social media op autopilot. Voor lokale bedrijven.",
   },
   hero: {
     eyebrow: "Websites & Social · voor lokale bedrijven",
     titlePre: "Een nieuwe site die ",
     titleHighlight: "converteert",
     titlePost: ". Klaar in een week.",
-    body: "Voor lokale bedrijven met een verouderde of trage website. Vast bedrag, mobiel-first, met online boeken erin — en daarna social media en advertenties als je wilt groeien.",
+    body: "Voor lokale bedrijven met een verouderde of trage website. Mobiel-first, met online boeken erin, en jij kiest zelf of je per maand betaalt of in één keer — en daarna social media en advertenties als je wilt groeien.",
     ctaAudit: "Vraag een gratis audit aan",
     ctaCall: "Plan een kennismaking",
     ctaPackages: "Bekijk de pakketten",
@@ -120,7 +127,7 @@ const nl: WebsitesContent = {
     titlePre: "Een site die klanten ",
     titleHighlight: "binnenbrengt",
     titlePost: ".",
-    body: "Vast bedrag, klaar in een week — online boeken inbegrepen.",
+    body: "Klaar in een week, online boeken inbegrepen. Jij kiest hoe je betaalt.",
     popularLabel: "Meest gekozen",
   },
   social: {
@@ -143,7 +150,7 @@ const nl: WebsitesContent = {
       {
         n: "02",
         title: "Plan & prijs",
-        body: "Eén vast bedrag, geen verrassingen. Je weet vooraf precies wat je krijgt en wanneer het klaar is.",
+        body: "Je kiest per maand, per jaar of in één keer. Geen verrassingen: je weet vooraf precies wat je krijgt en wanneer het klaar is.",
       },
       {
         n: "03",
@@ -182,6 +189,13 @@ const nl: WebsitesContent = {
     ctaReady: "Gratis",
     ctaLine: "Vraag een audit aan",
   },
+  billing: {
+    legend: "Hoe wil je betalen?",
+    once: "Eenmalig",
+    monthly: "Per maand",
+    yearly: "Per jaar",
+    yearlyBadge: "2 maanden gratis",
+  },
   websitePackages: [
     {
       name: "Launch",
@@ -189,6 +203,11 @@ const nl: WebsitesContent = {
       credits: "Eenmalig project",
       price: "€300",
       priceLabel: "vast bedrag",
+      prices: {
+        once: { price: "€300", priceLabel: "vast bedrag", credits: "Eenmalig project", note: "Daarna is de site van jou. Onderhoud los bij te boeken." },
+        monthly: { price: "€49", priceLabel: "per maand", credits: "Doorlopend, alles inbegrepen", note: "Bouw, hosting en onderhoud in één bedrag. 12 maanden minimum." },
+        yearly: { price: "€490", priceLabel: "per jaar", credits: "Doorlopend, alles inbegrepen", note: "Je betaalt tien maanden en krijgt er twaalf." },
+      },
       features: [
         "Werkt vlekkeloos op mobiel — waar de meeste klanten kijken",
         "Klanten boeken, reserveren of bellen je direct vanaf de site",
@@ -209,6 +228,11 @@ const nl: WebsitesContent = {
       credits: "Eenmalig project",
       price: "€750",
       priceLabel: "vast bedrag",
+      prices: {
+        once: { price: "€750", priceLabel: "vast bedrag", credits: "Eenmalig project", note: "Daarna is de site van jou. Onderhoud los bij te boeken." },
+        monthly: { price: "€99", priceLabel: "per maand", credits: "Doorlopend, alles inbegrepen", note: "Bouw, hosting en onderhoud in één bedrag. 12 maanden minimum." },
+        yearly: { price: "€990", priceLabel: "per jaar", credits: "Doorlopend, alles inbegrepen", note: "Je betaalt tien maanden en krijgt er twaalf." },
+      },
       features: [
         "Alles uit Launch",
         "Frisse uitstraling: logo, kleuren en stijl die bij je passen",
@@ -227,6 +251,11 @@ const nl: WebsitesContent = {
       credits: "Doorlopend",
       price: "€50",
       priceLabel: "per maand",
+      prices: {
+        once: { price: "€50", priceLabel: "per maand", credits: "Doorlopend", note: "Bij te boeken bij een eenmalig project." },
+        monthly: { price: "Inbegrepen", priceLabel: "bij Launch en Studio", credits: "Zit in je maandbedrag", note: "Hosting, updates en wijzigingen zitten er al in." },
+        yearly: { price: "Inbegrepen", priceLabel: "bij Launch en Studio", credits: "Zit in je jaarbedrag", note: "Hosting, updates en wijzigingen zitten er al in." },
+      },
       features: [
         "Snelle, veilige hosting — altijd online",
         "Updates en back-ups, automatisch geregeld",
@@ -303,14 +332,14 @@ const en: WebsitesContent = {
   meta: {
     title: "Websites & Social for local businesses — Scale Performance Studio",
     description:
-      "A new, fast website that converts — fixed price, live in a week. Plus social media on autopilot. For local businesses.",
+      "A new, fast website that converts, live in a week. Pay monthly, yearly or once. Plus social media on autopilot. For local businesses.",
   },
   hero: {
     eyebrow: "Websites & Social · for local businesses",
     titlePre: "A new site that ",
     titleHighlight: "converts",
     titlePost: ". Live in a week.",
-    body: "For local businesses with an outdated or slow website. Fixed price, mobile-first, with online booking built in — plus social media and ads when you're ready to grow.",
+    body: "For local businesses with an outdated or slow website. Mobile-first, with online booking built in, and you choose whether to pay monthly or in one go — plus social media and ads when you're ready to grow.",
     ctaAudit: "Request a free audit",
     ctaCall: "Book an intro call",
     ctaPackages: "View the packages",
@@ -326,7 +355,7 @@ const en: WebsitesContent = {
     titlePre: "A site that wins you ",
     titleHighlight: "customers",
     titlePost: ".",
-    body: "Fixed price, live in a week — online booking included.",
+    body: "Live in a week, online booking included. You choose how you pay.",
     popularLabel: "Most popular",
   },
   social: {
@@ -349,7 +378,7 @@ const en: WebsitesContent = {
       {
         n: "02",
         title: "Plan & price",
-        body: "One fixed price, no surprises. You know exactly what you get and when it's ready.",
+        body: "You choose monthly, yearly or one-off. No surprises: you know exactly what you get and when it's ready.",
       },
       {
         n: "03",
@@ -388,6 +417,13 @@ const en: WebsitesContent = {
     ctaReady: "Free",
     ctaLine: "Request an audit",
   },
+  billing: {
+    legend: "How would you like to pay?",
+    once: "One-off",
+    monthly: "Monthly",
+    yearly: "Yearly",
+    yearlyBadge: "2 months free",
+  },
   websitePackages: [
     {
       name: "Launch",
@@ -395,6 +431,11 @@ const en: WebsitesContent = {
       credits: "One-off project",
       price: "€300",
       priceLabel: "fixed price",
+      prices: {
+        once: { price: "€300", priceLabel: "fixed price", credits: "One-off project", note: "The site is yours afterwards. Maintenance available separately." },
+        monthly: { price: "€49", priceLabel: "per month", credits: "Ongoing, everything included", note: "Build, hosting and maintenance in one figure. 12 months minimum." },
+        yearly: { price: "€490", priceLabel: "per year", credits: "Ongoing, everything included", note: "You pay for ten months and get twelve." },
+      },
       features: [
         "Works flawlessly on mobile — where most customers look",
         "Customers book, reserve or call you straight from the site",
@@ -413,6 +454,11 @@ const en: WebsitesContent = {
       credits: "One-off project",
       price: "€750",
       priceLabel: "fixed price",
+      prices: {
+        once: { price: "€750", priceLabel: "fixed price", credits: "One-off project", note: "The site is yours afterwards. Maintenance available separately." },
+        monthly: { price: "€99", priceLabel: "per month", credits: "Ongoing, everything included", note: "Build, hosting and maintenance in one figure. 12 months minimum." },
+        yearly: { price: "€990", priceLabel: "per year", credits: "Ongoing, everything included", note: "You pay for ten months and get twelve." },
+      },
       features: [
         "Everything in Launch",
         "A fresh look: logo, colours and style that fit you",
@@ -431,6 +477,11 @@ const en: WebsitesContent = {
       credits: "Ongoing",
       price: "€50",
       priceLabel: "per month",
+      prices: {
+        once: { price: "€50", priceLabel: "per month", credits: "Ongoing", note: "Add it to a one-off project." },
+        monthly: { price: "Included", priceLabel: "with Launch and Studio", credits: "Part of your monthly fee", note: "Hosting, updates and changes are already in there." },
+        yearly: { price: "Included", priceLabel: "with Launch and Studio", credits: "Part of your yearly fee", note: "Hosting, updates and changes are already in there." },
+      },
       features: [
         "Fast, secure hosting — always online",
         "Updates and backups, handled automatically",

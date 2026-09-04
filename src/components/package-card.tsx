@@ -1,16 +1,23 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { PackageTier } from "@/lib/pricing";
+import { PackageTier, BillingMode } from "@/lib/pricing";
 
 /* ─── Package card ─── */
 export function PackageCard({
   pkg,
   popularLabel = "Most popular",
+  mode = "once",
 }: {
   pkg: PackageTier;
   popularLabel?: string;
+  mode?: BillingMode;
 }) {
   const { popular, accent } = pkg;
+  // Valt terug op de vaste prijs zodra een pakket in deze betaalvorm niet bestaat.
+  const p = pkg.prices?.[mode] ?? {
+    price: pkg.price,
+    priceLabel: pkg.priceLabel,
+  };
   const ctaHref = pkg.ctaHref ?? "/start";
   const ctaExternal = ctaHref.startsWith("http");
   const ctaClass = `mt-8 inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
@@ -55,14 +62,17 @@ export function PackageCard({
         >
           {pkg.name}
         </p>
-        <p className="mt-2 text-[13px] text-ink-dim">{pkg.credits}</p>
+        <p className="mt-2 text-[13px] text-ink-dim">{p.credits ?? pkg.credits}</p>
       </div>
 
       <div className="mt-5">
-        <p className="text-4xl font-bold tracking-tight text-ink">
-          {pkg.price}
-        </p>
-        <p className="mt-1 text-xs text-ink-dim/70">{pkg.priceLabel}</p>
+        <p className="text-4xl font-bold tracking-tight text-ink">{p.price}</p>
+        <p className="mt-1 text-xs text-ink-dim/70">{p.priceLabel}</p>
+        {p.note && (
+          <p className="mt-2 text-xs leading-snug text-brand-bright/90">
+            {p.note}
+          </p>
+        )}
       </div>
 
       <p className="mt-5 min-h-[40px] text-sm text-ink-dim">{pkg.tagline}</p>
