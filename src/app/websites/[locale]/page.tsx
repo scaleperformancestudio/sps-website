@@ -166,6 +166,37 @@ export default function WebsitesLocalePage({
         </div>
       </section>
 
+      {/* ─── Wie erachter zit ─── */}
+      <section className="container-content border-t border-white/5 py-20">
+        <FadeIn>
+          <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-10">
+            <img
+              src="/emre.jpg"
+              alt={t.person.alt}
+              width={720}
+              height={720}
+              loading="lazy"
+              className="h-32 w-32 flex-none rounded-2xl object-cover sm:h-44 sm:w-44"
+            />
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
+                {t.person.eyebrow}
+              </p>
+              <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink md:text-3xl">
+                {t.person.title}
+              </h2>
+              {t.person.body.map((line) => (
+                <p key={line.slice(0, 24)} className="mt-4 text-sm leading-relaxed text-ink-dim">
+                  {line}
+                </p>
+              ))}
+              <p className="mt-6 text-sm font-semibold text-ink">{t.person.name}</p>
+              <p className="text-sm text-ink-dim">{t.person.role}</p>
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+
       {/* ─── CTA band ─── */}
       <section className="container-content border-t border-white/5 py-20">
         <FadeIn>

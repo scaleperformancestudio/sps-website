@@ -74,6 +74,18 @@ export interface WebsitesContent {
     title: string;
     steps: { n: string; title: string; body: string }[];
   };
+  // Het gezicht achter het aanbod. Beide reacties die de koude campagne ooit
+  // kreeg gingen over geloofwaardigheid ("sieht aus wie ChatGPT", "dacht dat
+  // het oplichting was"), niet over prijs of product. Een naam en een foto
+  // zijn het enige antwoord daarop.
+  person: {
+    eyebrow: string;
+    title: string;
+    body: string[];
+    name: string;
+    role: string;
+    alt: string;
+  };
   ctaBand: { title: string; body: string; ctaAudit: string; ctaCall: string };
   nav: NavLabels;
   websitePackages: PackageTier[];
@@ -144,6 +156,17 @@ const nl: WebsitesContent = {
         body: "We zetten 'm live. Daarna kunnen we je social media en advertenties verzorgen om klanten binnen te halen.",
       },
     ],
+  },
+  person: {
+    eyebrow: "Wie je aan de lijn krijgt",
+    title: "Ik ben Emre, en ik bouw je site zelf.",
+    body: [
+      "Je krijgt waarschijnlijk elke week berichten van mensen die je een website willen verkopen. Ik snap goed dat je die wegklikt, want je weet niet wie erachter zit.",
+      "Bij mij weet je dat wel. Ik werk vanuit Nijmegen, ik bouw je site zelf en ik blijf je aanspreekpunt als er later iets is. Bel of app me gerust, ook als je alleen een vraag hebt en nog nergens aan toe bent.",
+    ],
+    name: "Emre Balıkoç",
+    role: "Scale Performance Studio · Nijmegen",
+    alt: "Emre Balıkoç aan zijn werktafel in Nijmegen",
   },
   ctaBand: {
     title: "Benieuwd hoe jouw site eruit kan zien?",
@@ -339,6 +362,17 @@ const en: WebsitesContent = {
         body: "We put it live. After that we can handle your social media and ads to bring customers in.",
       },
     ],
+  },
+  person: {
+    eyebrow: "Who you will be dealing with",
+    title: "I am Emre, and I build your site myself.",
+    body: [
+      "You probably get messages every week from people wanting to sell you a website. I understand why you delete them, because you have no idea who is behind them.",
+      "With me you do. I work from Nijmegen, I build your site myself, and I stay your point of contact afterwards. Call or message me any time, even if you only have a question and are not ready for anything yet.",
+    ],
+    name: "Emre Balıkoç",
+    role: "Scale Performance Studio · Nijmegen",
+    alt: "Emre Balikoc at his desk in Nijmegen",
   },
   ctaBand: {
     title: "Curious what your site could look like?",
