@@ -205,8 +205,8 @@ const nl: WebsitesContent = {
       priceLabel: "vast bedrag",
       prices: {
         once: { price: "€300", priceLabel: "vast bedrag", credits: "Eenmalig project", note: "Daarna is de site van jou. Onderhoud los bij te boeken." },
-        monthly: { price: "€49", priceLabel: "per maand", credits: "Doorlopend, alles inbegrepen", note: "Bouw, hosting en onderhoud in één bedrag. 12 maanden minimum." },
-        yearly: { price: "€490", priceLabel: "per jaar", credits: "Doorlopend, alles inbegrepen", note: "Je betaalt tien maanden en krijgt er twaalf." },
+        monthly: { price: "€24,95", priceLabel: "per maand", credits: "Doorlopend, alles inbegrepen", note: "Bouw, hosting en onderhoud in één bedrag. 12 maanden minimum." },
+        yearly: { price: "€249", priceLabel: "per jaar", credits: "Doorlopend, alles inbegrepen", note: "Je betaalt tien maanden en krijgt er twaalf." },
       },
       features: [
         "Werkt vlekkeloos op mobiel — waar de meeste klanten kijken",
@@ -230,8 +230,8 @@ const nl: WebsitesContent = {
       priceLabel: "vast bedrag",
       prices: {
         once: { price: "€750", priceLabel: "vast bedrag", credits: "Eenmalig project", note: "Daarna is de site van jou. Onderhoud los bij te boeken." },
-        monthly: { price: "€99", priceLabel: "per maand", credits: "Doorlopend, alles inbegrepen", note: "Bouw, hosting en onderhoud in één bedrag. 12 maanden minimum." },
-        yearly: { price: "€990", priceLabel: "per jaar", credits: "Doorlopend, alles inbegrepen", note: "Je betaalt tien maanden en krijgt er twaalf." },
+        monthly: { price: "€59,95", priceLabel: "per maand", credits: "Doorlopend, alles inbegrepen", note: "Bouw, hosting en onderhoud in één bedrag. 12 maanden minimum." },
+        yearly: { price: "€599", priceLabel: "per jaar", credits: "Doorlopend, alles inbegrepen", note: "Je betaalt tien maanden en krijgt er twaalf." },
       },
       features: [
         "Alles uit Launch",
@@ -249,10 +249,10 @@ const nl: WebsitesContent = {
       name: "Care",
       tagline: "Wij houden je site snel, veilig en up-to-date.",
       credits: "Doorlopend",
-      price: "€50",
+      price: "€14,95",
       priceLabel: "per maand",
       prices: {
-        once: { price: "€50", priceLabel: "per maand", credits: "Doorlopend", note: "Bij te boeken bij een eenmalig project." },
+        once: { price: "€14,95", priceLabel: "per maand", credits: "Doorlopend", note: "Bij te boeken bij een eenmalig project." },
         monthly: { price: "Inbegrepen", priceLabel: "bij Launch en Studio", credits: "Zit in je maandbedrag", note: "Hosting, updates en wijzigingen zitten er al in." },
         yearly: { price: "Inbegrepen", priceLabel: "bij Launch en Studio", credits: "Zit in je jaarbedrag", note: "Hosting, updates en wijzigingen zitten er al in." },
       },
@@ -445,8 +445,8 @@ const en: WebsitesContent = {
       priceLabel: "fixed price",
       prices: {
         once: { price: "€300", priceLabel: "fixed price", credits: "One-off project", note: "The site is yours afterwards. Maintenance available separately." },
-        monthly: { price: "€49", priceLabel: "per month", credits: "Ongoing, everything included", note: "Build, hosting and maintenance in one figure. 12 months minimum." },
-        yearly: { price: "€490", priceLabel: "per year", credits: "Ongoing, everything included", note: "You pay for ten months and get twelve." },
+        monthly: { price: "€24.95", priceLabel: "per month", credits: "Ongoing, everything included", note: "Build, hosting and maintenance in one figure. 12 months minimum." },
+        yearly: { price: "€249", priceLabel: "per year", credits: "Ongoing, everything included", note: "You pay for ten months and get twelve." },
       },
       features: [
         "Works flawlessly on mobile — where most customers look",
@@ -468,8 +468,8 @@ const en: WebsitesContent = {
       priceLabel: "fixed price",
       prices: {
         once: { price: "€750", priceLabel: "fixed price", credits: "One-off project", note: "The site is yours afterwards. Maintenance available separately." },
-        monthly: { price: "€99", priceLabel: "per month", credits: "Ongoing, everything included", note: "Build, hosting and maintenance in one figure. 12 months minimum." },
-        yearly: { price: "€990", priceLabel: "per year", credits: "Ongoing, everything included", note: "You pay for ten months and get twelve." },
+        monthly: { price: "€59.95", priceLabel: "per month", credits: "Ongoing, everything included", note: "Build, hosting and maintenance in one figure. 12 months minimum." },
+        yearly: { price: "€599", priceLabel: "per year", credits: "Ongoing, everything included", note: "You pay for ten months and get twelve." },
       },
       features: [
         "Everything in Launch",
@@ -487,10 +487,10 @@ const en: WebsitesContent = {
       name: "Care",
       tagline: "We keep your site fast, secure and up to date.",
       credits: "Ongoing",
-      price: "€50",
+      price: "€14.95",
       priceLabel: "per month",
       prices: {
-        once: { price: "€50", priceLabel: "per month", credits: "Ongoing", note: "Add it to a one-off project." },
+        once: { price: "€14.95", priceLabel: "per month", credits: "Ongoing", note: "Add it to a one-off project." },
         monthly: { price: "Included", priceLabel: "with Launch and Studio", credits: "Part of your monthly fee", note: "Hosting, updates and changes are already in there." },
         yearly: { price: "Included", priceLabel: "with Launch and Studio", credits: "Part of your yearly fee", note: "Hosting, updates and changes are already in there." },
       },
