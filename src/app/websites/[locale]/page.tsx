@@ -125,13 +125,12 @@ export default function WebsitesLocalePage({
           <p className="mt-4 max-w-2xl text-ink-dim">{t.social.body}</p>
         </FadeIn>
         <div className="mt-12">
-          <SwipeCarousel gridClass="md:grid-cols-3" gapClass="gap-4 md:gap-5">
-            {t.socialPackages.map((pkg, i) => (
-              <FadeIn key={pkg.name} delay={i * 60} className="h-full">
-                <PackageCard pkg={pkg} popularLabel={t.social.popularLabel} />
-              </FadeIn>
-            ))}
-          </SwipeCarousel>
+          <BillingSwitch
+            packages={t.socialPackages}
+            labels={t.billing}
+            popularLabel={t.social.popularLabel}
+            modes={["monthly", "yearly"]}
+          />
         </div>
       </section>
 

@@ -275,6 +275,10 @@ const nl: WebsitesContent = {
       credits: "Content & beheer",
       price: "€250",
       priceLabel: "per maand",
+      prices: {
+        monthly: { price: "€250", priceLabel: "per maand", note: "Maandelijks opzegbaar." },
+        yearly: { price: "€2.500", priceLabel: "per jaar", note: "Je betaalt tien maanden en krijgt er twaalf." },
+      },
       features: [
         "12 posts per maand",
         "2 kanalen naar keuze",
@@ -293,6 +297,10 @@ const nl: WebsitesContent = {
       credits: "Content & beheer",
       price: "€500",
       priceLabel: "per maand",
+      prices: {
+        monthly: { price: "€500", priceLabel: "per maand", note: "Maandelijks opzegbaar." },
+        yearly: { price: "€5.000", priceLabel: "per jaar", note: "Je betaalt tien maanden en krijgt er twaalf." },
+      },
       features: [
         "20 posts per maand, incl. reels",
         "3 kanalen",
@@ -311,6 +319,10 @@ const nl: WebsitesContent = {
       credits: "Content & beheer",
       price: "€1.500",
       priceLabel: "per maand · vanaf",
+      prices: {
+        monthly: { price: "€1.500", priceLabel: "per maand · vanaf", note: "Maandelijks opzegbaar. Advertentiebudget komt er los bij." },
+        yearly: { price: "€15.000", priceLabel: "per jaar · vanaf", note: "Je betaalt tien maanden en krijgt er twaalf. Advertentiebudget komt er los bij." },
+      },
       features: [
         "Elke dag posten",
         "Alle relevante kanalen",
@@ -501,6 +513,10 @@ const en: WebsitesContent = {
       credits: "Content & management",
       price: "€250",
       priceLabel: "per month",
+      prices: {
+        monthly: { price: "€250", priceLabel: "per month", note: "Cancel any month." },
+        yearly: { price: "€2,500", priceLabel: "per year", note: "You pay for ten months and get twelve." },
+      },
       features: [
         "12 posts per month",
         "2 channels of your choice",
@@ -519,6 +535,10 @@ const en: WebsitesContent = {
       credits: "Content & management",
       price: "€500",
       priceLabel: "per month",
+      prices: {
+        monthly: { price: "€500", priceLabel: "per month", note: "Cancel any month." },
+        yearly: { price: "€5,000", priceLabel: "per year", note: "You pay for ten months and get twelve." },
+      },
       features: [
         "20 posts per month, incl. reels",
         "3 channels",
@@ -537,6 +557,10 @@ const en: WebsitesContent = {
       credits: "Content & management",
       price: "€1,500",
       priceLabel: "per month · from",
+      prices: {
+        monthly: { price: "€1,500", priceLabel: "per month · from", note: "Cancel any month. Ad budget is billed separately." },
+        yearly: { price: "€15,000", priceLabel: "per year · from", note: "You pay for ten months and get twelve. Ad budget is billed separately." },
+      },
       features: [
         "Post every day",
         "All relevant channels",

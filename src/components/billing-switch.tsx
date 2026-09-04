@@ -25,19 +25,25 @@ export function BillingSwitch({
   labels,
   popularLabel,
   defaultMode = "monthly",
+  modes = ["monthly", "yearly", "once"],
 }: {
   packages: PackageTier[];
   labels: BillingLabels;
   popularLabel?: string;
   defaultMode?: BillingMode;
+  /** Welke standen de schakelaar toont. Social kent geen eenmalig: doorlopende
+   *  content stopt met leveren zodra je stopt met betalen, dus die knop zou een
+   *  belofte doen die het pakket niet waarmaakt. */
+  modes?: BillingMode[];
 }) {
   const [mode, setMode] = useState<BillingMode>(defaultMode);
 
-  const opties: { key: BillingMode; label: string; badge?: string }[] = [
+  const alle: { key: BillingMode; label: string; badge?: string }[] = [
     { key: "monthly", label: labels.monthly },
     { key: "yearly", label: labels.yearly, badge: labels.yearlyBadge },
     { key: "once", label: labels.once },
   ];
+  const opties = alle.filter((o) => modes.includes(o.key));
 
   return (
     <div>
