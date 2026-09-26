@@ -11,6 +11,13 @@ const nextConfig = {
   // 25 aug zag elke prospect die op een demolink klikte een pagina zónder
   // foto's, en werd zijn bezoek niet geteld. Alles wat de demo nodig heeft moet
   // dus mee doorgestuurd worden, niet alleen de pagina zelf.
+  // Korte adressen voor op de flyer; de vraagparameter ?van=emre blijft staan.
+  async redirects() {
+    return [
+      { source: "/lek-check", destination: "/websites/nl/lek-check", permanent: false },
+      { source: "/leak-check", destination: "/websites/en/lek-check", permanent: false },
+    ];
+  },
   async rewrites() {
     return [
       {

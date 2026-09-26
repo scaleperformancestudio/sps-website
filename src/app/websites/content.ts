@@ -87,6 +87,35 @@ export interface WebsitesContent {
     alt: string;
   };
   ctaBand: { title: string; body: string; ctaAudit: string; ctaCall: string };
+  // De pagina achter de flyer en de QR. Het vinkje in het formulier is de
+  // wettelijke toestemming om een eenmanszaak te mogen bellen (Tw 11.7).
+  lekCheck: {
+    meta: { title: string; description: string };
+    eyebrow: string;
+    title: string;
+    body: string;
+    viaLine: string; // {name} wordt vervangen door wie langs was
+    whatsapp: { title: string; body: string; cta: string; prefill: string };
+    form: {
+      title: string;
+      name: string;
+      company: string;
+      phone: string;
+      email: string;
+      city: string;
+      message: string;
+      messagePlaceholder: string;
+      consent: string;
+      consentHint: string;
+      submit: string;
+      sending: string;
+      successTitle: string;
+      successBody: string;
+      error: string;
+    };
+    steps: { title: string; body: string }[];
+    notDo: string;
+  };
   nav: NavLabels;
   billing: {
     legend: string;
@@ -174,6 +203,46 @@ const nl: WebsitesContent = {
     name: "Emre en Emin Balıkoç",
     role: "Scale Performance Studio · Nijmegen",
     alt: "Emre Balıkoç aan zijn werktafel in Nijmegen",
+  },
+  lekCheck: {
+    meta: {
+      title: "Gratis lek-check voor je bedrijf — Scale Performance Studio",
+      description:
+        "Waar verlies jij klanten tussen zoeken en boeken? Gratis lek-check door Emre en Emin uit Nijmegen. Je betaalt pas als je er zelf klanten aan overhoudt.",
+    },
+    eyebrow: "Gratis lek-check",
+    title: "Waar verlies jij klanten tussen zoeken en boeken?",
+    body: "We kijken naar je zichtbaarheid op Google, je site, je reviews en hoe makkelijk iemand bij je kan boeken of bellen. Je krijgt één pagina met wat er lekt en drie dingen die we eraan kunnen doen. Gratis, en ook daarna betaal je niets totdat je er zelf klanten aan overhoudt.",
+    viaLine: "{name} was bij je langs. Fijn dat je even kijkt.",
+    whatsapp: {
+      title: "Het snelst: stuur een appje",
+      body: "Dan hebben we meteen contact en plannen we een moment dat jou uitkomt, in je zaak of via de telefoon.",
+      cta: "App Emre op WhatsApp",
+      prefill: "Hoi Emre, ik wil graag een gratis lek-check voor mijn bedrijf.",
+    },
+    form: {
+      title: "Of laat je gegevens achter",
+      name: "Je naam",
+      company: "Naam van je bedrijf",
+      phone: "06-nummer",
+      email: "E-mail (mag leeg)",
+      city: "Plaats",
+      message: "Wat speelt er? (mag leeg)",
+      messagePlaceholder: "Bijvoorbeeld: mensen vinden me niet op Google, of mijn site is verouderd",
+      consent: "Jullie mogen mij bellen of appen over deze lek-check.",
+      consentHint: "Zonder dit vinkje mogen we een eenmanszaak wettelijk niet bellen.",
+      submit: "Vraag de lek-check aan",
+      sending: "Versturen...",
+      successTitle: "Dank je, we nemen contact op.",
+      successBody: "Binnen twee werkdagen appt of belt Emre of Emin je om een moment af te spreken. Wil je niet wachten, stuur dan zelf even een appje.",
+      error: "Er ging iets mis. Probeer het nog eens, of app ons direct.",
+    },
+    steps: [
+      { title: "Lek-check", body: "30 minuten, in je zaak of online. We kijken mee met wat een klant ziet als hij je zoekt." },
+      { title: "Eén ingreep", body: "We pakken het grootste lek aan en zetten alles op. Jij betaalt niets." },
+      { title: "Jij ziet de cijfers", body: "Elke maand een overzicht van aanvragen. Jij vinkt af wie klant werd, en alleen daarvoor betaal je." },
+    ],
+    notDo: "Wat we niet doen: geld vragen voordat je iets hebt gezien.",
   },
   ctaBand: {
     title: "Benieuwd hoe jouw site eruit kan zien?",
@@ -414,6 +483,46 @@ const en: WebsitesContent = {
     name: "Emre and Emin Balıkoç",
     role: "Scale Performance Studio · Nijmegen",
     alt: "Emre Balikoc at his desk in Nijmegen",
+  },
+  lekCheck: {
+    meta: {
+      title: "Free leak check for your business — Scale Performance Studio",
+      description:
+        "Where do you lose customers between searching and booking? Free leak check by Emre and Emin from Nijmegen. You only pay once it brings you paying customers.",
+    },
+    eyebrow: "Free leak check",
+    title: "Where do you lose customers between searching and booking?",
+    body: "We look at your visibility on Google, your site, your reviews and how easy it is to book or call you. You get one page with what is leaking and three things we can do about it. Free, and afterwards you still pay nothing until it brings you paying customers.",
+    viaLine: "{name} stopped by your business. Thanks for taking a look.",
+    whatsapp: {
+      title: "Fastest: send a WhatsApp",
+      body: "Then we are in touch right away and pick a moment that suits you, at your business or by phone.",
+      cta: "Message Emre on WhatsApp",
+      prefill: "Hi Emre, I would like a free leak check for my business.",
+    },
+    form: {
+      title: "Or leave your details",
+      name: "Your name",
+      company: "Business name",
+      phone: "Mobile number",
+      email: "Email (optional)",
+      city: "Town",
+      message: "What is going on? (optional)",
+      messagePlaceholder: "For example: people cannot find me on Google, or my site is outdated",
+      consent: "You may call or message me about this leak check.",
+      consentHint: "Without this box ticked, Dutch law does not allow us to call a sole trader.",
+      submit: "Request the leak check",
+      sending: "Sending...",
+      successTitle: "Thank you, we will be in touch.",
+      successBody: "Within two working days Emre or Emin will message or call you to set a time. If you would rather not wait, send us a WhatsApp yourself.",
+      error: "Something went wrong. Please try again, or message us directly.",
+    },
+    steps: [
+      { title: "Leak check", body: "30 minutes, at your business or online. We look at what a customer sees when they search for you." },
+      { title: "One fix", body: "We tackle the biggest leak and set everything up. You pay nothing." },
+      { title: "You see the numbers", body: "Every month an overview of enquiries. You tick who became a customer, and that is all you pay for." },
+    ],
+    notDo: "What we do not do: ask for money before you have seen anything.",
   },
   ctaBand: {
     title: "Curious what your site could look like?",
