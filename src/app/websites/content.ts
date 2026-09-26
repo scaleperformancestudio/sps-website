@@ -166,12 +166,12 @@ const nl: WebsitesContent = {
   },
   person: {
     eyebrow: "Wie je aan de lijn krijgt",
-    title: "Ik ben Emre, en ik bouw je site zelf.",
+    title: "Wij zijn Emre en Emin, en we doen het zelf.",
     body: [
       "Je krijgt waarschijnlijk elke week berichten van mensen die je een website willen verkopen. Ik snap goed dat je die wegklikt, want je weet niet wie erachter zit.",
-      "Bij mij weet je dat wel. Ik werk vanuit Nijmegen, ik bouw je site zelf en ik blijf je aanspreekpunt als er later iets is. Bel of app me gerust, ook als je alleen een vraag hebt en nog nergens aan toe bent.",
+      "Bij ons weet je dat wel. Wij zijn twee broers uit Nijmegen: ik bouw je site zelf, mijn broer Emin en ik blijven allebei je aanspreekpunt als er later iets is. Bel of app ons gerust, ook als je alleen een vraag hebt en nog nergens aan toe bent.",
     ],
-    name: "Emre Balıkoç",
+    name: "Emre en Emin Balıkoç",
     role: "Scale Performance Studio · Nijmegen",
     alt: "Emre Balıkoç aan zijn werktafel in Nijmegen",
   },
@@ -406,12 +406,12 @@ const en: WebsitesContent = {
   },
   person: {
     eyebrow: "Who you will be dealing with",
-    title: "I am Emre, and I build your site myself.",
+    title: "We are Emre and Emin, and we do it ourselves.",
     body: [
       "You probably get messages every week from people wanting to sell you a website. I understand why you delete them, because you have no idea who is behind them.",
-      "With me you do. I work from Nijmegen, I build your site myself, and I stay your point of contact afterwards. Call or message me any time, even if you only have a question and are not ready for anything yet.",
+      "With us you do. We are two brothers from Nijmegen: I build your site myself, and my brother Emin and I both stay your point of contact afterwards. Call or message us any time, even if you only have a question and are not ready for anything yet.",
     ],
-    name: "Emre Balıkoç",
+    name: "Emre and Emin Balıkoç",
     role: "Scale Performance Studio · Nijmegen",
     alt: "Emre Balikoc at his desk in Nijmegen",
   },
