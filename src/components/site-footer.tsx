@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 import { Mail, Phone } from "lucide-react";
 
 export function SiteFooter() {
-  const pathname = usePathname();
-  const isLocal = pathname?.startsWith("/websites") ?? false;
-  const seg = pathname?.split("/")[2];
-  const locale = seg === "nl" ? "nl" : "en";
+  const pathname = usePathname() ?? "/";
+  const isLocal = !/^\/(ecommerce|pricing|process|start)(\/|$)/.test(pathname);
+  const locale =
+    pathname === "/en" || pathname.startsWith("/en/") || pathname.startsWith("/websites/en") ? "en" : "nl";
+  const base = locale === "en" ? "/en" : "/";
   return (
     <footer className="mt-32 border-t border-white/5 bg-bg-soft">
       <div className="wave-divider" />
@@ -28,8 +29,8 @@ export function SiteFooter() {
           <p className="mt-6 max-w-sm text-sm text-ink-dim/70">
             {isLocal
               ? locale === "nl"
-                ? "Conversiegerichte websites & social media voor lokale ondernemers."
-                : "Conversion-focused websites & social media for local businesses."
+                ? "Je betaalt pas als het werkt. Websites, Google en klanten voor lokale ondernemers, uit Nijmegen."
+                : "You only pay when it works. Websites, Google and customers for local businesses, from Nijmegen."
               : "An AI-driven creative engine. Performance creative and media buying for ecommerce brands that need results."}
           </p>
         </div>
@@ -66,17 +67,17 @@ export function SiteFooter() {
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-dim/60">
           {(isLocal
             ? [
-                { href: `/websites/${locale}#websites`, label: "Websites" },
-                { href: `/websites/${locale}#social`, label: "Social" },
-                {
-                  href: `/websites/${locale}#how-it-works`,
-                  label: locale === "nl" ? "Hoe het werkt" : "How it works",
-                },
+                { href: `${base}#oplossen`, label: locale === "nl" ? "Waar lekt het" : "Where it leaks" },
+                { href: `${base}#zo-werkt-het`, label: locale === "nl" ? "Zo werkt het" : "How it works" },
+                { href: `${base}#prijzen`, label: locale === "nl" ? "Prijzen" : "Pricing" },
+                { href: locale === "nl" ? "/lek-check" : "/leak-check", label: locale === "nl" ? "Gratis lek-check" : "Free leak check" },
+                { href: "/ecommerce", label: "E-commerce" },
               ]
             : [
                 { href: "/process", label: "Process" },
                 { href: "/pricing", label: "Pricing" },
                 { href: "/start", label: "Start a project" },
+                { href: "/", label: "Lokaal (NL)" },
               ]
           ).map((l) => (
             <Link

@@ -12,7 +12,11 @@ import {
   Cpu,
   CreditCard,
   ArrowUpRight,
+  Search,
+  Users,
 } from "lucide-react";
+import { homeContent } from "@/app/home-content";
+import type { Locale } from "@/app/websites/content";
 
 interface NavItem {
   href: string;
@@ -21,82 +25,41 @@ interface NavItem {
   icon: React.ComponentType<{ className?: string }>;
 }
 
-const nav: NavItem[] = [
-  {
-    href: "/#services",
-    label: "Services",
-    caption: "What we do",
-    icon: Layers,
-  },
-  {
-    href: "/#process",
-    label: "Process",
-    caption: "How we work",
-    icon: Workflow,
-  },
-  {
-    href: "/#team",
-    label: "The Engine",
-    caption: "Our AI agents",
-    icon: Cpu,
-  },
-  {
-    href: "/pricing",
-    label: "Pricing",
-    caption: "Plans & credits",
-    icon: CreditCard,
-  },
+// E-commerce-wereld: /ecommerce (de oude homepage), /pricing, /process, /start.
+const ecomNav: NavItem[] = [
+  { href: "/ecommerce#services", label: "Services", caption: "What we do", icon: Layers },
+  { href: "/ecommerce#process", label: "Process", caption: "How we work", icon: Workflow },
+  { href: "/ecommerce#team", label: "The Engine", caption: "Our AI agents", icon: Cpu },
+  { href: "/pricing", label: "Pricing", caption: "Plans & credits", icon: CreditCard },
 ];
 
-// Local world — shown on /websites/* so visitors stay in the local funnel
-// instead of falling into the e-com (ad production / media buying) site.
-// Labels + links are localized per URL locale (/websites/en, /websites/nl, ...).
-const localLabels = {
-  en: {
-    websites: { label: "Websites", caption: "Our packages" },
-    social: { label: "Social", caption: "Content & management" },
-    how: { label: "How it works", caption: "From audit to live" },
-    ctaShort: "Free audit",
-    ready: "Free",
-    ctaLine: "Request an audit",
-    whatsapp:
-      "https://wa.me/31611727850?text=" +
-      encodeURIComponent(
-        "Hi SPS, I'd like a free website audit for my business.",
-      ),
-  },
-  nl: {
-    websites: { label: "Websites", caption: "Onze pakketten" },
-    social: { label: "Social", caption: "Content & beheer" },
-    how: { label: "Hoe het werkt", caption: "Van audit tot live" },
-    ctaShort: "Gratis audit",
-    ready: "Gratis",
-    ctaLine: "Vraag een audit aan",
-    whatsapp:
-      "https://wa.me/31611727850?text=" +
-      encodeURIComponent(
-        "Hi SPS, ik wil graag een gratis website-audit voor mijn zaak.",
-      ),
-  },
+// Lokale wereld (alles wat niet e-commerce is): de homepage op / en /en,
+// /websites/* en /lek-check. Teksten komen uit home-content.ts.
+const localCaptions = {
+  nl: { leaks: "Acht vragen", how: "Drie stappen", pricing: "Per betaalde klant", who: "Twee broers", ready: "Gratis", ctaLine: "Vraag een lek-check aan" },
+  en: { leaks: "Eight questions", how: "Three steps", pricing: "Per paying customer", who: "Two brothers", ready: "Free", ctaLine: "Request a leak check" },
 } as const;
 
-type LocalLocale = keyof typeof localLabels;
+const ECOM = /^\/(ecommerce|pricing|process|start)(\/|$)/;
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
-  const isLocal = pathname?.startsWith("/websites") ?? false;
-  const seg = pathname?.split("/")[2];
-  const locale: LocalLocale = seg === "nl" ? "nl" : "en";
-  const L = localLabels[locale];
+  const pathname = usePathname() ?? "/";
+  const isLocal = !ECOM.test(pathname);
+  const locale: Locale =
+    pathname === "/en" || pathname.startsWith("/en/") || pathname.startsWith("/websites/en") ? "en" : "nl";
+  const base = locale === "en" ? "/en" : "/";
+  const H = homeContent[locale].nav;
+  const C = localCaptions[locale];
   const localNav: NavItem[] = [
-    { href: `/websites/${locale}#websites`, label: L.websites.label, caption: L.websites.caption, icon: Layers },
-    { href: `/websites/${locale}#social`, label: L.social.label, caption: L.social.caption, icon: Workflow },
-    { href: `/websites/${locale}#how-it-works`, label: L.how.label, caption: L.how.caption, icon: Cpu },
+    { href: `${base}#oplossen`, label: H.leaks, caption: C.leaks, icon: Search },
+    { href: `${base}#zo-werkt-het`, label: H.how, caption: C.how, icon: Workflow },
+    { href: `${base}#prijzen`, label: H.pricing, caption: C.pricing, icon: CreditCard },
+    { href: `${base}#wie`, label: H.who, caption: C.who, icon: Users },
   ];
-  const navItems = isLocal ? localNav : nav;
-  const ctaHref = isLocal ? L.whatsapp : "/start";
-  const ctaLabel = isLocal ? L.ctaShort : "Get started";
+  const navItems = isLocal ? localNav : ecomNav;
+  const ctaHref = isLocal ? H.ctaHref : "/start";
+  const ctaLabel = isLocal ? H.cta : "Get started";
 
   // Lock body scroll when the mobile menu is open
   useEffect(() => {
@@ -113,7 +76,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
       <div className="container-content flex h-16 items-center justify-between">
         <Link
-          href={isLocal ? `/websites/${locale}` : "/"}
+          href={isLocal ? base : "/ecommerce"}
           className="flex items-center"
           onClick={() => setIsOpen(false)}
         >
@@ -142,25 +105,13 @@ export function SiteHeader() {
 
         {/* Right side: CTA + mobile menu trigger */}
         <div className="flex items-center gap-3">
-          {isLocal ? (
-            <a
-              href={ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group rounded-full border border-brand-bright/40 bg-brand-bright/10 px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:border-brand-bright hover:bg-brand-bright/20 hover:shadow-[0_0_20px_rgba(46,127,6,0.2)] hover:scale-[1.03] active:scale-[0.98] sm:px-5 sm:text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              {ctaLabel}
-            </a>
-          ) : (
-            <Link
-              href={ctaHref}
-              className="group rounded-full border border-brand-bright/40 bg-brand-bright/10 px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:border-brand-bright hover:bg-brand-bright/20 hover:shadow-[0_0_20px_rgba(46,127,6,0.2)] hover:scale-[1.03] active:scale-[0.98] sm:px-5 sm:text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              {ctaLabel}
-            </Link>
-          )}
+          <Link
+            href={ctaHref}
+            className="group rounded-full border border-brand-bright/40 bg-brand-bright/10 px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:border-brand-bright hover:bg-brand-bright/20 hover:shadow-[0_0_20px_rgba(46,127,6,0.2)] hover:scale-[1.03] active:scale-[0.98] sm:px-5 sm:text-sm"
+            onClick={() => setIsOpen(false)}
+          >
+            {ctaLabel}
+          </Link>
 
           {/* Mobile menu button */}
           <button
@@ -244,33 +195,20 @@ export function SiteHeader() {
             <div className="mt-3 flex items-center justify-between rounded-2xl border border-brand-bright/30 bg-gradient-to-br from-brand-bright/[0.10] to-brand-bright/[0.02] px-4 py-3">
               <div className="flex flex-col">
                 <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-bright">
-                  {isLocal ? L.ready : "Ready?"}
+                  {isLocal ? C.ready : "Ready?"}
                 </span>
                 <span className="text-sm font-semibold text-ink">
-                  {isLocal ? L.ctaLine : "Start your project"}
+                  {isLocal ? C.ctaLine : "Start your project"}
                 </span>
               </div>
-              {isLocal ? (
-                <a
-                  href={ctaHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-bright px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.4)] active:scale-[0.97]"
-                >
-                  {ctaLabel}
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
-              ) : (
-                <Link
-                  href={ctaHref}
-                  onClick={() => setIsOpen(false)}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-bright px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.4)] active:scale-[0.97]"
-                >
-                  {ctaLabel}
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              )}
+              <Link
+                href={ctaHref}
+                onClick={() => setIsOpen(false)}
+                className="inline-flex items-center gap-1.5 rounded-full bg-brand-bright px-4 py-2 text-xs font-semibold text-ink transition-all duration-300 hover:bg-brand hover:shadow-[0_0_20px_rgba(46,127,6,0.4)] active:scale-[0.97]"
+              >
+                {ctaLabel}
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
             </div>
           </nav>
         </div>

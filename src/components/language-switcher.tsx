@@ -6,7 +6,13 @@ import { locales, localeNames, type Locale } from "@/app/websites/content";
  * Server component — renders one link per available locale. Adding a language
  * to content.ts makes it appear here automatically.
  */
-export function LanguageSwitcher({ current }: { current: Locale }) {
+export function LanguageSwitcher({
+  current,
+  hrefFor,
+}: {
+  current: Locale;
+  hrefFor?: (loc: Locale) => string;
+}) {
   return (
     <div
       className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] p-1"
@@ -18,7 +24,7 @@ export function LanguageSwitcher({ current }: { current: Locale }) {
         return (
           <Link
             key={loc}
-            href={`/websites/${loc}`}
+            href={hrefFor ? hrefFor(loc) : `/websites/${loc}`}
             aria-current={active ? "true" : undefined}
             className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide transition-all duration-300 ${
               active

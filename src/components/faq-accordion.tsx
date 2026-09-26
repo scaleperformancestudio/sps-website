@@ -41,12 +41,13 @@ const faqs: FaqItem[] = [
   },
 ];
 
-export function FaqAccordion() {
+export function FaqAccordion({ items }: { items?: FaqItem[] } = {}) {
+  const list = items ?? faqs;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="divide-y divide-white/5">
-      {faqs.map((faq, i) => {
+      {list.map((faq, i) => {
         const isOpen = openIndex === i;
         return (
           <div key={i} className="group">
