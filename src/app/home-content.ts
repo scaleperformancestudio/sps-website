@@ -100,7 +100,7 @@ const nl: HomeContent = {
     body: "Meer klanten via Google, een site die boekt, reviews die binnenkomen. Wij zetten alles op. Jij betaalt alleen per klant die via ons bij jou heeft betaald. Geen abonnement vooraf, geen uurtje-factuurtje.",
     ctaPrimary: "Gratis lek-check",
     ctaSecondary: "App Emre",
-    trust: ["Twee broers uit Nijmegen", "Niets vooraf", "KvK 73801658"],
+    trust: ["Twee broers uit Nijmegen", "Niets vooraf"],
   },
   report: {
     title: "Maandrapport",
@@ -195,7 +195,7 @@ const nl: HomeContent = {
       { name: "Emre Balıkoç", role: "Bouwt je site, richt de meting in, beheert de campagnes", image: "/emre.jpg", initial: "E" },
       { name: "Emin Balıkoç", role: "Komt langs, plant de lek-check, blijft je aanspreekpunt", image: null, initial: "E" },
     ],
-    facts: ["Nijmegen", "KvK 73801658", "06 1172 7850"],
+    facts: ["Nijmegen", "06 1172 7850"],
   },
   faq: {
     eyebrow: "Vragen",
@@ -239,7 +239,7 @@ const en: HomeContent = {
     body: "More customers through Google, a site that books, reviews that come in. We set everything up. You only pay per customer who came through us and paid you. No subscription up front, no hourly invoices.",
     ctaPrimary: "Free leak check",
     ctaSecondary: "Message Emre",
-    trust: ["Two brothers from Nijmegen", "Nothing up front", "KvK 73801658"],
+    trust: ["Two brothers from Nijmegen", "Nothing up front"],
   },
   report: {
     title: "Monthly report",
@@ -334,7 +334,7 @@ const en: HomeContent = {
       { name: "Emre Balıkoç", role: "Builds your site, sets up the measurement, runs the campaigns", image: "/emre.jpg", initial: "E" },
       { name: "Emin Balıkoç", role: "Comes by, plans the leak check, stays your point of contact", image: null, initial: "E" },
     ],
-    facts: ["Nijmegen", "KvK 73801658", "+31 6 1172 7850"],
+    facts: ["Nijmegen", "+31 6 1172 7850"],
   },
   faq: {
     eyebrow: "Questions",
