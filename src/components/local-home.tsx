@@ -1,13 +1,13 @@
 import Link from "next/link";
 import {
   ArrowUpRight,
+  CalendarDays,
+  MessageCircle,
   Search,
-  MonitorSmartphone,
+  Clock,
+  PhoneMissed,
   Star,
-  Inbox,
   TrendingDown,
-  Megaphone,
-  CalendarCheck,
   Rocket,
   Phone,
   FileText,
@@ -35,7 +35,7 @@ import { content as websitesContent, type Locale } from "@/app/websites/content"
 
 const HIGHLIGHT =
   "bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent";
-const LEAK_ICONS = [Search, MonitorSmartphone, Star, Inbox, TrendingDown, Megaphone, CalendarCheck, Rocket];
+const LEAK_ICONS = [CalendarDays, MessageCircle, Search, Clock, PhoneMissed, Star, TrendingDown, Rocket];
 const MEASURE_ICONS = [Phone, FileText, ClipboardCheck];
 const PRIMARY =
   "group inline-flex items-center gap-2 rounded-full bg-brand-bright px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-brand hover:shadow-[0_0_30px_rgba(46,127,6,0.4)] hover:scale-[1.03] active:scale-[0.98]";
