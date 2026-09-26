@@ -56,6 +56,8 @@ export interface HomeContent {
     titleHighlight: string;
     titlePost: string;
     body: string;
+    modes: { label: string; title: string; how: string; pay: string; who: string }[];
+    tiersTitle: string;
     rows: { branche: string; price: string; note: string }[];
     extras: string[];
     websiteTitle: string;
@@ -114,7 +116,7 @@ const nl: HomeContent = {
     ],
     became: "werd klant",
     noCustomer: "geen klant",
-    perCustomer: "€ 15 per nieuwe klant, trede vooraf vastgesteld",
+    perCustomer: "15% van de eerste bon, hier € 100 per klant",
     totalLabel: "Jij betaalt deze maand",
     zeroNote: "Aanvragen zonder klant: € 0",
   },
@@ -153,7 +155,7 @@ const nl: HomeContent = {
     pillars: [
       { title: "Eigen nummer", body: "Een telefoonnummer dat vóór ons niet bestond. Belt iemand daarop, dan kwam hij via ons. Je oude nummer blijft overal staan." },
       { title: "Eigen formulier en boekingslink", body: "Elke aanvraag komt bij jou en bij ons tegelijk binnen. Geen discussie over waar iemand vandaan kwam." },
-      { title: "Maandrapport dat jij aftekent", body: "Eén pagina met alle aanvragen. Jij vinkt af wie klant werd en betaalde. Pas daarna een factuur, nooit eerder." },
+      { title: "Maandrapport dat jij aftekent", body: "Eén pagina met alle aanvragen. Met een gekoppeld systeem staan de betalingen er automatisch in; zonder systeem vink jij af wie klant werd. Pas daarna een factuur, nooit eerder." },
     ],
     rule: "Wat wij niet zelf kunnen zien, verkopen wij niet op resultaat.",
   },
@@ -162,7 +164,24 @@ const nl: HomeContent = {
     titlePre: "Per betaalde klant. Niet per uur, niet ",
     titleHighlight: "vooraf",
     titlePost: ".",
-    body: "Eén vast bedrag per nieuwe klant die via onze kanalen kwam en bij jou heeft betaald. Welke trede voor jou geldt, stellen we vooraf vast uit je eigen prijslijst. Daarna hoef je per klant alleen af te vinken: klant geworden, ja of nee.",
+    body: "Je betaalt alleen voor nieuwe klanten die via onze kanalen kwamen en bij jou hebben betaald. Hoe we dat meten hangt af van één ding: zit er een systeem tussen dat de betaling ziet, of niet.",
+    modes: [
+      {
+        label: "A",
+        title: "Gemeten",
+        how: "Wij koppelen je boekings- of bestelsysteem (Salonized, Treatwell, een webshop) aan onze link. Elke afspraak of order via ons staat erin, met bedrag en 'nieuwe klant'. Heb je nog geen systeem, dan zetten wij het neer.",
+        pay: "15% van de eerste betaling van elke nieuwe klant. Minimaal € 5, maximaal € 150. Niets afvinken: het maandrapport komt uit het systeem.",
+        who: "Salons, kappers, praktijken, restaurants, webshops.",
+      },
+      {
+        label: "B",
+        title: "Bevestigd",
+        how: "Wij zien de aanvraag via ons nummer of formulier. Jij bevestigt elke maand of het een klus werd. Geef je later meekijkrechten in je facturatie, dan schuif je naar A.",
+        pay: "Een vast bedrag per gewonnen klus, vooraf vastgesteld uit je prijslijst. Zie de tabel.",
+        who: "Vakmensen en iedereen zonder boekingssysteem.",
+      },
+    ],
+    tiersTitle: "Vast bedrag bij manier B",
     rows: [
       { branche: "Gemiddelde eerste bon tot € 50", price: "€ 5", note: "per nieuwe klant" },
       { branche: "Gemiddelde eerste bon € 50 tot € 150", price: "€ 15", note: "per nieuwe klant" },
@@ -171,7 +190,6 @@ const nl: HomeContent = {
       { branche: "Gemiddelde eerste bon vanaf € 2.000", price: "€ 150", note: "per nieuwe klant" },
     ],
     extras: [
-      "Werkt in elke branche: kapper, garage, tandarts, rijschool, winkel. De trede staat vast vóór we beginnen, uit je prijslijst; per klant hoef je niets in te vullen.",
       "Alleen de eerste keer telt. Herhaalbezoek is van jou, daar betaal je niets over.",
       "Plafond per maand, vooraf afgesproken.",
       "Advertentiebudget betaal je zelf, rechtstreeks aan Google of Meta.",
@@ -202,8 +220,8 @@ const nl: HomeContent = {
     eyebrow: "Vragen",
     title: "Wat ondernemers ons eerst vragen.",
     items: [
-      { question: "Is het echt gratis in het begin?", answer: "Ja. De lek-check, het opzetten en de eerste maanden kosten niets. Je krijgt pas een factuur voor nieuwe klanten die via onze kanalen kwamen en bij jou hebben betaald, en dan één vast bedrag per klant, in een trede die we vooraf uit je prijslijst afspreken. Alleen advertentiebudget betaal je zelf, rechtstreeks aan Google of Meta." },
-      { question: "Hoe weten jullie welke klant via jullie kwam?", answer: "Alles loopt via kanalen die wij aanmaken: een nieuw nummer, een formulier, een boekingslink. Wat daar binnenkomt, kwam via ons. Wat via je oude nummer of via mond-tot-mond komt, tellen we niet. Jij vinkt elke maand af welke aanvragen klant werden." },
+      { question: "Is het echt gratis in het begin?", answer: "Ja. De lek-check, het opzetten en de eerste maanden kosten niets. Je krijgt pas een factuur voor nieuwe klanten die via onze kanalen kwamen en bij jou hebben betaald, en dan 15% van hun eerste bon als je boekingssysteem gekoppeld is, of anders een vast bedrag per gewonnen klus dat we vooraf afspreken. Alleen advertentiebudget betaal je zelf, rechtstreeks aan Google of Meta." },
+      { question: "Hoe weten jullie welke klant via jullie kwam?", answer: "Alles loopt via kanalen die wij aanmaken: een nieuw nummer, een formulier, een boekingslink. Wat daar binnenkomt, kwam via ons. Wat via je oude nummer of via mond-tot-mond komt, tellen we niet. Zit er een boekings- of bestelsysteem tussen, dan zien we ook de betaling en het bedrag; anders bevestig jij elke maand welke aanvraag een klus werd." },
       { question: "Wat als het niet werkt?", answer: "Dan stoppen wij zelf, na twee maandrapporten zonder vooruitgang. Geen factuur. Jij houdt je domein en je eigen nummer, wij houden wat wij bouwden." },
       { question: "Van wie is de site?", answer: "Tot de eerste betaling van ons, daarna van jou. Je domeinnaam staat altijd op jouw naam. Wil je de site eerder overnemen, dan kan dat voor een vast bedrag." },
       { question: "Hoelang zit ik eraan vast?", answer: "Eerst drie maanden proef, die begint zodra de meting live staat. Na je eerste betaalde klant nog zes maanden, daarna maandelijks opzegbaar." },
@@ -254,7 +272,7 @@ const en: HomeContent = {
     ],
     became: "became a customer",
     noCustomer: "no customer",
-    perCustomer: "€15 per new customer, tier set in advance",
+    perCustomer: "15% of the first bill, here €100 per customer",
     totalLabel: "You pay this month",
     zeroNote: "Enquiries without a customer: €0",
   },
@@ -293,7 +311,7 @@ const en: HomeContent = {
     pillars: [
       { title: "Own number", body: "A phone number that did not exist before us. If someone calls it, they came through us. Your old number stays everywhere else." },
       { title: "Own form and booking link", body: "Every enquiry reaches you and us at the same time. No argument about where someone came from." },
-      { title: "A monthly report you sign off", body: "One page with every enquiry. You tick who became a customer and paid. Only then an invoice, never earlier." },
+      { title: "A monthly report you sign off", body: "One page with every enquiry. With a connected system the payments are in it automatically; without one you tick who became a customer. Only then an invoice, never earlier." },
     ],
     rule: "What we cannot see ourselves, we do not sell on results.",
   },
@@ -302,7 +320,24 @@ const en: HomeContent = {
     titlePre: "Per paying customer. Not per hour, not ",
     titleHighlight: "up front",
     titlePost: ".",
-    body: "One fixed amount per new customer who came through our channels and paid you. Which tier applies to you we set in advance from your own price list. After that you only tick per customer: became a customer, yes or no.",
+    body: "You only pay for new customers who came through our channels and paid you. How we measure that depends on one thing: whether a system sits in between that sees the payment, or not.",
+    modes: [
+      {
+        label: "A",
+        title: "Measured",
+        how: "We connect your booking or ordering system (Salonized, Treatwell, a webshop) to our link. Every appointment or order through us is in there, with the amount and 'new customer'. No system yet? We set one up.",
+        pay: "15% of the first payment of every new customer. Minimum €5, maximum €150. Nothing to tick: the monthly report comes out of the system.",
+        who: "Salons, hairdressers, practices, restaurants, webshops.",
+      },
+      {
+        label: "B",
+        title: "Confirmed",
+        how: "We see the enquiry through our number or form. You confirm each month whether it became a job. Give us read access to your invoicing later and you move to A.",
+        pay: "A fixed amount per job won, set in advance from your price list. See the table.",
+        who: "Tradespeople and anyone without a booking system.",
+      },
+    ],
+    tiersTitle: "Fixed amount under option B",
     rows: [
       { branche: "Average first bill up to €50", price: "€5", note: "per new customer" },
       { branche: "Average first bill €50 to €150", price: "€15", note: "per new customer" },
@@ -311,7 +346,6 @@ const en: HomeContent = {
       { branche: "Average first bill from €2,000", price: "€150", note: "per new customer" },
     ],
     extras: [
-      "Works in every trade: hairdresser, garage, dentist, driving school, shop. The tier is fixed before we start, from your price list; per customer there is nothing to fill in.",
       "Only the first time counts. Repeat visits are yours, you pay nothing on those.",
       "Monthly cap, agreed in advance.",
       "Ad budget you pay yourself, directly to Google or Meta.",
@@ -342,8 +376,8 @@ const en: HomeContent = {
     eyebrow: "Questions",
     title: "What business owners ask us first.",
     items: [
-      { question: "Is it really free at the start?", answer: "Yes. The leak check, the setup and the first months cost nothing. You are only invoiced for new customers who came through our channels and paid you, one fixed amount per customer, in a tier we agree in advance from your price list. Only ad budget you pay yourself, directly to Google or Meta." },
-      { question: "How do you know which customer came through you?", answer: "Everything runs through channels we create: a new number, a form, a booking link. What comes in there came through us. What comes through your old number or word of mouth, we do not count. You tick every month which enquiries became customers." },
+      { question: "Is it really free at the start?", answer: "Yes. The leak check, the setup and the first months cost nothing. You are only invoiced for new customers who came through our channels and paid you, and then 15% of their first bill if your booking system is connected, or otherwise a fixed amount per job won that we agree in advance. Only ad budget you pay yourself, directly to Google or Meta." },
+      { question: "How do you know which customer came through you?", answer: "Everything runs through channels we create: a new number, a form, a booking link. What comes in there came through us. What comes through your old number or word of mouth, we do not count. If a booking or ordering system sits in between, we also see the payment and the amount; otherwise you confirm each month which enquiry became a job." },
       { question: "What if it does not work?", answer: "Then we stop ourselves, after two monthly reports without progress. No invoice. You keep your domain and your own number, we keep what we built." },
       { question: "Who owns the site?", answer: "Until the first payment it is ours, after that yours. Your domain name is always in your name. If you want to take the site over earlier, you can, for a fixed amount." },
       { question: "How long am I tied in?", answer: "First a three-month trial, which starts once the measurement is live. After your first paying customer another six months, then monthly." },

@@ -220,12 +220,38 @@ export function LocalHome({ locale }: { locale: Locale }) {
         <FadeIn>
           <SectionHead eyebrow={t.pricing.eyebrow} pre={t.pricing.titlePre} highlight={t.pricing.titleHighlight} post={t.pricing.titlePost} body={t.pricing.body} />
         </FadeIn>
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid gap-5 lg:grid-cols-2">
+          {t.pricing.modes.map((m, i) => (
+            <FadeIn key={m.label} delay={i * 120} className="h-full">
+              <div
+                className={`relative h-full overflow-hidden rounded-3xl border p-7 md:p-8 ${
+                  i === 0 ? "border-brand-bright/40 bg-[#0a0a0a] shadow-[0_0_50px_rgba(46,127,6,0.12)]" : "border-white/[0.08] bg-[#0a0a0a]"
+                }`}
+              >
+                {i === 0 && <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-bright/[0.08] blur-3xl" />}
+                <div className="relative">
+                  <div className="flex items-center gap-3">
+                    <span className={`flex h-10 w-10 items-center justify-center rounded-full border font-mono text-base font-bold ${i === 0 ? "border-brand-bright bg-brand-bright text-white" : "border-white/15 text-ink"}`}>
+                      {m.label}
+                    </span>
+                    <h3 className="text-2xl font-bold text-ink">{m.title}</h3>
+                  </div>
+                  <p className="mt-5 text-sm leading-relaxed text-ink-dim">{m.how}</p>
+                  <p className="mt-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 text-sm font-semibold leading-relaxed text-ink">{m.pay}</p>
+                  <p className="mt-4 text-xs uppercase tracking-[0.15em] text-ink-dim/60">{m.who}</p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <div className="mt-6 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <FadeIn>
             <div className="overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0a0a0a]">
+              <p className="border-b border-white/[0.06] px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink-dim/60 md:px-8">{t.pricing.tiersTitle}</p>
               <ul className="divide-y divide-white/[0.06]">
                 {t.pricing.rows.map((r) => (
-                  <li key={r.branche} className="flex items-center justify-between gap-4 px-6 py-5 transition-colors hover:bg-white/[0.02] md:px-8">
+                  <li key={r.branche} className="flex items-center justify-between gap-4 px-6 py-4 transition-colors hover:bg-white/[0.02] md:px-8">
                     <span className="text-sm text-ink md:text-base">{r.branche}</span>
                     <span className="text-right">
                       <span className="font-mono text-2xl font-bold text-brand-bright md:text-3xl">{r.price}</span>
