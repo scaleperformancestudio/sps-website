@@ -45,7 +45,7 @@ export default function LekCheckPage({
           </div>
           {via && (
             <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-brand-bright/30 bg-brand-bright/[0.06] px-4 py-1.5 text-sm text-ink">
-              <img src="/emre.jpg" alt="" width={24} height={24} className="h-6 w-6 rounded-full object-cover" />
+              <span className="h-2 w-2 rounded-full bg-brand-bright" />
               {t.viaLine.replace("{name}", NAMES[via])}
             </p>
           )}

@@ -211,7 +211,7 @@ const nl: HomeContent = {
       "Bij ons wel. Wij zijn twee broers, we komen zelf langs, en we verdienen pas als jij verdient. Bel of app ons gerust, ook als je alleen een vraag hebt en nog nergens aan toe bent.",
     ],
     people: [
-      { name: "Emre Balıkoç", role: "Bouwt je site, richt de meting in, beheert de campagnes", image: "/emre.jpg", initial: "E" },
+      { name: "Emre Balıkoç", role: "Bouwt je site, richt de meting in, beheert de campagnes", image: null, initial: "E" },
       { name: "Emin Balıkoç", role: "Komt langs, plant de lek-check, blijft je aanspreekpunt", image: null, initial: "E" },
     ],
     facts: ["Nijmegen", "06 1172 7850"],
@@ -367,7 +367,7 @@ const en: HomeContent = {
       "With us you do. We are two brothers, we come by in person, and we only earn when you earn. Call or message us any time, even if you only have a question and are not ready for anything yet.",
     ],
     people: [
-      { name: "Emre Balıkoç", role: "Builds your site, sets up the measurement, runs the campaigns", image: "/emre.jpg", initial: "E" },
+      { name: "Emre Balıkoç", role: "Builds your site, sets up the measurement, runs the campaigns", image: null, initial: "E" },
       { name: "Emin Balıkoç", role: "Comes by, plans the leak check, stays your point of contact", image: null, initial: "E" },
     ],
     facts: ["Nijmegen", "+31 6 1172 7850"],
