@@ -9,6 +9,7 @@ import {
   Star,
   TrendingDown,
   Rocket,
+  Repeat,
   Phone,
   FileText,
   ClipboardCheck,
@@ -35,7 +36,7 @@ import { content as websitesContent, type Locale } from "@/app/websites/content"
 
 const HIGHLIGHT =
   "bg-gradient-to-r from-[#4ca50a] via-[#2e7f06] to-[#266604] bg-clip-text font-serif font-normal italic text-transparent";
-const LEAK_ICONS = [CalendarDays, MessageCircle, Search, Clock, PhoneMissed, Star, TrendingDown, Rocket];
+const LEAK_ICONS = [CalendarDays, MessageCircle, Search, Clock, PhoneMissed, Star, TrendingDown, Rocket, Repeat];
 const MEASURE_ICONS = [Phone, FileText, ClipboardCheck];
 const PRIMARY =
   "group inline-flex items-center gap-2 rounded-full bg-brand-bright px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-brand hover:shadow-[0_0_30px_rgba(46,127,6,0.4)] hover:scale-[1.03] active:scale-[0.98]";
@@ -148,7 +149,7 @@ export function LocalHome({ locale }: { locale: Locale }) {
         <FadeIn>
           <SectionHead eyebrow={t.leaks.eyebrow} pre={t.leaks.titlePre} highlight={t.leaks.titleHighlight} post={t.leaks.titlePost} body={t.leaks.body} />
         </FadeIn>
-        <SwipeCarousel gridClass="md:grid-cols-2 lg:grid-cols-4" gapClass="gap-4 md:gap-5">
+        <SwipeCarousel gridClass="md:grid-cols-2 lg:grid-cols-3" gapClass="gap-4 md:gap-5">
           {t.leaks.items.map((item, i) => {
             const Icon = LEAK_ICONS[i];
             return (

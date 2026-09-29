@@ -122,7 +122,7 @@ const nl: HomeContent = {
   },
   leaks: {
     eyebrow: "Herken je dit?",
-    titlePre: "Acht dingen waar bijna elke ondernemer ",
+    titlePre: "Negen dingen waar bijna elke ondernemer ",
     titleHighlight: "tegenaan loopt",
     titlePost: ".",
     body: "Kies degene die jou het meest raakt. Daar beginnen we, en je betaalt pas als het je klanten oplevert.",
@@ -135,6 +135,7 @@ const nl: HomeContent = {
       { q: "Mijn reviews zijn oud, of het zijn er te weinig.", a: "Mensen kijken eerst naar sterren, dan pas naar jou. Wij zetten een vaste reviewroute op: QR aan de balie, berichtje na de afspraak. Zit erbij, kost niets extra." },
       { q: "Ik werk hard, maar het groeit niet meer.", a: "Zelfde omzet als drie jaar geleden, meer uren. In de lek-check zoeken we waar klanten afhaken tussen zoeken en boeken, en pakken het grootste lek aan." },
       { q: "Ik ben net begonnen en niemand kent me nog.", a: "Site, Bedrijfsprofiel, reviews en een eerste campagne in één keer. Jij betaalt niets vooraf, en daarna alleen per klant die via ons komt." },
+      { q: "Mijn personeel typt elke dag hetzelfde over.", a: "Offertes, planningen, mailtjes, facturen: wij automatiseren wat elke dag terugkomt. Gratis scan, vaste prijs, en je betaalt pas als het draait." },
     ],
   },
   how: {
@@ -278,7 +279,7 @@ const en: HomeContent = {
   },
   leaks: {
     eyebrow: "Sound familiar?",
-    titlePre: "Eight things almost every business owner ",
+    titlePre: "Nine things almost every business owner ",
     titleHighlight: "runs into",
     titlePost: ".",
     body: "Pick the one that hits closest to home. That is where we start, and you only pay once it brings you customers.",
@@ -291,6 +292,7 @@ const en: HomeContent = {
       { q: "My reviews are old, or there are too few.", a: "People look at the stars first, then at you. We set up a fixed review route: a QR at the counter, a message after the appointment. Included, no extra charge." },
       { q: "I work hard, but it has stopped growing.", a: "Same revenue as three years ago, more hours. In the leak check we find where customers drop off between searching and booking, and fix the biggest leak." },
       { q: "I have just started and nobody knows me yet.", a: "Site, Business Profile, reviews and a first campaign in one go. You pay nothing up front, and afterwards only per customer who comes through us." },
+      { q: "My staff retype the same things every day.", a: "Quotes, schedules, emails, invoices: we automate what comes back every day. Free scan, fixed price, and you only pay once it runs." },
     ],
   },
   how: {
