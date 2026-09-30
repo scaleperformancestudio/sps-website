@@ -325,23 +325,19 @@ export function LocalHome({ locale }: { locale: Locale }) {
               ))}
             </ul>
           </FadeIn>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {t.who.people.map((p, i) => (
-              <FadeIn key={p.name} delay={i * 150} className="h-full">
-                <div className="group h-full rounded-3xl border border-white/[0.08] bg-[#0a0a0a] p-5 transition-all duration-500 hover:border-brand-bright/30">
-                  {p.image ? (
-                    <img src={p.image} alt={p.name} width={720} height={720} loading="lazy" className="aspect-square w-full rounded-2xl object-cover" />
-                  ) : (
-                    <div className="flex aspect-square w-full items-center justify-center rounded-2xl border border-brand-bright/20 bg-gradient-to-br from-[#1c5102] via-[#0f2a04] to-[#0a0a0a] font-serif text-7xl italic text-ink/90">
-                      {p.initial}
-                    </div>
-                  )}
-                  <p className="mt-5 text-lg font-bold text-ink">{p.name}</p>
-                  <p className="mt-1 text-sm text-ink-dim">{p.role}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+          <FadeIn delay={150}>
+            <div className="overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0a0a0a]">
+              <img src={t.who.photo.src} alt={t.who.photo.alt} width={1800} height={1005} loading="lazy" className="aspect-[16/9] w-full object-cover" />
+              <div className="grid gap-4 p-5 sm:grid-cols-2 md:p-6">
+                {t.who.people.map((p) => (
+                  <div key={p.name}>
+                    <p className="text-base font-bold text-ink">{p.name}</p>
+                    <p className="mt-1 text-sm text-ink-dim">{p.role}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

@@ -68,6 +68,7 @@ export interface HomeContent {
     eyebrow: string;
     title: string;
     body: string[];
+    photo: { src: string; alt: string };
     people: { name: string; role: string; image: string | null; initial: string }[];
     facts: string[];
   };
@@ -211,6 +212,7 @@ const nl: HomeContent = {
       "Je krijgt waarschijnlijk elke week berichten van bureaus die je iets willen verkopen. Wij snappen dat je die wegklikt: je weet niet wie erachter zit.",
       "Bij ons wel. Wij zijn twee broers, we komen zelf langs, en we verdienen pas als jij verdient. Bel of app ons gerust, ook als je alleen een vraag hebt en nog nergens aan toe bent.",
     ],
+    photo: { src: "/emre-emin.jpg", alt: "Emre en Emin Balıkoç in de Lange Hezelstraat in Nijmegen" },
     people: [
       { name: "Emre Balıkoç", role: "Bouwt je site, richt de meting in, beheert de campagnes", image: null, initial: "E" },
       { name: "Emin Balıkoç", role: "Komt langs, plant de lek-check, blijft je aanspreekpunt", image: null, initial: "E" },
@@ -368,6 +370,7 @@ const en: HomeContent = {
       "You probably get messages every week from agencies trying to sell you something. We understand why you delete them: you have no idea who is behind them.",
       "With us you do. We are two brothers, we come by in person, and we only earn when you earn. Call or message us any time, even if you only have a question and are not ready for anything yet.",
     ],
+    photo: { src: "/emre-emin.jpg", alt: "Emre and Emin Balıkoç in the Lange Hezelstraat in Nijmegen" },
     people: [
       { name: "Emre Balıkoç", role: "Builds your site, sets up the measurement, runs the campaigns", image: null, initial: "E" },
       { name: "Emin Balıkoç", role: "Comes by, plans the leak check, stays your point of contact", image: null, initial: "E" },

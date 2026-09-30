@@ -168,13 +168,14 @@ export default function WebsitesLocalePage({
       <section className="container-content border-t border-white/5 py-20">
         <FadeIn>
           <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-10">
-            {/* Foto volgt: Emre en Emin laten samen een nieuwe maken. Tot die tijd de initiaal. */}
-            <div
-              aria-label={t.person.alt}
-              className="flex h-32 w-32 flex-none items-center justify-center rounded-2xl border border-brand-bright/20 bg-gradient-to-br from-[#1c5102] via-[#0f2a04] to-[#0a0a0a] font-serif text-5xl italic text-ink/90 sm:h-44 sm:w-44"
-            >
-              E
-            </div>
+            <img
+              src="/emre-emin.jpg"
+              alt={t.person.alt}
+              width={1800}
+              height={1005}
+              loading="lazy"
+              className="w-full flex-none rounded-2xl object-cover sm:h-44 sm:w-80"
+            />
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-bright">
                 {t.person.eyebrow}

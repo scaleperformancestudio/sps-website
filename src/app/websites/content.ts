@@ -202,7 +202,7 @@ const nl: WebsitesContent = {
     ],
     name: "Emre en Emin Balıkoç",
     role: "Scale Performance Studio · Nijmegen",
-    alt: "Emre Balıkoç aan zijn werktafel in Nijmegen",
+    alt: "Emre en Emin Balıkoç in de Lange Hezelstraat in Nijmegen",
   },
   lekCheck: {
     meta: {
@@ -482,7 +482,7 @@ const en: WebsitesContent = {
     ],
     name: "Emre and Emin Balıkoç",
     role: "Scale Performance Studio · Nijmegen",
-    alt: "Emre Balikoc at his desk in Nijmegen",
+    alt: "Emre and Emin Balıkoç in the Lange Hezelstraat in Nijmegen",
   },
   lekCheck: {
     meta: {
